@@ -1,0 +1,37 @@
+variable,description,type,values,n_missing
+wave,"CHIP50 survey wave (waves 4, 6, 8, 15 excluded)",integer,1 to 27,0
+era,"Pandemic era: Pre-vaccine (waves 1-13), Rollout (14-20), Omicron (21+)",factor,Pre-vaccine | Rollout | Omicron,0
+survey_date,Date the respondent started the survey,Date,2020-04-16 to 2023-05-05,0
+weight_state,Post-stratification weight (rows with missing or zero weight dropped),numeric,0.0988 to 9.196,0
+always_wear_mask,Wore a mask outside the home 'very closely' in the past week (1/0),integer,0 to 1,2421
+always_avoid_contact,Avoided contact with other people 'very closely' (1/0),integer,0 to 1,1449
+always_avoid_crowds,Avoided public or crowded places 'very closely' (1/0),integer,0 to 1,2158
+wash_hands_strict,Washed hands frequently 'very closely' (1/0),integer,0 to 1,2220
+vaccine_1,Received at least one COVID-19 vaccine dose (waves 14+; 1/0),numeric,0 to 1,215838
+visit_9,Respondent or household member visited a doctor or hospital in the past 24 h (as recorded; adjusted models),numeric,0 to 1,7437
+visit_doctor,visit_9 with missing coded 0 (descriptive analyses),integer,0 to 1,0
+visit_store,Visited a store in the past 24 h (missing coded 0),integer,0 to 1,0
+visit_work,Went to work in the past 24 h (missing coded 0),integer,0 to 1,0
+trust_cdc,Trust in the CDC (No / Not much / Some / High trust),factor,No trust | Not much trust | Some trust | High trust,87611
+trust_doc,Trust in hospitals and doctors,factor,No trust | Not much trust | Some trust | High trust,87222
+trust_state,Trust in state government,factor,No trust | Not much trust | Some trust | High trust,87395
+trust_banks,Trust in banks (negative-control exposure),factor,No trust | Not much trust | Some trust | High trust,87451
+trust,"Generalized trust, numeric as recorded (sensitivity analysis)",numeric,1 to 10,134141
+age_cat,Age group (descriptive),factor,18 to 34 | 35 to 54 | 55 to 64 | 65 and over,0
+gender,Gender as recorded,character,Female | Male,0
+income_cat_5_fct,"Household income, 5 groups (descriptive)",factor,"Under $25,000 | $25,000 - $49,999 | $50,000 - $74,999 | $75,000 - $99,999 | $100,000 and over",18331
+education_cat,"Education, 5 groups",character,College Degree | Graduate Degree | High School Graduate | Some College | Some High School or Less,0
+race_fct,"Race/ethnicity, 5 groups (descriptive)",factor,White | African American | Asian/Pacific Islander | Hispanic | Other,0
+party3,"Party identification, 3 groups",character,Democrat | Independent/Other | Republican,1958
+ideology_fct,"Ideology, 3 groups",factor,Liberal | Moderate | Conservative,4200
+employ_fct,"Employment, 5 groups",factor,Full-time | Part-time | Unemployed | Retired | Other,15
+urban_type,Urbanicity as recorded (descriptive),character,Rural | Suburban | Urban,0
+region_fct,Census region (from state),factor,Northeast | Midwest | South | West,0
+age_cat4,Age group (models; ref 18-34),factor,18-34 | 35-54 | 55-64 | 65+,0
+gender_fct,Gender (sequential models; ref Male),factor,Male | Female,0
+race_cat4,"Race/ethnicity, 4 groups (models; ref White)",factor,White | African American | Asian/PI/Other | Hispanic,0
+education_hs_ref,Education (models; ref High School Graduate),factor,High School Graduate | Some High School or Less | Some College | College Degree | Graduate Degree,0
+income_high_ref,"Household income (models; ref $100,000 and over)",factor,"$100,000 and over | Under $25,000 | $25,000-$49,999 | $50,000-$74,999 | $75,000-$99,999",18331
+party_ind_ref,Party (wave-level models; ref Independent/Other),factor,Independent/Other | Democrat | Republican,1958
+party_dem_ref,Party (sequential models; ref Democrat),factor,Democrat | Republican | Independent/Other,1958
+ruca_cat_fct,Urbanicity from RUCA codes (models; ref Urban),factor,Urban | Suburban | Rural,596

@@ -1,0 +1,715 @@
+item,location,description,published,digits
+T1/always_wear_mask/median_n,Table 1,always_wear_mask: median complete-case n per wave,22256,0
+T1/always_wear_mask/median_events,Table 1,always_wear_mask: median events per wave,12522,0
+T1/always_wear_mask/M0/OR,Table 1,always_wear_mask M0: OR median,6.64,2
+T1/always_wear_mask/M0/OR_q25,Table 1,always_wear_mask M0: OR q25,4.78,2
+T1/always_wear_mask/M0/OR_q75,Table 1,always_wear_mask M0: OR q75,9.1,2
+T1/always_wear_mask/M0/RD,Table 1,always_wear_mask M0: RD median,40.9,1
+T1/always_wear_mask/M0/RD_q25,Table 1,always_wear_mask M0: RD q25,36.0,1
+T1/always_wear_mask/M0/RD_q75,Table 1,always_wear_mask M0: RD q75,44.7,1
+T1/always_wear_mask/M1/OR,Table 1,always_wear_mask M1: OR median,6.66,2
+T1/always_wear_mask/M1/OR_q25,Table 1,always_wear_mask M1: OR q25,4.78,2
+T1/always_wear_mask/M1/OR_q75,Table 1,always_wear_mask M1: OR q75,8.83,2
+T1/always_wear_mask/M1/RD,Table 1,always_wear_mask M1: RD median,39.1,1
+T1/always_wear_mask/M1/RD_q25,Table 1,always_wear_mask M1: RD q25,33.7,1
+T1/always_wear_mask/M1/RD_q75,Table 1,always_wear_mask M1: RD q75,42.6,1
+T1/always_wear_mask/M1/dAIC,Table 1,always_wear_mask M1: dAIC median,-596,0
+T1/always_wear_mask/M1/dAIC_q25,Table 1,always_wear_mask M1: dAIC q25,-1037,0
+T1/always_wear_mask/M1/dAIC_q75,Table 1,always_wear_mask M1: dAIC q75,-477,0
+T1/always_wear_mask/M1/dBrier,Table 1,always_wear_mask M1: dBrier median,-0.0074,4
+T1/always_wear_mask/M1/dBrier_q25,Table 1,always_wear_mask M1: dBrier q25,-0.0106,4
+T1/always_wear_mask/M1/dBrier_q75,Table 1,always_wear_mask M1: dBrier q75,-0.0057,4
+T1/always_wear_mask/M2/OR,Table 1,always_wear_mask M2: OR median,6.55,2
+T1/always_wear_mask/M2/OR_q25,Table 1,always_wear_mask M2: OR q25,4.72,2
+T1/always_wear_mask/M2/OR_q75,Table 1,always_wear_mask M2: OR q75,8.62,2
+T1/always_wear_mask/M2/RD,Table 1,always_wear_mask M2: RD median,37.8,1
+T1/always_wear_mask/M2/RD_q25,Table 1,always_wear_mask M2: RD q25,32.9,1
+T1/always_wear_mask/M2/RD_q75,Table 1,always_wear_mask M2: RD q75,41.5,1
+T1/always_wear_mask/M2/dAIC,Table 1,always_wear_mask M2: dAIC median,-651,0
+T1/always_wear_mask/M2/dAIC_q25,Table 1,always_wear_mask M2: dAIC q25,-1085,0
+T1/always_wear_mask/M2/dAIC_q75,Table 1,always_wear_mask M2: dAIC q75,-580,0
+T1/always_wear_mask/M2/dBrier,Table 1,always_wear_mask M2: dBrier median,-0.0089,4
+T1/always_wear_mask/M2/dBrier_q25,Table 1,always_wear_mask M2: dBrier q25,-0.0116,4
+T1/always_wear_mask/M2/dBrier_q75,Table 1,always_wear_mask M2: dBrier q75,-0.0067,4
+T1/always_wear_mask/M3/OR,Table 1,always_wear_mask M3: OR median,4.67,2
+T1/always_wear_mask/M3/OR_q25,Table 1,always_wear_mask M3: OR q25,3.49,2
+T1/always_wear_mask/M3/OR_q75,Table 1,always_wear_mask M3: OR q75,6.46,2
+T1/always_wear_mask/M3/RD,Table 1,always_wear_mask M3: RD median,31.6,1
+T1/always_wear_mask/M3/RD_q25,Table 1,always_wear_mask M3: RD q25,26.7,1
+T1/always_wear_mask/M3/RD_q75,Table 1,always_wear_mask M3: RD q75,34.2,1
+T1/always_wear_mask/M3/dAIC,Table 1,always_wear_mask M3: dAIC median,-1274,0
+T1/always_wear_mask/M3/dAIC_q25,Table 1,always_wear_mask M3: dAIC q25,-1582,0
+T1/always_wear_mask/M3/dAIC_q75,Table 1,always_wear_mask M3: dAIC q75,-957,0
+T1/always_wear_mask/M3/dBrier,Table 1,always_wear_mask M3: dBrier median,-0.0139,4
+T1/always_wear_mask/M3/dBrier_q25,Table 1,always_wear_mask M3: dBrier q25,-0.0159,4
+T1/always_wear_mask/M3/dBrier_q75,Table 1,always_wear_mask M3: dBrier q75,-0.0107,4
+T1/always_wear_mask/M4/OR,Table 1,always_wear_mask M4: OR median,4.76,2
+T1/always_wear_mask/M4/OR_q25,Table 1,always_wear_mask M4: OR q25,3.57,2
+T1/always_wear_mask/M4/OR_q75,Table 1,always_wear_mask M4: OR q75,6.41,2
+T1/always_wear_mask/M4/RD,Table 1,always_wear_mask M4: RD median,31.1,1
+T1/always_wear_mask/M4/RD_q25,Table 1,always_wear_mask M4: RD q25,26.5,1
+T1/always_wear_mask/M4/RD_q75,Table 1,always_wear_mask M4: RD q75,33.7,1
+T1/always_wear_mask/M4/dAIC,Table 1,always_wear_mask M4: dAIC median,-1427,0
+T1/always_wear_mask/M4/dAIC_q25,Table 1,always_wear_mask M4: dAIC q25,-1770,0
+T1/always_wear_mask/M4/dAIC_q75,Table 1,always_wear_mask M4: dAIC q75,-1191,0
+T1/always_wear_mask/M4/dBrier,Table 1,always_wear_mask M4: dBrier median,-0.0161,4
+T1/always_wear_mask/M4/dBrier_q25,Table 1,always_wear_mask M4: dBrier q25,-0.0197,4
+T1/always_wear_mask/M4/dBrier_q75,Table 1,always_wear_mask M4: dBrier q75,-0.0129,4
+T1/always_avoid_contact/median_n,Table 1,always_avoid_contact: median complete-case n per wave,22301,0
+T1/always_avoid_contact/median_events,Table 1,always_avoid_contact: median events per wave,8724,0
+T1/always_avoid_contact/M0/OR,Table 1,always_avoid_contact M0: OR median,3.28,2
+T1/always_avoid_contact/M0/OR_q25,Table 1,always_avoid_contact M0: OR q25,3.05,2
+T1/always_avoid_contact/M0/OR_q75,Table 1,always_avoid_contact M0: OR q75,3.56,2
+T1/always_avoid_contact/M0/RD,Table 1,always_avoid_contact M0: RD median,26.7,1
+T1/always_avoid_contact/M0/RD_q25,Table 1,always_avoid_contact M0: RD q25,21.8,1
+T1/always_avoid_contact/M0/RD_q75,Table 1,always_avoid_contact M0: RD q75,30.3,1
+T1/always_avoid_contact/M1/OR,Table 1,always_avoid_contact M1: OR median,3.2,2
+T1/always_avoid_contact/M1/OR_q25,Table 1,always_avoid_contact M1: OR q25,2.94,2
+T1/always_avoid_contact/M1/OR_q75,Table 1,always_avoid_contact M1: OR q75,3.52,2
+T1/always_avoid_contact/M1/RD,Table 1,always_avoid_contact M1: RD median,25.2,1
+T1/always_avoid_contact/M1/RD_q25,Table 1,always_avoid_contact M1: RD q25,20.6,1
+T1/always_avoid_contact/M1/RD_q75,Table 1,always_avoid_contact M1: RD q75,29.3,1
+T1/always_avoid_contact/M1/dAIC,Table 1,always_avoid_contact M1: dAIC median,-437,0
+T1/always_avoid_contact/M1/dAIC_q25,Table 1,always_avoid_contact M1: dAIC q25,-490,0
+T1/always_avoid_contact/M1/dAIC_q75,Table 1,always_avoid_contact M1: dAIC q75,-310,0
+T1/always_avoid_contact/M1/dBrier,Table 1,always_avoid_contact M1: dBrier median,-0.0043,4
+T1/always_avoid_contact/M1/dBrier_q25,Table 1,always_avoid_contact M1: dBrier q25,-0.0049,4
+T1/always_avoid_contact/M1/dBrier_q75,Table 1,always_avoid_contact M1: dBrier q75,-0.0035,4
+T1/always_avoid_contact/M2/OR,Table 1,always_avoid_contact M2: OR median,3.2,2
+T1/always_avoid_contact/M2/OR_q25,Table 1,always_avoid_contact M2: OR q25,2.93,2
+T1/always_avoid_contact/M2/OR_q75,Table 1,always_avoid_contact M2: OR q75,3.47,2
+T1/always_avoid_contact/M2/RD,Table 1,always_avoid_contact M2: RD median,24.9,1
+T1/always_avoid_contact/M2/RD_q25,Table 1,always_avoid_contact M2: RD q25,20.6,1
+T1/always_avoid_contact/M2/RD_q75,Table 1,always_avoid_contact M2: RD q75,28.6,1
+T1/always_avoid_contact/M2/dAIC,Table 1,always_avoid_contact M2: dAIC median,-594,0
+T1/always_avoid_contact/M2/dAIC_q25,Table 1,always_avoid_contact M2: dAIC q25,-729,0
+T1/always_avoid_contact/M2/dAIC_q75,Table 1,always_avoid_contact M2: dAIC q75,-486,0
+T1/always_avoid_contact/M2/dBrier,Table 1,always_avoid_contact M2: dBrier median,-0.0065,4
+T1/always_avoid_contact/M2/dBrier_q25,Table 1,always_avoid_contact M2: dBrier q25,-0.0067,4
+T1/always_avoid_contact/M2/dBrier_q75,Table 1,always_avoid_contact M2: dBrier q75,-0.0058,4
+T1/always_avoid_contact/M3/OR,Table 1,always_avoid_contact M3: OR median,2.64,2
+T1/always_avoid_contact/M3/OR_q25,Table 1,always_avoid_contact M3: OR q25,2.49,2
+T1/always_avoid_contact/M3/OR_q75,Table 1,always_avoid_contact M3: OR q75,2.81,2
+T1/always_avoid_contact/M3/RD,Table 1,always_avoid_contact M3: RD median,21.7,1
+T1/always_avoid_contact/M3/RD_q25,Table 1,always_avoid_contact M3: RD q25,17.0,1
+T1/always_avoid_contact/M3/RD_q75,Table 1,always_avoid_contact M3: RD q75,23.9,1
+T1/always_avoid_contact/M3/dAIC,Table 1,always_avoid_contact M3: dAIC median,-790,0
+T1/always_avoid_contact/M3/dAIC_q25,Table 1,always_avoid_contact M3: dAIC q25,-963,0
+T1/always_avoid_contact/M3/dAIC_q75,Table 1,always_avoid_contact M3: dAIC q75,-740,0
+T1/always_avoid_contact/M3/dBrier,Table 1,always_avoid_contact M3: dBrier median,-0.0085,4
+T1/always_avoid_contact/M3/dBrier_q25,Table 1,always_avoid_contact M3: dBrier q25,-0.01,4
+T1/always_avoid_contact/M3/dBrier_q75,Table 1,always_avoid_contact M3: dBrier q75,-0.0076,4
+T1/always_avoid_contact/M4/OR,Table 1,always_avoid_contact M4: OR median,2.64,2
+T1/always_avoid_contact/M4/OR_q25,Table 1,always_avoid_contact M4: OR q25,2.47,2
+T1/always_avoid_contact/M4/OR_q75,Table 1,always_avoid_contact M4: OR q75,2.8,2
+T1/always_avoid_contact/M4/RD,Table 1,always_avoid_contact M4: RD median,21.6,1
+T1/always_avoid_contact/M4/RD_q25,Table 1,always_avoid_contact M4: RD q25,16.9,1
+T1/always_avoid_contact/M4/RD_q75,Table 1,always_avoid_contact M4: RD q75,23.7,1
+T1/always_avoid_contact/M4/dAIC,Table 1,always_avoid_contact M4: dAIC median,-847,0
+T1/always_avoid_contact/M4/dAIC_q25,Table 1,always_avoid_contact M4: dAIC q25,-1003,0
+T1/always_avoid_contact/M4/dAIC_q75,Table 1,always_avoid_contact M4: dAIC q75,-766,0
+T1/always_avoid_contact/M4/dBrier,Table 1,always_avoid_contact M4: dBrier median,-0.0095,4
+T1/always_avoid_contact/M4/dBrier_q25,Table 1,always_avoid_contact M4: dBrier q25,-0.0109,4
+T1/always_avoid_contact/M4/dBrier_q75,Table 1,always_avoid_contact M4: dBrier q75,-0.0083,4
+T1/always_avoid_crowds/median_n,Table 1,always_avoid_crowds: median complete-case n per wave,22273,0
+T1/always_avoid_crowds/median_events,Table 1,always_avoid_crowds: median events per wave,10830,0
+T1/always_avoid_crowds/M0/OR,Table 1,always_avoid_crowds M0: OR median,3.92,2
+T1/always_avoid_crowds/M0/OR_q25,Table 1,always_avoid_crowds M0: OR q25,3.39,2
+T1/always_avoid_crowds/M0/OR_q75,Table 1,always_avoid_crowds M0: OR q75,4.15,2
+T1/always_avoid_crowds/M0/RD,Table 1,always_avoid_crowds M0: RD median,30.5,1
+T1/always_avoid_crowds/M0/RD_q25,Table 1,always_avoid_crowds M0: RD q25,26.9,1
+T1/always_avoid_crowds/M0/RD_q75,Table 1,always_avoid_crowds M0: RD q75,34.0,1
+T1/always_avoid_crowds/M1/OR,Table 1,always_avoid_crowds M1: OR median,3.73,2
+T1/always_avoid_crowds/M1/OR_q25,Table 1,always_avoid_crowds M1: OR q25,3.34,2
+T1/always_avoid_crowds/M1/OR_q75,Table 1,always_avoid_crowds M1: OR q75,4.11,2
+T1/always_avoid_crowds/M1/RD,Table 1,always_avoid_crowds M1: RD median,29.1,1
+T1/always_avoid_crowds/M1/RD_q25,Table 1,always_avoid_crowds M1: RD q25,25.5,1
+T1/always_avoid_crowds/M1/RD_q75,Table 1,always_avoid_crowds M1: RD q75,32.9,1
+T1/always_avoid_crowds/M1/dAIC,Table 1,always_avoid_crowds M1: dAIC median,-475,0
+T1/always_avoid_crowds/M1/dAIC_q25,Table 1,always_avoid_crowds M1: dAIC q25,-593,0
+T1/always_avoid_crowds/M1/dAIC_q75,Table 1,always_avoid_crowds M1: dAIC q75,-342,0
+T1/always_avoid_crowds/M1/dBrier,Table 1,always_avoid_crowds M1: dBrier median,-0.0049,4
+T1/always_avoid_crowds/M1/dBrier_q25,Table 1,always_avoid_crowds M1: dBrier q25,-0.0056,4
+T1/always_avoid_crowds/M1/dBrier_q75,Table 1,always_avoid_crowds M1: dBrier q75,-0.0038,4
+T1/always_avoid_crowds/M2/OR,Table 1,always_avoid_crowds M2: OR median,3.72,2
+T1/always_avoid_crowds/M2/OR_q25,Table 1,always_avoid_crowds M2: OR q25,3.34,2
+T1/always_avoid_crowds/M2/OR_q75,Table 1,always_avoid_crowds M2: OR q75,4.02,2
+T1/always_avoid_crowds/M2/RD,Table 1,always_avoid_crowds M2: RD median,28.3,1
+T1/always_avoid_crowds/M2/RD_q25,Table 1,always_avoid_crowds M2: RD q25,25.3,1
+T1/always_avoid_crowds/M2/RD_q75,Table 1,always_avoid_crowds M2: RD q75,32.3,1
+T1/always_avoid_crowds/M2/dAIC,Table 1,always_avoid_crowds M2: dAIC median,-645,0
+T1/always_avoid_crowds/M2/dAIC_q25,Table 1,always_avoid_crowds M2: dAIC q25,-748,0
+T1/always_avoid_crowds/M2/dAIC_q75,Table 1,always_avoid_crowds M2: dAIC q75,-486,0
+T1/always_avoid_crowds/M2/dBrier,Table 1,always_avoid_crowds M2: dBrier median,-0.0067,4
+T1/always_avoid_crowds/M2/dBrier_q25,Table 1,always_avoid_crowds M2: dBrier q25,-0.0074,4
+T1/always_avoid_crowds/M2/dBrier_q75,Table 1,always_avoid_crowds M2: dBrier q75,-0.0062,4
+T1/always_avoid_crowds/M3/OR,Table 1,always_avoid_crowds M3: OR median,3.1,2
+T1/always_avoid_crowds/M3/OR_q25,Table 1,always_avoid_crowds M3: OR q25,2.78,2
+T1/always_avoid_crowds/M3/OR_q75,Table 1,always_avoid_crowds M3: OR q75,3.41,2
+T1/always_avoid_crowds/M3/RD,Table 1,always_avoid_crowds M3: RD median,24.6,1
+T1/always_avoid_crowds/M3/RD_q25,Table 1,always_avoid_crowds M3: RD q25,20.6,1
+T1/always_avoid_crowds/M3/RD_q75,Table 1,always_avoid_crowds M3: RD q75,28.1,1
+T1/always_avoid_crowds/M3/dAIC,Table 1,always_avoid_crowds M3: dAIC median,-869,0
+T1/always_avoid_crowds/M3/dAIC_q25,Table 1,always_avoid_crowds M3: dAIC q25,-1025,0
+T1/always_avoid_crowds/M3/dAIC_q75,Table 1,always_avoid_crowds M3: dAIC q75,-717,0
+T1/always_avoid_crowds/M3/dBrier,Table 1,always_avoid_crowds M3: dBrier median,-0.0088,4
+T1/always_avoid_crowds/M3/dBrier_q25,Table 1,always_avoid_crowds M3: dBrier q25,-0.0112,4
+T1/always_avoid_crowds/M3/dBrier_q75,Table 1,always_avoid_crowds M3: dBrier q75,-0.008,4
+T1/always_avoid_crowds/M4/OR,Table 1,always_avoid_crowds M4: OR median,3.08,2
+T1/always_avoid_crowds/M4/OR_q25,Table 1,always_avoid_crowds M4: OR q25,2.78,2
+T1/always_avoid_crowds/M4/OR_q75,Table 1,always_avoid_crowds M4: OR q75,3.39,2
+T1/always_avoid_crowds/M4/RD,Table 1,always_avoid_crowds M4: RD median,24.4,1
+T1/always_avoid_crowds/M4/RD_q25,Table 1,always_avoid_crowds M4: RD q25,20.4,1
+T1/always_avoid_crowds/M4/RD_q75,Table 1,always_avoid_crowds M4: RD q75,27.8,1
+T1/always_avoid_crowds/M4/dAIC,Table 1,always_avoid_crowds M4: dAIC median,-920,0
+T1/always_avoid_crowds/M4/dAIC_q25,Table 1,always_avoid_crowds M4: dAIC q25,-1067,0
+T1/always_avoid_crowds/M4/dAIC_q75,Table 1,always_avoid_crowds M4: dAIC q75,-774,0
+T1/always_avoid_crowds/M4/dBrier,Table 1,always_avoid_crowds M4: dBrier median,-0.01,4
+T1/always_avoid_crowds/M4/dBrier_q25,Table 1,always_avoid_crowds M4: dBrier q25,-0.012,4
+T1/always_avoid_crowds/M4/dBrier_q75,Table 1,always_avoid_crowds M4: dBrier q75,-0.0083,4
+T1/wash_hands_strict/median_n,Table 1,wash_hands_strict: median complete-case n per wave,22274,0
+T1/wash_hands_strict/median_events,Table 1,wash_hands_strict: median events per wave,14991,0
+T1/wash_hands_strict/M0/OR,Table 1,wash_hands_strict M0: OR median,2.67,2
+T1/wash_hands_strict/M0/OR_q25,Table 1,wash_hands_strict M0: OR q25,2.57,2
+T1/wash_hands_strict/M0/OR_q75,Table 1,wash_hands_strict M0: OR q75,2.98,2
+T1/wash_hands_strict/M0/RD,Table 1,wash_hands_strict M0: RD median,22.4,1
+T1/wash_hands_strict/M0/RD_q25,Table 1,wash_hands_strict M0: RD q25,20.4,1
+T1/wash_hands_strict/M0/RD_q75,Table 1,wash_hands_strict M0: RD q75,23.1,1
+T1/wash_hands_strict/M1/OR,Table 1,wash_hands_strict M1: OR median,2.65,2
+T1/wash_hands_strict/M1/OR_q25,Table 1,wash_hands_strict M1: OR q25,2.45,2
+T1/wash_hands_strict/M1/OR_q75,Table 1,wash_hands_strict M1: OR q75,3.03,2
+T1/wash_hands_strict/M1/RD,Table 1,wash_hands_strict M1: RD median,20.7,1
+T1/wash_hands_strict/M1/RD_q25,Table 1,wash_hands_strict M1: RD q25,18.8,1
+T1/wash_hands_strict/M1/RD_q75,Table 1,wash_hands_strict M1: RD q75,21.7,1
+T1/wash_hands_strict/M1/dAIC,Table 1,wash_hands_strict M1: dAIC median,-499,0
+T1/wash_hands_strict/M1/dAIC_q25,Table 1,wash_hands_strict M1: dAIC q25,-596,0
+T1/wash_hands_strict/M1/dAIC_q75,Table 1,wash_hands_strict M1: dAIC q75,-390,0
+T1/wash_hands_strict/M1/dBrier,Table 1,wash_hands_strict M1: dBrier median,-0.0062,4
+T1/wash_hands_strict/M1/dBrier_q25,Table 1,wash_hands_strict M1: dBrier q25,-0.0078,4
+T1/wash_hands_strict/M1/dBrier_q75,Table 1,wash_hands_strict M1: dBrier q75,-0.0052,4
+T1/wash_hands_strict/M2/OR,Table 1,wash_hands_strict M2: OR median,2.65,2
+T1/wash_hands_strict/M2/OR_q25,Table 1,wash_hands_strict M2: OR q25,2.44,2
+T1/wash_hands_strict/M2/OR_q75,Table 1,wash_hands_strict M2: OR q75,3.03,2
+T1/wash_hands_strict/M2/RD,Table 1,wash_hands_strict M2: RD median,20.7,1
+T1/wash_hands_strict/M2/RD_q25,Table 1,wash_hands_strict M2: RD q25,18.6,1
+T1/wash_hands_strict/M2/RD_q75,Table 1,wash_hands_strict M2: RD q75,21.5,1
+T1/wash_hands_strict/M2/dAIC,Table 1,wash_hands_strict M2: dAIC median,-524,0
+T1/wash_hands_strict/M2/dAIC_q25,Table 1,wash_hands_strict M2: dAIC q25,-614,0
+T1/wash_hands_strict/M2/dAIC_q75,Table 1,wash_hands_strict M2: dAIC q75,-400,0
+T1/wash_hands_strict/M2/dBrier,Table 1,wash_hands_strict M2: dBrier median,-0.0068,4
+T1/wash_hands_strict/M2/dBrier_q25,Table 1,wash_hands_strict M2: dBrier q25,-0.0082,4
+T1/wash_hands_strict/M2/dBrier_q75,Table 1,wash_hands_strict M2: dBrier q75,-0.0059,4
+T1/wash_hands_strict/M3/OR,Table 1,wash_hands_strict M3: OR median,2.5,2
+T1/wash_hands_strict/M3/OR_q25,Table 1,wash_hands_strict M3: OR q25,2.31,2
+T1/wash_hands_strict/M3/OR_q75,Table 1,wash_hands_strict M3: OR q75,2.75,2
+T1/wash_hands_strict/M3/RD,Table 1,wash_hands_strict M3: RD median,19.6,1
+T1/wash_hands_strict/M3/RD_q25,Table 1,wash_hands_strict M3: RD q25,17.1,1
+T1/wash_hands_strict/M3/RD_q75,Table 1,wash_hands_strict M3: RD q75,20.7,1
+T1/wash_hands_strict/M3/dAIC,Table 1,wash_hands_strict M3: dAIC median,-550,0
+T1/wash_hands_strict/M3/dAIC_q25,Table 1,wash_hands_strict M3: dAIC q25,-667,0
+T1/wash_hands_strict/M3/dAIC_q75,Table 1,wash_hands_strict M3: dAIC q75,-419,0
+T1/wash_hands_strict/M3/dBrier,Table 1,wash_hands_strict M3: dBrier median,-0.0073,4
+T1/wash_hands_strict/M3/dBrier_q25,Table 1,wash_hands_strict M3: dBrier q25,-0.0085,4
+T1/wash_hands_strict/M3/dBrier_q75,Table 1,wash_hands_strict M3: dBrier q75,-0.0063,4
+T1/wash_hands_strict/M4/OR,Table 1,wash_hands_strict M4: OR median,2.48,2
+T1/wash_hands_strict/M4/OR_q25,Table 1,wash_hands_strict M4: OR q25,2.3,2
+T1/wash_hands_strict/M4/OR_q75,Table 1,wash_hands_strict M4: OR q75,2.74,2
+T1/wash_hands_strict/M4/RD,Table 1,wash_hands_strict M4: RD median,19.4,1
+T1/wash_hands_strict/M4/RD_q25,Table 1,wash_hands_strict M4: RD q25,16.8,1
+T1/wash_hands_strict/M4/RD_q75,Table 1,wash_hands_strict M4: RD q75,20.7,1
+T1/wash_hands_strict/M4/dAIC,Table 1,wash_hands_strict M4: dAIC median,-561,0
+T1/wash_hands_strict/M4/dAIC_q25,Table 1,wash_hands_strict M4: dAIC q25,-675,0
+T1/wash_hands_strict/M4/dAIC_q75,Table 1,wash_hands_strict M4: dAIC q75,-434,0
+T1/wash_hands_strict/M4/dBrier,Table 1,wash_hands_strict M4: dBrier median,-0.0078,4
+T1/wash_hands_strict/M4/dBrier_q25,Table 1,wash_hands_strict M4: dBrier q25,-0.0088,4
+T1/wash_hands_strict/M4/dBrier_q75,Table 1,wash_hands_strict M4: dBrier q75,-0.0067,4
+S1/always_wear_mask/Pre-vaccine/trust/dAIC,Table S1,"always_wear_mask, Pre-vaccine, drop trust: dAIC",883.0,0
+S1/always_wear_mask/Pre-vaccine/trust/dAIC_q25,Table S1,"always_wear_mask, Pre-vaccine, drop trust: dAIC_q25",501.0,0
+S1/always_wear_mask/Pre-vaccine/trust/dAIC_q75,Table S1,"always_wear_mask, Pre-vaccine, drop trust: dAIC_q75",1097.0,0
+S1/always_wear_mask/Pre-vaccine/trust/dBrier,Table S1,"always_wear_mask, Pre-vaccine, drop trust: dBrier",0.0099,4
+S1/always_wear_mask/Pre-vaccine/trust/dBrier_q25,Table S1,"always_wear_mask, Pre-vaccine, drop trust: dBrier_q25",0.0073,4
+S1/always_wear_mask/Pre-vaccine/trust/dBrier_q75,Table S1,"always_wear_mask, Pre-vaccine, drop trust: dBrier_q75",0.0112,4
+S1/always_wear_mask/Pre-vaccine/ideology_party/dAIC,Table S1,"always_wear_mask, Pre-vaccine, drop ideology_party: dAIC",404.0,0
+S1/always_wear_mask/Pre-vaccine/ideology_party/dAIC_q25,Table S1,"always_wear_mask, Pre-vaccine, drop ideology_party: dAIC_q25",270.0,0
+S1/always_wear_mask/Pre-vaccine/ideology_party/dAIC_q75,Table S1,"always_wear_mask, Pre-vaccine, drop ideology_party: dAIC_q75",682.0,0
+S1/always_wear_mask/Pre-vaccine/ideology_party/dBrier,Table S1,"always_wear_mask, Pre-vaccine, drop ideology_party: dBrier",0.0046,4
+S1/always_wear_mask/Pre-vaccine/ideology_party/dBrier_q25,Table S1,"always_wear_mask, Pre-vaccine, drop ideology_party: dBrier_q25",0.0036,4
+S1/always_wear_mask/Pre-vaccine/ideology_party/dBrier_q75,Table S1,"always_wear_mask, Pre-vaccine, drop ideology_party: dBrier_q75",0.0059,4
+S1/always_wear_mask/Pre-vaccine/demographics/dAIC,Table S1,"always_wear_mask, Pre-vaccine, drop demographics: dAIC",331.0,0
+S1/always_wear_mask/Pre-vaccine/demographics/dAIC_q25,Table S1,"always_wear_mask, Pre-vaccine, drop demographics: dAIC_q25",294.0,0
+S1/always_wear_mask/Pre-vaccine/demographics/dAIC_q75,Table S1,"always_wear_mask, Pre-vaccine, drop demographics: dAIC_q75",366.0,0
+S1/always_wear_mask/Pre-vaccine/demographics/dBrier,Table S1,"always_wear_mask, Pre-vaccine, drop demographics: dBrier",0.0033,4
+S1/always_wear_mask/Pre-vaccine/demographics/dBrier_q25,Table S1,"always_wear_mask, Pre-vaccine, drop demographics: dBrier_q25",0.0028,4
+S1/always_wear_mask/Pre-vaccine/demographics/dBrier_q75,Table S1,"always_wear_mask, Pre-vaccine, drop demographics: dBrier_q75",0.0042,4
+S1/always_wear_mask/Pre-vaccine/geography/dAIC,Table S1,"always_wear_mask, Pre-vaccine, drop geography: dAIC",226.0,0
+S1/always_wear_mask/Pre-vaccine/geography/dAIC_q25,Table S1,"always_wear_mask, Pre-vaccine, drop geography: dAIC_q25",127.0,0
+S1/always_wear_mask/Pre-vaccine/geography/dAIC_q75,Table S1,"always_wear_mask, Pre-vaccine, drop geography: dAIC_q75",349.0,0
+S1/always_wear_mask/Pre-vaccine/geography/dBrier,Table S1,"always_wear_mask, Pre-vaccine, drop geography: dBrier",0.0025,4
+S1/always_wear_mask/Pre-vaccine/geography/dBrier_q25,Table S1,"always_wear_mask, Pre-vaccine, drop geography: dBrier_q25",0.0014,4
+S1/always_wear_mask/Pre-vaccine/geography/dBrier_q75,Table S1,"always_wear_mask, Pre-vaccine, drop geography: dBrier_q75",0.0047,4
+S1/always_wear_mask/Pre-vaccine/ses/dAIC,Table S1,"always_wear_mask, Pre-vaccine, drop ses: dAIC",33.0,0
+S1/always_wear_mask/Pre-vaccine/ses/dAIC_q25,Table S1,"always_wear_mask, Pre-vaccine, drop ses: dAIC_q25",19.0,0
+S1/always_wear_mask/Pre-vaccine/ses/dAIC_q75,Table S1,"always_wear_mask, Pre-vaccine, drop ses: dAIC_q75",49.0,0
+S1/always_wear_mask/Pre-vaccine/ses/dBrier,Table S1,"always_wear_mask, Pre-vaccine, drop ses: dBrier",0.0006,4
+S1/always_wear_mask/Pre-vaccine/ses/dBrier_q25,Table S1,"always_wear_mask, Pre-vaccine, drop ses: dBrier_q25",0.0004,4
+S1/always_wear_mask/Pre-vaccine/ses/dBrier_q75,Table S1,"always_wear_mask, Pre-vaccine, drop ses: dBrier_q75",0.0009,4
+S1/always_wear_mask/Rollout/trust/dAIC,Table S1,"always_wear_mask, Rollout, drop trust: dAIC",1233.0,0
+S1/always_wear_mask/Rollout/trust/dAIC_q25,Table S1,"always_wear_mask, Rollout, drop trust: dAIC_q25",1117.0,0
+S1/always_wear_mask/Rollout/trust/dAIC_q75,Table S1,"always_wear_mask, Rollout, drop trust: dAIC_q75",1456.0,0
+S1/always_wear_mask/Rollout/trust/dBrier,Table S1,"always_wear_mask, Rollout, drop trust: dBrier",0.0104,4
+S1/always_wear_mask/Rollout/trust/dBrier_q25,Table S1,"always_wear_mask, Rollout, drop trust: dBrier_q25",0.0098,4
+S1/always_wear_mask/Rollout/trust/dBrier_q75,Table S1,"always_wear_mask, Rollout, drop trust: dBrier_q75",0.012,4
+S1/always_wear_mask/Rollout/demographics/dAIC,Table S1,"always_wear_mask, Rollout, drop demographics: dAIC",494.0,0
+S1/always_wear_mask/Rollout/demographics/dAIC_q25,Table S1,"always_wear_mask, Rollout, drop demographics: dAIC_q25",333.0,0
+S1/always_wear_mask/Rollout/demographics/dAIC_q75,Table S1,"always_wear_mask, Rollout, drop demographics: dAIC_q75",625.0,0
+S1/always_wear_mask/Rollout/demographics/dBrier,Table S1,"always_wear_mask, Rollout, drop demographics: dBrier",0.0042,4
+S1/always_wear_mask/Rollout/demographics/dBrier_q25,Table S1,"always_wear_mask, Rollout, drop demographics: dBrier_q25",0.0023,4
+S1/always_wear_mask/Rollout/demographics/dBrier_q75,Table S1,"always_wear_mask, Rollout, drop demographics: dBrier_q75",0.0058,4
+S1/always_wear_mask/Rollout/ideology_party/dAIC,Table S1,"always_wear_mask, Rollout, drop ideology_party: dAIC",436.0,0
+S1/always_wear_mask/Rollout/ideology_party/dAIC_q25,Table S1,"always_wear_mask, Rollout, drop ideology_party: dAIC_q25",382.0,0
+S1/always_wear_mask/Rollout/ideology_party/dAIC_q75,Table S1,"always_wear_mask, Rollout, drop ideology_party: dAIC_q75",457.0,0
+S1/always_wear_mask/Rollout/ideology_party/dBrier,Table S1,"always_wear_mask, Rollout, drop ideology_party: dBrier",0.004,4
+S1/always_wear_mask/Rollout/ideology_party/dBrier_q25,Table S1,"always_wear_mask, Rollout, drop ideology_party: dBrier_q25",0.0033,4
+S1/always_wear_mask/Rollout/ideology_party/dBrier_q75,Table S1,"always_wear_mask, Rollout, drop ideology_party: dBrier_q75",0.0042,4
+S1/always_wear_mask/Rollout/geography/dAIC,Table S1,"always_wear_mask, Rollout, drop geography: dAIC",201.0,0
+S1/always_wear_mask/Rollout/geography/dAIC_q25,Table S1,"always_wear_mask, Rollout, drop geography: dAIC_q25",172.0,0
+S1/always_wear_mask/Rollout/geography/dAIC_q75,Table S1,"always_wear_mask, Rollout, drop geography: dAIC_q75",258.0,0
+S1/always_wear_mask/Rollout/geography/dBrier,Table S1,"always_wear_mask, Rollout, drop geography: dBrier",0.002,4
+S1/always_wear_mask/Rollout/geography/dBrier_q25,Table S1,"always_wear_mask, Rollout, drop geography: dBrier_q25",0.0014,4
+S1/always_wear_mask/Rollout/geography/dBrier_q75,Table S1,"always_wear_mask, Rollout, drop geography: dBrier_q75",0.0023,4
+S1/always_wear_mask/Rollout/ses/dAIC,Table S1,"always_wear_mask, Rollout, drop ses: dAIC",17.0,0
+S1/always_wear_mask/Rollout/ses/dAIC_q25,Table S1,"always_wear_mask, Rollout, drop ses: dAIC_q25",2.0,0
+S1/always_wear_mask/Rollout/ses/dAIC_q75,Table S1,"always_wear_mask, Rollout, drop ses: dAIC_q75",49.0,0
+S1/always_wear_mask/Rollout/ses/dBrier,Table S1,"always_wear_mask, Rollout, drop ses: dBrier",0.0003,4
+S1/always_wear_mask/Rollout/ses/dBrier_q25,Table S1,"always_wear_mask, Rollout, drop ses: dBrier_q25",0.0002,4
+S1/always_wear_mask/Rollout/ses/dBrier_q75,Table S1,"always_wear_mask, Rollout, drop ses: dBrier_q75",0.0006,4
+S1/always_wear_mask/Omicron/demographics/dAIC,Table S1,"always_wear_mask, Omicron, drop demographics: dAIC",738.0,0
+S1/always_wear_mask/Omicron/demographics/dAIC_q25,Table S1,"always_wear_mask, Omicron, drop demographics: dAIC_q25",626.0,0
+S1/always_wear_mask/Omicron/demographics/dAIC_q75,Table S1,"always_wear_mask, Omicron, drop demographics: dAIC_q75",863.0,0
+S1/always_wear_mask/Omicron/demographics/dBrier,Table S1,"always_wear_mask, Omicron, drop demographics: dBrier",0.0076,4
+S1/always_wear_mask/Omicron/demographics/dBrier_q25,Table S1,"always_wear_mask, Omicron, drop demographics: dBrier_q25",0.0066,4
+S1/always_wear_mask/Omicron/demographics/dBrier_q75,Table S1,"always_wear_mask, Omicron, drop demographics: dBrier_q75",0.0087,4
+S1/always_wear_mask/Omicron/ideology_party/dAIC,Table S1,"always_wear_mask, Omicron, drop ideology_party: dAIC",494.0,0
+S1/always_wear_mask/Omicron/ideology_party/dAIC_q25,Table S1,"always_wear_mask, Omicron, drop ideology_party: dAIC_q25",394.0,0
+S1/always_wear_mask/Omicron/ideology_party/dAIC_q75,Table S1,"always_wear_mask, Omicron, drop ideology_party: dAIC_q75",578.0,0
+S1/always_wear_mask/Omicron/ideology_party/dBrier,Table S1,"always_wear_mask, Omicron, drop ideology_party: dBrier",0.0037,4
+S1/always_wear_mask/Omicron/ideology_party/dBrier_q25,Table S1,"always_wear_mask, Omicron, drop ideology_party: dBrier_q25",0.0029,4
+S1/always_wear_mask/Omicron/ideology_party/dBrier_q75,Table S1,"always_wear_mask, Omicron, drop ideology_party: dBrier_q75",0.0049,4
+S1/always_wear_mask/Omicron/trust/dAIC,Table S1,"always_wear_mask, Omicron, drop trust: dAIC",434.0,0
+S1/always_wear_mask/Omicron/trust/dAIC_q25,Table S1,"always_wear_mask, Omicron, drop trust: dAIC_q25",243.0,0
+S1/always_wear_mask/Omicron/trust/dAIC_q75,Table S1,"always_wear_mask, Omicron, drop trust: dAIC_q75",719.0,0
+S1/always_wear_mask/Omicron/trust/dBrier,Table S1,"always_wear_mask, Omicron, drop trust: dBrier",0.004,4
+S1/always_wear_mask/Omicron/trust/dBrier_q25,Table S1,"always_wear_mask, Omicron, drop trust: dBrier_q25",0.0026,4
+S1/always_wear_mask/Omicron/trust/dBrier_q75,Table S1,"always_wear_mask, Omicron, drop trust: dBrier_q75",0.0059,4
+S1/always_wear_mask/Omicron/geography/dAIC,Table S1,"always_wear_mask, Omicron, drop geography: dAIC",163.0,0
+S1/always_wear_mask/Omicron/geography/dAIC_q25,Table S1,"always_wear_mask, Omicron, drop geography: dAIC_q25",134.0,0
+S1/always_wear_mask/Omicron/geography/dAIC_q75,Table S1,"always_wear_mask, Omicron, drop geography: dAIC_q75",270.0,0
+S1/always_wear_mask/Omicron/geography/dBrier,Table S1,"always_wear_mask, Omicron, drop geography: dBrier",0.0014,4
+S1/always_wear_mask/Omicron/geography/dBrier_q25,Table S1,"always_wear_mask, Omicron, drop geography: dBrier_q25",0.0012,4
+S1/always_wear_mask/Omicron/geography/dBrier_q75,Table S1,"always_wear_mask, Omicron, drop geography: dBrier_q75",0.0024,4
+S1/always_wear_mask/Omicron/ses/dAIC,Table S1,"always_wear_mask, Omicron, drop ses: dAIC",92.0,0
+S1/always_wear_mask/Omicron/ses/dAIC_q25,Table S1,"always_wear_mask, Omicron, drop ses: dAIC_q25",62.0,0
+S1/always_wear_mask/Omicron/ses/dAIC_q75,Table S1,"always_wear_mask, Omicron, drop ses: dAIC_q75",120.0,0
+S1/always_wear_mask/Omicron/ses/dBrier,Table S1,"always_wear_mask, Omicron, drop ses: dBrier",0.001,4
+S1/always_wear_mask/Omicron/ses/dBrier_q25,Table S1,"always_wear_mask, Omicron, drop ses: dBrier_q25",0.0007,4
+S1/always_wear_mask/Omicron/ses/dBrier_q75,Table S1,"always_wear_mask, Omicron, drop ses: dBrier_q75",0.0013,4
+S1/always_avoid_contact/Pre-vaccine/trust/dAIC,Table S1,"always_avoid_contact, Pre-vaccine, drop trust: dAIC",347.0,0
+S1/always_avoid_contact/Pre-vaccine/trust/dAIC_q25,Table S1,"always_avoid_contact, Pre-vaccine, drop trust: dAIC_q25",300.0,0
+S1/always_avoid_contact/Pre-vaccine/trust/dAIC_q75,Table S1,"always_avoid_contact, Pre-vaccine, drop trust: dAIC_q75",417.0,0
+S1/always_avoid_contact/Pre-vaccine/trust/dBrier,Table S1,"always_avoid_contact, Pre-vaccine, drop trust: dBrier",0.0044,4
+S1/always_avoid_contact/Pre-vaccine/trust/dBrier_q25,Table S1,"always_avoid_contact, Pre-vaccine, drop trust: dBrier_q25",0.0036,4
+S1/always_avoid_contact/Pre-vaccine/trust/dBrier_q75,Table S1,"always_avoid_contact, Pre-vaccine, drop trust: dBrier_q75",0.005,4
+S1/always_avoid_contact/Pre-vaccine/demographics/dAIC,Table S1,"always_avoid_contact, Pre-vaccine, drop demographics: dAIC",216.0,0
+S1/always_avoid_contact/Pre-vaccine/demographics/dAIC_q25,Table S1,"always_avoid_contact, Pre-vaccine, drop demographics: dAIC_q25",164.0,0
+S1/always_avoid_contact/Pre-vaccine/demographics/dAIC_q75,Table S1,"always_avoid_contact, Pre-vaccine, drop demographics: dAIC_q75",284.0,0
+S1/always_avoid_contact/Pre-vaccine/demographics/dBrier,Table S1,"always_avoid_contact, Pre-vaccine, drop demographics: dBrier",0.003,4
+S1/always_avoid_contact/Pre-vaccine/demographics/dBrier_q25,Table S1,"always_avoid_contact, Pre-vaccine, drop demographics: dBrier_q25",0.0023,4
+S1/always_avoid_contact/Pre-vaccine/demographics/dBrier_q75,Table S1,"always_avoid_contact, Pre-vaccine, drop demographics: dBrier_q75",0.0034,4
+S1/always_avoid_contact/Pre-vaccine/ideology_party/dAIC,Table S1,"always_avoid_contact, Pre-vaccine, drop ideology_party: dAIC",178.0,0
+S1/always_avoid_contact/Pre-vaccine/ideology_party/dAIC_q25,Table S1,"always_avoid_contact, Pre-vaccine, drop ideology_party: dAIC_q25",122.0,0
+S1/always_avoid_contact/Pre-vaccine/ideology_party/dAIC_q75,Table S1,"always_avoid_contact, Pre-vaccine, drop ideology_party: dAIC_q75",289.0,0
+S1/always_avoid_contact/Pre-vaccine/ideology_party/dBrier,Table S1,"always_avoid_contact, Pre-vaccine, drop ideology_party: dBrier",0.0022,4
+S1/always_avoid_contact/Pre-vaccine/ideology_party/dBrier_q25,Table S1,"always_avoid_contact, Pre-vaccine, drop ideology_party: dBrier_q25",0.0017,4
+S1/always_avoid_contact/Pre-vaccine/ideology_party/dBrier_q75,Table S1,"always_avoid_contact, Pre-vaccine, drop ideology_party: dBrier_q75",0.0032,4
+S1/always_avoid_contact/Pre-vaccine/ses/dAIC,Table S1,"always_avoid_contact, Pre-vaccine, drop ses: dAIC",135.0,0
+S1/always_avoid_contact/Pre-vaccine/ses/dAIC_q25,Table S1,"always_avoid_contact, Pre-vaccine, drop ses: dAIC_q25",111.0,0
+S1/always_avoid_contact/Pre-vaccine/ses/dAIC_q75,Table S1,"always_avoid_contact, Pre-vaccine, drop ses: dAIC_q75",165.0,0
+S1/always_avoid_contact/Pre-vaccine/ses/dBrier,Table S1,"always_avoid_contact, Pre-vaccine, drop ses: dBrier",0.0019,4
+S1/always_avoid_contact/Pre-vaccine/ses/dBrier_q25,Table S1,"always_avoid_contact, Pre-vaccine, drop ses: dBrier_q25",0.0017,4
+S1/always_avoid_contact/Pre-vaccine/ses/dBrier_q75,Table S1,"always_avoid_contact, Pre-vaccine, drop ses: dBrier_q75",0.002,4
+S1/always_avoid_contact/Pre-vaccine/geography/dAIC,Table S1,"always_avoid_contact, Pre-vaccine, drop geography: dAIC",63.0,0
+S1/always_avoid_contact/Pre-vaccine/geography/dAIC_q25,Table S1,"always_avoid_contact, Pre-vaccine, drop geography: dAIC_q25",43.0,0
+S1/always_avoid_contact/Pre-vaccine/geography/dAIC_q75,Table S1,"always_avoid_contact, Pre-vaccine, drop geography: dAIC_q75",76.0,0
+S1/always_avoid_contact/Pre-vaccine/geography/dBrier,Table S1,"always_avoid_contact, Pre-vaccine, drop geography: dBrier",0.0008,4
+S1/always_avoid_contact/Pre-vaccine/geography/dBrier_q25,Table S1,"always_avoid_contact, Pre-vaccine, drop geography: dBrier_q25",0.0006,4
+S1/always_avoid_contact/Pre-vaccine/geography/dBrier_q75,Table S1,"always_avoid_contact, Pre-vaccine, drop geography: dBrier_q75",0.0011,4
+S1/always_avoid_contact/Rollout/trust/dAIC,Table S1,"always_avoid_contact, Rollout, drop trust: dAIC",440.0,0
+S1/always_avoid_contact/Rollout/trust/dAIC_q25,Table S1,"always_avoid_contact, Rollout, drop trust: dAIC_q25",387.0,0
+S1/always_avoid_contact/Rollout/trust/dAIC_q75,Table S1,"always_avoid_contact, Rollout, drop trust: dAIC_q75",493.0,0
+S1/always_avoid_contact/Rollout/trust/dBrier,Table S1,"always_avoid_contact, Rollout, drop trust: dBrier",0.0039,4
+S1/always_avoid_contact/Rollout/trust/dBrier_q25,Table S1,"always_avoid_contact, Rollout, drop trust: dBrier_q25",0.003,4
+S1/always_avoid_contact/Rollout/trust/dBrier_q75,Table S1,"always_avoid_contact, Rollout, drop trust: dBrier_q75",0.0046,4
+S1/always_avoid_contact/Rollout/ideology_party/dAIC,Table S1,"always_avoid_contact, Rollout, drop ideology_party: dAIC",283.0,0
+S1/always_avoid_contact/Rollout/ideology_party/dAIC_q25,Table S1,"always_avoid_contact, Rollout, drop ideology_party: dAIC_q25",181.0,0
+S1/always_avoid_contact/Rollout/ideology_party/dAIC_q75,Table S1,"always_avoid_contact, Rollout, drop ideology_party: dAIC_q75",364.0,0
+S1/always_avoid_contact/Rollout/ideology_party/dBrier,Table S1,"always_avoid_contact, Rollout, drop ideology_party: dBrier",0.0025,4
+S1/always_avoid_contact/Rollout/ideology_party/dBrier_q25,Table S1,"always_avoid_contact, Rollout, drop ideology_party: dBrier_q25",0.0014,4
+S1/always_avoid_contact/Rollout/ideology_party/dBrier_q75,Table S1,"always_avoid_contact, Rollout, drop ideology_party: dBrier_q75",0.0037,4
+S1/always_avoid_contact/Rollout/demographics/dAIC,Table S1,"always_avoid_contact, Rollout, drop demographics: dAIC",257.0,0
+S1/always_avoid_contact/Rollout/demographics/dAIC_q25,Table S1,"always_avoid_contact, Rollout, drop demographics: dAIC_q25",204.0,0
+S1/always_avoid_contact/Rollout/demographics/dAIC_q75,Table S1,"always_avoid_contact, Rollout, drop demographics: dAIC_q75",282.0,0
+S1/always_avoid_contact/Rollout/demographics/dBrier,Table S1,"always_avoid_contact, Rollout, drop demographics: dBrier",0.0024,4
+S1/always_avoid_contact/Rollout/demographics/dBrier_q25,Table S1,"always_avoid_contact, Rollout, drop demographics: dBrier_q25",0.0021,4
+S1/always_avoid_contact/Rollout/demographics/dBrier_q75,Table S1,"always_avoid_contact, Rollout, drop demographics: dBrier_q75",0.0027,4
+S1/always_avoid_contact/Rollout/ses/dAIC,Table S1,"always_avoid_contact, Rollout, drop ses: dAIC",146.0,0
+S1/always_avoid_contact/Rollout/ses/dAIC_q25,Table S1,"always_avoid_contact, Rollout, drop ses: dAIC_q25",140.0,0
+S1/always_avoid_contact/Rollout/ses/dAIC_q75,Table S1,"always_avoid_contact, Rollout, drop ses: dAIC_q75",164.0,0
+S1/always_avoid_contact/Rollout/ses/dBrier,Table S1,"always_avoid_contact, Rollout, drop ses: dBrier",0.0016,4
+S1/always_avoid_contact/Rollout/ses/dBrier_q25,Table S1,"always_avoid_contact, Rollout, drop ses: dBrier_q25",0.0014,4
+S1/always_avoid_contact/Rollout/ses/dBrier_q75,Table S1,"always_avoid_contact, Rollout, drop ses: dBrier_q75",0.0018,4
+S1/always_avoid_contact/Rollout/geography/dAIC,Table S1,"always_avoid_contact, Rollout, drop geography: dAIC",45.0,0
+S1/always_avoid_contact/Rollout/geography/dAIC_q25,Table S1,"always_avoid_contact, Rollout, drop geography: dAIC_q25",40.0,0
+S1/always_avoid_contact/Rollout/geography/dAIC_q75,Table S1,"always_avoid_contact, Rollout, drop geography: dAIC_q75",65.0,0
+S1/always_avoid_contact/Rollout/geography/dBrier,Table S1,"always_avoid_contact, Rollout, drop geography: dBrier",0.0005,4
+S1/always_avoid_contact/Rollout/geography/dBrier_q25,Table S1,"always_avoid_contact, Rollout, drop geography: dBrier_q25",0.0004,4
+S1/always_avoid_contact/Rollout/geography/dBrier_q75,Table S1,"always_avoid_contact, Rollout, drop geography: dBrier_q75",0.0007,4
+S1/always_avoid_contact/Omicron/demographics/dAIC,Table S1,"always_avoid_contact, Omicron, drop demographics: dAIC",259.0,0
+S1/always_avoid_contact/Omicron/demographics/dAIC_q25,Table S1,"always_avoid_contact, Omicron, drop demographics: dAIC_q25",192.0,0
+S1/always_avoid_contact/Omicron/demographics/dAIC_q75,Table S1,"always_avoid_contact, Omicron, drop demographics: dAIC_q75",331.0,0
+S1/always_avoid_contact/Omicron/demographics/dBrier,Table S1,"always_avoid_contact, Omicron, drop demographics: dBrier",0.0026,4
+S1/always_avoid_contact/Omicron/demographics/dBrier_q25,Table S1,"always_avoid_contact, Omicron, drop demographics: dBrier_q25",0.0021,4
+S1/always_avoid_contact/Omicron/demographics/dBrier_q75,Table S1,"always_avoid_contact, Omicron, drop demographics: dBrier_q75",0.0028,4
+S1/always_avoid_contact/Omicron/ses/dAIC,Table S1,"always_avoid_contact, Omicron, drop ses: dAIC",217.0,0
+S1/always_avoid_contact/Omicron/ses/dAIC_q25,Table S1,"always_avoid_contact, Omicron, drop ses: dAIC_q25",187.0,0
+S1/always_avoid_contact/Omicron/ses/dAIC_q75,Table S1,"always_avoid_contact, Omicron, drop ses: dAIC_q75",262.0,0
+S1/always_avoid_contact/Omicron/ses/dBrier,Table S1,"always_avoid_contact, Omicron, drop ses: dBrier",0.002,4
+S1/always_avoid_contact/Omicron/ses/dBrier_q25,Table S1,"always_avoid_contact, Omicron, drop ses: dBrier_q25",0.0017,4
+S1/always_avoid_contact/Omicron/ses/dBrier_q75,Table S1,"always_avoid_contact, Omicron, drop ses: dBrier_q75",0.0022,4
+S1/always_avoid_contact/Omicron/trust/dAIC,Table S1,"always_avoid_contact, Omicron, drop trust: dAIC",182.0,0
+S1/always_avoid_contact/Omicron/trust/dAIC_q25,Table S1,"always_avoid_contact, Omicron, drop trust: dAIC_q25",133.0,0
+S1/always_avoid_contact/Omicron/trust/dAIC_q75,Table S1,"always_avoid_contact, Omicron, drop trust: dAIC_q75",239.0,0
+S1/always_avoid_contact/Omicron/trust/dBrier,Table S1,"always_avoid_contact, Omicron, drop trust: dBrier",0.0014,4
+S1/always_avoid_contact/Omicron/trust/dBrier_q25,Table S1,"always_avoid_contact, Omicron, drop trust: dBrier_q25",0.0012,4
+S1/always_avoid_contact/Omicron/trust/dBrier_q75,Table S1,"always_avoid_contact, Omicron, drop trust: dBrier_q75",0.0016,4
+S1/always_avoid_contact/Omicron/ideology_party/dAIC,Table S1,"always_avoid_contact, Omicron, drop ideology_party: dAIC",177.0,0
+S1/always_avoid_contact/Omicron/ideology_party/dAIC_q25,Table S1,"always_avoid_contact, Omicron, drop ideology_party: dAIC_q25",120.0,0
+S1/always_avoid_contact/Omicron/ideology_party/dAIC_q75,Table S1,"always_avoid_contact, Omicron, drop ideology_party: dAIC_q75",218.0,0
+S1/always_avoid_contact/Omicron/ideology_party/dBrier,Table S1,"always_avoid_contact, Omicron, drop ideology_party: dBrier",0.0009,4
+S1/always_avoid_contact/Omicron/ideology_party/dBrier_q25,Table S1,"always_avoid_contact, Omicron, drop ideology_party: dBrier_q25",0.0007,4
+S1/always_avoid_contact/Omicron/ideology_party/dBrier_q75,Table S1,"always_avoid_contact, Omicron, drop ideology_party: dBrier_q75",0.0013,4
+S1/always_avoid_contact/Omicron/geography/dAIC,Table S1,"always_avoid_contact, Omicron, drop geography: dAIC",32.0,0
+S1/always_avoid_contact/Omicron/geography/dAIC_q25,Table S1,"always_avoid_contact, Omicron, drop geography: dAIC_q25",24.0,0
+S1/always_avoid_contact/Omicron/geography/dAIC_q75,Table S1,"always_avoid_contact, Omicron, drop geography: dAIC_q75",49.0,0
+S1/always_avoid_contact/Omicron/geography/dBrier,Table S1,"always_avoid_contact, Omicron, drop geography: dBrier",0.0003,4
+S1/always_avoid_contact/Omicron/geography/dBrier_q25,Table S1,"always_avoid_contact, Omicron, drop geography: dBrier_q25",0.0003,4
+S1/always_avoid_contact/Omicron/geography/dBrier_q75,Table S1,"always_avoid_contact, Omicron, drop geography: dBrier_q75",0.0005,4
+S1/always_avoid_crowds/Pre-vaccine/trust/dAIC,Table S1,"always_avoid_crowds, Pre-vaccine, drop trust: dAIC",425.0,0
+S1/always_avoid_crowds/Pre-vaccine/trust/dAIC_q25,Table S1,"always_avoid_crowds, Pre-vaccine, drop trust: dAIC_q25",354.0,0
+S1/always_avoid_crowds/Pre-vaccine/trust/dAIC_q75,Table S1,"always_avoid_crowds, Pre-vaccine, drop trust: dAIC_q75",511.0,0
+S1/always_avoid_crowds/Pre-vaccine/trust/dBrier,Table S1,"always_avoid_crowds, Pre-vaccine, drop trust: dBrier",0.0052,4
+S1/always_avoid_crowds/Pre-vaccine/trust/dBrier_q25,Table S1,"always_avoid_crowds, Pre-vaccine, drop trust: dBrier_q25",0.0048,4
+S1/always_avoid_crowds/Pre-vaccine/trust/dBrier_q75,Table S1,"always_avoid_crowds, Pre-vaccine, drop trust: dBrier_q75",0.006,4
+S1/always_avoid_crowds/Pre-vaccine/ideology_party/dAIC,Table S1,"always_avoid_crowds, Pre-vaccine, drop ideology_party: dAIC",236.0,0
+S1/always_avoid_crowds/Pre-vaccine/ideology_party/dAIC_q25,Table S1,"always_avoid_crowds, Pre-vaccine, drop ideology_party: dAIC_q25",126.0,0
+S1/always_avoid_crowds/Pre-vaccine/ideology_party/dAIC_q75,Table S1,"always_avoid_crowds, Pre-vaccine, drop ideology_party: dAIC_q75",347.0,0
+S1/always_avoid_crowds/Pre-vaccine/ideology_party/dBrier,Table S1,"always_avoid_crowds, Pre-vaccine, drop ideology_party: dBrier",0.0028,4
+S1/always_avoid_crowds/Pre-vaccine/ideology_party/dBrier_q25,Table S1,"always_avoid_crowds, Pre-vaccine, drop ideology_party: dBrier_q25",0.0019,4
+S1/always_avoid_crowds/Pre-vaccine/ideology_party/dBrier_q75,Table S1,"always_avoid_crowds, Pre-vaccine, drop ideology_party: dBrier_q75",0.0045,4
+S1/always_avoid_crowds/Pre-vaccine/demographics/dAIC,Table S1,"always_avoid_crowds, Pre-vaccine, drop demographics: dAIC",225.0,0
+S1/always_avoid_crowds/Pre-vaccine/demographics/dAIC_q25,Table S1,"always_avoid_crowds, Pre-vaccine, drop demographics: dAIC_q25",155.0,0
+S1/always_avoid_crowds/Pre-vaccine/demographics/dAIC_q75,Table S1,"always_avoid_crowds, Pre-vaccine, drop demographics: dAIC_q75",290.0,0
+S1/always_avoid_crowds/Pre-vaccine/demographics/dBrier,Table S1,"always_avoid_crowds, Pre-vaccine, drop demographics: dBrier",0.0027,4
+S1/always_avoid_crowds/Pre-vaccine/demographics/dBrier_q25,Table S1,"always_avoid_crowds, Pre-vaccine, drop demographics: dBrier_q25",0.0025,4
+S1/always_avoid_crowds/Pre-vaccine/demographics/dBrier_q75,Table S1,"always_avoid_crowds, Pre-vaccine, drop demographics: dBrier_q75",0.0035,4
+S1/always_avoid_crowds/Pre-vaccine/ses/dAIC,Table S1,"always_avoid_crowds, Pre-vaccine, drop ses: dAIC",102.0,0
+S1/always_avoid_crowds/Pre-vaccine/ses/dAIC_q25,Table S1,"always_avoid_crowds, Pre-vaccine, drop ses: dAIC_q25",99.0,0
+S1/always_avoid_crowds/Pre-vaccine/ses/dAIC_q75,Table S1,"always_avoid_crowds, Pre-vaccine, drop ses: dAIC_q75",112.0,0
+S1/always_avoid_crowds/Pre-vaccine/ses/dBrier,Table S1,"always_avoid_crowds, Pre-vaccine, drop ses: dBrier",0.0014,4
+S1/always_avoid_crowds/Pre-vaccine/ses/dBrier_q25,Table S1,"always_avoid_crowds, Pre-vaccine, drop ses: dBrier_q25",0.0013,4
+S1/always_avoid_crowds/Pre-vaccine/ses/dBrier_q75,Table S1,"always_avoid_crowds, Pre-vaccine, drop ses: dBrier_q75",0.0016,4
+S1/always_avoid_crowds/Pre-vaccine/geography/dAIC,Table S1,"always_avoid_crowds, Pre-vaccine, drop geography: dAIC",35.0,0
+S1/always_avoid_crowds/Pre-vaccine/geography/dAIC_q25,Table S1,"always_avoid_crowds, Pre-vaccine, drop geography: dAIC_q25",29.0,0
+S1/always_avoid_crowds/Pre-vaccine/geography/dAIC_q75,Table S1,"always_avoid_crowds, Pre-vaccine, drop geography: dAIC_q75",47.0,0
+S1/always_avoid_crowds/Pre-vaccine/geography/dBrier,Table S1,"always_avoid_crowds, Pre-vaccine, drop geography: dBrier",0.0006,4
+S1/always_avoid_crowds/Pre-vaccine/geography/dBrier_q25,Table S1,"always_avoid_crowds, Pre-vaccine, drop geography: dBrier_q25",0.0004,4
+S1/always_avoid_crowds/Pre-vaccine/geography/dBrier_q75,Table S1,"always_avoid_crowds, Pre-vaccine, drop geography: dBrier_q75",0.0007,4
+S1/always_avoid_crowds/Rollout/trust/dAIC,Table S1,"always_avoid_crowds, Rollout, drop trust: dAIC",612.0,0
+S1/always_avoid_crowds/Rollout/trust/dAIC_q25,Table S1,"always_avoid_crowds, Rollout, drop trust: dAIC_q25",567.0,0
+S1/always_avoid_crowds/Rollout/trust/dAIC_q75,Table S1,"always_avoid_crowds, Rollout, drop trust: dAIC_q75",663.0,0
+S1/always_avoid_crowds/Rollout/trust/dBrier,Table S1,"always_avoid_crowds, Rollout, drop trust: dBrier",0.0056,4
+S1/always_avoid_crowds/Rollout/trust/dBrier_q25,Table S1,"always_avoid_crowds, Rollout, drop trust: dBrier_q25",0.0052,4
+S1/always_avoid_crowds/Rollout/trust/dBrier_q75,Table S1,"always_avoid_crowds, Rollout, drop trust: dBrier_q75",0.0067,4
+S1/always_avoid_crowds/Rollout/demographics/dAIC,Table S1,"always_avoid_crowds, Rollout, drop demographics: dAIC",271.0,0
+S1/always_avoid_crowds/Rollout/demographics/dAIC_q25,Table S1,"always_avoid_crowds, Rollout, drop demographics: dAIC_q25",231.0,0
+S1/always_avoid_crowds/Rollout/demographics/dAIC_q75,Table S1,"always_avoid_crowds, Rollout, drop demographics: dAIC_q75",280.0,0
+S1/always_avoid_crowds/Rollout/demographics/dBrier,Table S1,"always_avoid_crowds, Rollout, drop demographics: dBrier",0.0027,4
+S1/always_avoid_crowds/Rollout/demographics/dBrier_q25,Table S1,"always_avoid_crowds, Rollout, drop demographics: dBrier_q25",0.0023,4
+S1/always_avoid_crowds/Rollout/demographics/dBrier_q75,Table S1,"always_avoid_crowds, Rollout, drop demographics: dBrier_q75",0.003,4
+S1/always_avoid_crowds/Rollout/ideology_party/dAIC,Table S1,"always_avoid_crowds, Rollout, drop ideology_party: dAIC",228.0,0
+S1/always_avoid_crowds/Rollout/ideology_party/dAIC_q25,Table S1,"always_avoid_crowds, Rollout, drop ideology_party: dAIC_q25",190.0,0
+S1/always_avoid_crowds/Rollout/ideology_party/dAIC_q75,Table S1,"always_avoid_crowds, Rollout, drop ideology_party: dAIC_q75",287.0,0
+S1/always_avoid_crowds/Rollout/ideology_party/dBrier,Table S1,"always_avoid_crowds, Rollout, drop ideology_party: dBrier",0.0021,4
+S1/always_avoid_crowds/Rollout/ideology_party/dBrier_q25,Table S1,"always_avoid_crowds, Rollout, drop ideology_party: dBrier_q25",0.0018,4
+S1/always_avoid_crowds/Rollout/ideology_party/dBrier_q75,Table S1,"always_avoid_crowds, Rollout, drop ideology_party: dBrier_q75",0.0029,4
+S1/always_avoid_crowds/Rollout/ses/dAIC,Table S1,"always_avoid_crowds, Rollout, drop ses: dAIC",131.0,0
+S1/always_avoid_crowds/Rollout/ses/dAIC_q25,Table S1,"always_avoid_crowds, Rollout, drop ses: dAIC_q25",117.0,0
+S1/always_avoid_crowds/Rollout/ses/dAIC_q75,Table S1,"always_avoid_crowds, Rollout, drop ses: dAIC_q75",142.0,0
+S1/always_avoid_crowds/Rollout/ses/dBrier,Table S1,"always_avoid_crowds, Rollout, drop ses: dBrier",0.0014,4
+S1/always_avoid_crowds/Rollout/ses/dBrier_q25,Table S1,"always_avoid_crowds, Rollout, drop ses: dBrier_q25",0.0013,4
+S1/always_avoid_crowds/Rollout/ses/dBrier_q75,Table S1,"always_avoid_crowds, Rollout, drop ses: dBrier_q75",0.0015,4
+S1/always_avoid_crowds/Rollout/geography/dAIC,Table S1,"always_avoid_crowds, Rollout, drop geography: dAIC",55.0,0
+S1/always_avoid_crowds/Rollout/geography/dAIC_q25,Table S1,"always_avoid_crowds, Rollout, drop geography: dAIC_q25",50.0,0
+S1/always_avoid_crowds/Rollout/geography/dAIC_q75,Table S1,"always_avoid_crowds, Rollout, drop geography: dAIC_q75",56.0,0
+S1/always_avoid_crowds/Rollout/geography/dBrier,Table S1,"always_avoid_crowds, Rollout, drop geography: dBrier",0.0006,4
+S1/always_avoid_crowds/Rollout/geography/dBrier_q25,Table S1,"always_avoid_crowds, Rollout, drop geography: dBrier_q25",0.0006,4
+S1/always_avoid_crowds/Rollout/geography/dBrier_q75,Table S1,"always_avoid_crowds, Rollout, drop geography: dBrier_q75",0.0006,4
+S1/always_avoid_crowds/Omicron/trust/dAIC,Table S1,"always_avoid_crowds, Omicron, drop trust: dAIC",288.0,0
+S1/always_avoid_crowds/Omicron/trust/dAIC_q25,Table S1,"always_avoid_crowds, Omicron, drop trust: dAIC_q25",204.0,0
+S1/always_avoid_crowds/Omicron/trust/dAIC_q75,Table S1,"always_avoid_crowds, Omicron, drop trust: dAIC_q75",371.0,0
+S1/always_avoid_crowds/Omicron/trust/dBrier,Table S1,"always_avoid_crowds, Omicron, drop trust: dBrier",0.0025,4
+S1/always_avoid_crowds/Omicron/trust/dBrier_q25,Table S1,"always_avoid_crowds, Omicron, drop trust: dBrier_q25",0.0021,4
+S1/always_avoid_crowds/Omicron/trust/dBrier_q75,Table S1,"always_avoid_crowds, Omicron, drop trust: dBrier_q75",0.0028,4
+S1/always_avoid_crowds/Omicron/ses/dAIC,Table S1,"always_avoid_crowds, Omicron, drop ses: dAIC",261.0,0
+S1/always_avoid_crowds/Omicron/ses/dAIC_q25,Table S1,"always_avoid_crowds, Omicron, drop ses: dAIC_q25",206.0,0
+S1/always_avoid_crowds/Omicron/ses/dAIC_q75,Table S1,"always_avoid_crowds, Omicron, drop ses: dAIC_q75",321.0,0
+S1/always_avoid_crowds/Omicron/ses/dBrier,Table S1,"always_avoid_crowds, Omicron, drop ses: dBrier",0.0028,4
+S1/always_avoid_crowds/Omicron/ses/dBrier_q25,Table S1,"always_avoid_crowds, Omicron, drop ses: dBrier_q25",0.0021,4
+S1/always_avoid_crowds/Omicron/ses/dBrier_q75,Table S1,"always_avoid_crowds, Omicron, drop ses: dBrier_q75",0.0033,4
+S1/always_avoid_crowds/Omicron/demographics/dAIC,Table S1,"always_avoid_crowds, Omicron, drop demographics: dAIC",216.0,0
+S1/always_avoid_crowds/Omicron/demographics/dAIC_q25,Table S1,"always_avoid_crowds, Omicron, drop demographics: dAIC_q25",145.0,0
+S1/always_avoid_crowds/Omicron/demographics/dAIC_q75,Table S1,"always_avoid_crowds, Omicron, drop demographics: dAIC_q75",288.0,0
+S1/always_avoid_crowds/Omicron/demographics/dBrier,Table S1,"always_avoid_crowds, Omicron, drop demographics: dBrier",0.0024,4
+S1/always_avoid_crowds/Omicron/demographics/dBrier_q25,Table S1,"always_avoid_crowds, Omicron, drop demographics: dBrier_q25",0.002,4
+S1/always_avoid_crowds/Omicron/demographics/dBrier_q75,Table S1,"always_avoid_crowds, Omicron, drop demographics: dBrier_q75",0.0027,4
+S1/always_avoid_crowds/Omicron/ideology_party/dAIC,Table S1,"always_avoid_crowds, Omicron, drop ideology_party: dAIC",191.0,0
+S1/always_avoid_crowds/Omicron/ideology_party/dAIC_q25,Table S1,"always_avoid_crowds, Omicron, drop ideology_party: dAIC_q25",137.0,0
+S1/always_avoid_crowds/Omicron/ideology_party/dAIC_q75,Table S1,"always_avoid_crowds, Omicron, drop ideology_party: dAIC_q75",235.0,0
+S1/always_avoid_crowds/Omicron/ideology_party/dBrier,Table S1,"always_avoid_crowds, Omicron, drop ideology_party: dBrier",0.0012,4
+S1/always_avoid_crowds/Omicron/ideology_party/dBrier_q25,Table S1,"always_avoid_crowds, Omicron, drop ideology_party: dBrier_q25",0.001,4
+S1/always_avoid_crowds/Omicron/ideology_party/dBrier_q75,Table S1,"always_avoid_crowds, Omicron, drop ideology_party: dBrier_q75",0.0016,4
+S1/always_avoid_crowds/Omicron/geography/dAIC,Table S1,"always_avoid_crowds, Omicron, drop geography: dAIC",24.0,0
+S1/always_avoid_crowds/Omicron/geography/dAIC_q25,Table S1,"always_avoid_crowds, Omicron, drop geography: dAIC_q25",20.0,0
+S1/always_avoid_crowds/Omicron/geography/dAIC_q75,Table S1,"always_avoid_crowds, Omicron, drop geography: dAIC_q75",49.0,0
+S1/always_avoid_crowds/Omicron/geography/dBrier,Table S1,"always_avoid_crowds, Omicron, drop geography: dBrier",0.0003,4
+S1/always_avoid_crowds/Omicron/geography/dBrier_q25,Table S1,"always_avoid_crowds, Omicron, drop geography: dBrier_q25",0.0002,4
+S1/always_avoid_crowds/Omicron/geography/dBrier_q75,Table S1,"always_avoid_crowds, Omicron, drop geography: dBrier_q75",0.0006,4
+S1/wash_hands_strict/Pre-vaccine/demographics/dAIC,Table S1,"wash_hands_strict, Pre-vaccine, drop demographics: dAIC",360.0,0
+S1/wash_hands_strict/Pre-vaccine/demographics/dAIC_q25,Table S1,"wash_hands_strict, Pre-vaccine, drop demographics: dAIC_q25",333.0,0
+S1/wash_hands_strict/Pre-vaccine/demographics/dAIC_q75,Table S1,"wash_hands_strict, Pre-vaccine, drop demographics: dAIC_q75",436.0,0
+S1/wash_hands_strict/Pre-vaccine/demographics/dBrier,Table S1,"wash_hands_strict, Pre-vaccine, drop demographics: dBrier",0.0039,4
+S1/wash_hands_strict/Pre-vaccine/demographics/dBrier_q25,Table S1,"wash_hands_strict, Pre-vaccine, drop demographics: dBrier_q25",0.0034,4
+S1/wash_hands_strict/Pre-vaccine/demographics/dBrier_q75,Table S1,"wash_hands_strict, Pre-vaccine, drop demographics: dBrier_q75",0.0041,4
+S1/wash_hands_strict/Pre-vaccine/trust/dAIC,Table S1,"wash_hands_strict, Pre-vaccine, drop trust: dAIC",293.0,0
+S1/wash_hands_strict/Pre-vaccine/trust/dAIC_q25,Table S1,"wash_hands_strict, Pre-vaccine, drop trust: dAIC_q25",222.0,0
+S1/wash_hands_strict/Pre-vaccine/trust/dAIC_q75,Table S1,"wash_hands_strict, Pre-vaccine, drop trust: dAIC_q75",320.0,0
+S1/wash_hands_strict/Pre-vaccine/trust/dBrier,Table S1,"wash_hands_strict, Pre-vaccine, drop trust: dBrier",0.003,4
+S1/wash_hands_strict/Pre-vaccine/trust/dBrier_q25,Table S1,"wash_hands_strict, Pre-vaccine, drop trust: dBrier_q25",0.0029,4
+S1/wash_hands_strict/Pre-vaccine/trust/dBrier_q75,Table S1,"wash_hands_strict, Pre-vaccine, drop trust: dBrier_q75",0.0031,4
+S1/wash_hands_strict/Pre-vaccine/ideology_party/dAIC,Table S1,"wash_hands_strict, Pre-vaccine, drop ideology_party: dAIC",19.0,0
+S1/wash_hands_strict/Pre-vaccine/ideology_party/dAIC_q25,Table S1,"wash_hands_strict, Pre-vaccine, drop ideology_party: dAIC_q25",6.0,0
+S1/wash_hands_strict/Pre-vaccine/ideology_party/dAIC_q75,Table S1,"wash_hands_strict, Pre-vaccine, drop ideology_party: dAIC_q75",49.0,0
+S1/wash_hands_strict/Pre-vaccine/ideology_party/dBrier,Table S1,"wash_hands_strict, Pre-vaccine, drop ideology_party: dBrier",0.0003,4
+S1/wash_hands_strict/Pre-vaccine/ideology_party/dBrier_q25,Table S1,"wash_hands_strict, Pre-vaccine, drop ideology_party: dBrier_q25",0.0001,4
+S1/wash_hands_strict/Pre-vaccine/ideology_party/dBrier_q75,Table S1,"wash_hands_strict, Pre-vaccine, drop ideology_party: dBrier_q75",0.0005,4
+S1/wash_hands_strict/Pre-vaccine/ses/dAIC,Table S1,"wash_hands_strict, Pre-vaccine, drop ses: dAIC",15.0,0
+S1/wash_hands_strict/Pre-vaccine/ses/dAIC_q25,Table S1,"wash_hands_strict, Pre-vaccine, drop ses: dAIC_q25",7.0,0
+S1/wash_hands_strict/Pre-vaccine/ses/dAIC_q75,Table S1,"wash_hands_strict, Pre-vaccine, drop ses: dAIC_q75",21.0,0
+S1/wash_hands_strict/Pre-vaccine/ses/dBrier,Table S1,"wash_hands_strict, Pre-vaccine, drop ses: dBrier",0.0004,4
+S1/wash_hands_strict/Pre-vaccine/ses/dBrier_q25,Table S1,"wash_hands_strict, Pre-vaccine, drop ses: dBrier_q25",0.0003,4
+S1/wash_hands_strict/Pre-vaccine/ses/dBrier_q75,Table S1,"wash_hands_strict, Pre-vaccine, drop ses: dBrier_q75",0.0004,4
+S1/wash_hands_strict/Pre-vaccine/geography/dAIC,Table S1,"wash_hands_strict, Pre-vaccine, drop geography: dAIC",13.0,0
+S1/wash_hands_strict/Pre-vaccine/geography/dAIC_q25,Table S1,"wash_hands_strict, Pre-vaccine, drop geography: dAIC_q25",11.0,0
+S1/wash_hands_strict/Pre-vaccine/geography/dAIC_q75,Table S1,"wash_hands_strict, Pre-vaccine, drop geography: dAIC_q75",22.0,0
+S1/wash_hands_strict/Pre-vaccine/geography/dBrier,Table S1,"wash_hands_strict, Pre-vaccine, drop geography: dBrier",0.0003,4
+S1/wash_hands_strict/Pre-vaccine/geography/dBrier_q25,Table S1,"wash_hands_strict, Pre-vaccine, drop geography: dBrier_q25",0.0002,4
+S1/wash_hands_strict/Pre-vaccine/geography/dBrier_q75,Table S1,"wash_hands_strict, Pre-vaccine, drop geography: dBrier_q75",0.0004,4
+S1/wash_hands_strict/Rollout/trust/dAIC,Table S1,"wash_hands_strict, Rollout, drop trust: dAIC",447.0,0
+S1/wash_hands_strict/Rollout/trust/dAIC_q25,Table S1,"wash_hands_strict, Rollout, drop trust: dAIC_q25",390.0,0
+S1/wash_hands_strict/Rollout/trust/dAIC_q75,Table S1,"wash_hands_strict, Rollout, drop trust: dAIC_q75",463.0,0
+S1/wash_hands_strict/Rollout/trust/dBrier,Table S1,"wash_hands_strict, Rollout, drop trust: dBrier",0.0042,4
+S1/wash_hands_strict/Rollout/trust/dBrier_q25,Table S1,"wash_hands_strict, Rollout, drop trust: dBrier_q25",0.004,4
+S1/wash_hands_strict/Rollout/trust/dBrier_q75,Table S1,"wash_hands_strict, Rollout, drop trust: dBrier_q75",0.0044,4
+S1/wash_hands_strict/Rollout/demographics/dAIC,Table S1,"wash_hands_strict, Rollout, drop demographics: dAIC",432.0,0
+S1/wash_hands_strict/Rollout/demographics/dAIC_q25,Table S1,"wash_hands_strict, Rollout, drop demographics: dAIC_q25",326.0,0
+S1/wash_hands_strict/Rollout/demographics/dAIC_q75,Table S1,"wash_hands_strict, Rollout, drop demographics: dAIC_q75",504.0,0
+S1/wash_hands_strict/Rollout/demographics/dBrier,Table S1,"wash_hands_strict, Rollout, drop demographics: dBrier",0.0039,4
+S1/wash_hands_strict/Rollout/demographics/dBrier_q25,Table S1,"wash_hands_strict, Rollout, drop demographics: dBrier_q25",0.0031,4
+S1/wash_hands_strict/Rollout/demographics/dBrier_q75,Table S1,"wash_hands_strict, Rollout, drop demographics: dBrier_q75",0.0045,4
+S1/wash_hands_strict/Rollout/ideology_party/dAIC,Table S1,"wash_hands_strict, Rollout, drop ideology_party: dAIC",44.0,0
+S1/wash_hands_strict/Rollout/ideology_party/dAIC_q25,Table S1,"wash_hands_strict, Rollout, drop ideology_party: dAIC_q25",25.0,0
+S1/wash_hands_strict/Rollout/ideology_party/dAIC_q75,Table S1,"wash_hands_strict, Rollout, drop ideology_party: dAIC_q75",60.0,0
+S1/wash_hands_strict/Rollout/ideology_party/dBrier,Table S1,"wash_hands_strict, Rollout, drop ideology_party: dBrier",0.0005,4
+S1/wash_hands_strict/Rollout/ideology_party/dBrier_q25,Table S1,"wash_hands_strict, Rollout, drop ideology_party: dBrier_q25",0.0003,4
+S1/wash_hands_strict/Rollout/ideology_party/dBrier_q75,Table S1,"wash_hands_strict, Rollout, drop ideology_party: dBrier_q75",0.0006,4
+S1/wash_hands_strict/Rollout/geography/dAIC,Table S1,"wash_hands_strict, Rollout, drop geography: dAIC",23.0,0
+S1/wash_hands_strict/Rollout/geography/dAIC_q25,Table S1,"wash_hands_strict, Rollout, drop geography: dAIC_q25",18.0,0
+S1/wash_hands_strict/Rollout/geography/dAIC_q75,Table S1,"wash_hands_strict, Rollout, drop geography: dAIC_q75",34.0,0
+S1/wash_hands_strict/Rollout/geography/dBrier,Table S1,"wash_hands_strict, Rollout, drop geography: dBrier",0.0003,4
+S1/wash_hands_strict/Rollout/geography/dBrier_q25,Table S1,"wash_hands_strict, Rollout, drop geography: dBrier_q25",0.0003,4
+S1/wash_hands_strict/Rollout/geography/dBrier_q75,Table S1,"wash_hands_strict, Rollout, drop geography: dBrier_q75",0.0004,4
+S1/wash_hands_strict/Rollout/ses/dAIC,Table S1,"wash_hands_strict, Rollout, drop ses: dAIC",17.0,0
+S1/wash_hands_strict/Rollout/ses/dAIC_q25,Table S1,"wash_hands_strict, Rollout, drop ses: dAIC_q25",10.0,0
+S1/wash_hands_strict/Rollout/ses/dAIC_q75,Table S1,"wash_hands_strict, Rollout, drop ses: dAIC_q75",27.0,0
+S1/wash_hands_strict/Rollout/ses/dBrier,Table S1,"wash_hands_strict, Rollout, drop ses: dBrier",0.0004,4
+S1/wash_hands_strict/Rollout/ses/dBrier_q25,Table S1,"wash_hands_strict, Rollout, drop ses: dBrier_q25",0.0003,4
+S1/wash_hands_strict/Rollout/ses/dBrier_q75,Table S1,"wash_hands_strict, Rollout, drop ses: dBrier_q75",0.0004,4
+S1/wash_hands_strict/Omicron/demographics/dAIC,Table S1,"wash_hands_strict, Omicron, drop demographics: dAIC",623.0,0
+S1/wash_hands_strict/Omicron/demographics/dAIC_q25,Table S1,"wash_hands_strict, Omicron, drop demographics: dAIC_q25",527.0,0
+S1/wash_hands_strict/Omicron/demographics/dAIC_q75,Table S1,"wash_hands_strict, Omicron, drop demographics: dAIC_q75",690.0,0
+S1/wash_hands_strict/Omicron/demographics/dBrier,Table S1,"wash_hands_strict, Omicron, drop demographics: dBrier",0.0067,4
+S1/wash_hands_strict/Omicron/demographics/dBrier_q25,Table S1,"wash_hands_strict, Omicron, drop demographics: dBrier_q25",0.0063,4
+S1/wash_hands_strict/Omicron/demographics/dBrier_q75,Table S1,"wash_hands_strict, Omicron, drop demographics: dBrier_q75",0.0068,4
+S1/wash_hands_strict/Omicron/trust/dAIC,Table S1,"wash_hands_strict, Omicron, drop trust: dAIC",284.0,0
+S1/wash_hands_strict/Omicron/trust/dAIC_q25,Table S1,"wash_hands_strict, Omicron, drop trust: dAIC_q25",231.0,0
+S1/wash_hands_strict/Omicron/trust/dAIC_q75,Table S1,"wash_hands_strict, Omicron, drop trust: dAIC_q75",315.0,0
+S1/wash_hands_strict/Omicron/trust/dBrier,Table S1,"wash_hands_strict, Omicron, drop trust: dBrier",0.0026,4
+S1/wash_hands_strict/Omicron/trust/dBrier_q25,Table S1,"wash_hands_strict, Omicron, drop trust: dBrier_q25",0.0025,4
+S1/wash_hands_strict/Omicron/trust/dBrier_q75,Table S1,"wash_hands_strict, Omicron, drop trust: dBrier_q75",0.003,4
+S1/wash_hands_strict/Omicron/ses/dAIC,Table S1,"wash_hands_strict, Omicron, drop ses: dAIC",37.0,0
+S1/wash_hands_strict/Omicron/ses/dAIC_q25,Table S1,"wash_hands_strict, Omicron, drop ses: dAIC_q25",23.0,0
+S1/wash_hands_strict/Omicron/ses/dAIC_q75,Table S1,"wash_hands_strict, Omicron, drop ses: dAIC_q75",52.0,0
+S1/wash_hands_strict/Omicron/ses/dBrier,Table S1,"wash_hands_strict, Omicron, drop ses: dBrier",0.0007,4
+S1/wash_hands_strict/Omicron/ses/dBrier_q25,Table S1,"wash_hands_strict, Omicron, drop ses: dBrier_q25",0.0006,4
+S1/wash_hands_strict/Omicron/ses/dBrier_q75,Table S1,"wash_hands_strict, Omicron, drop ses: dBrier_q75",0.0007,4
+S1/wash_hands_strict/Omicron/geography/dAIC,Table S1,"wash_hands_strict, Omicron, drop geography: dAIC",18.0,0
+S1/wash_hands_strict/Omicron/geography/dAIC_q25,Table S1,"wash_hands_strict, Omicron, drop geography: dAIC_q25",15.0,0
+S1/wash_hands_strict/Omicron/geography/dAIC_q75,Table S1,"wash_hands_strict, Omicron, drop geography: dAIC_q75",21.0,0
+S1/wash_hands_strict/Omicron/geography/dBrier,Table S1,"wash_hands_strict, Omicron, drop geography: dBrier",0.0003,4
+S1/wash_hands_strict/Omicron/geography/dBrier_q25,Table S1,"wash_hands_strict, Omicron, drop geography: dBrier_q25",0.0003,4
+S1/wash_hands_strict/Omicron/geography/dBrier_q75,Table S1,"wash_hands_strict, Omicron, drop geography: dBrier_q75",0.0003,4
+S1/wash_hands_strict/Omicron/ideology_party/dAIC,Table S1,"wash_hands_strict, Omicron, drop ideology_party: dAIC",7.0,0
+S1/wash_hands_strict/Omicron/ideology_party/dAIC_q25,Table S1,"wash_hands_strict, Omicron, drop ideology_party: dAIC_q25",4.0,0
+S1/wash_hands_strict/Omicron/ideology_party/dAIC_q75,Table S1,"wash_hands_strict, Omicron, drop ideology_party: dAIC_q75",13.0,0
+S1/wash_hands_strict/Omicron/ideology_party/dBrier,Table S1,"wash_hands_strict, Omicron, drop ideology_party: dBrier",0.0002,4
+S1/wash_hands_strict/Omicron/ideology_party/dBrier_q25,Table S1,"wash_hands_strict, Omicron, drop ideology_party: dBrier_q25",0.0001,4
+S1/wash_hands_strict/Omicron/ideology_party/dBrier_q75,Table S1,"wash_hands_strict, Omicron, drop ideology_party: dBrier_q75",0.0002,4
+S1/always_wear_mask/Pre-vaccine/n_waves,Table S1,"always_wear_mask, Pre-vaccine: waves",10,0
+S1/always_wear_mask/Pre-vaccine/median_n,Table S1,"always_wear_mask, Pre-vaccine: median n",19030,0
+S1/always_wear_mask/Rollout/n_waves,Table S1,"always_wear_mask, Rollout: waves",6,0
+S1/always_wear_mask/Rollout/median_n,Table S1,"always_wear_mask, Rollout: median n",23443,0
+S1/always_wear_mask/Omicron/n_waves,Table S1,"always_wear_mask, Omicron: waves",4,0
+S1/always_wear_mask/Omicron/median_n,Table S1,"always_wear_mask, Omicron: median n",23986,0
+S1/always_avoid_contact/Pre-vaccine/n_waves,Table S1,"always_avoid_contact, Pre-vaccine: waves",10,0
+S1/always_avoid_contact/Pre-vaccine/median_n,Table S1,"always_avoid_contact, Pre-vaccine: median n",19083,0
+S1/always_avoid_contact/Rollout/n_waves,Table S1,"always_avoid_contact, Rollout: waves",6,0
+S1/always_avoid_contact/Rollout/median_n,Table S1,"always_avoid_contact, Rollout: median n",23498,0
+S1/always_avoid_contact/Omicron/n_waves,Table S1,"always_avoid_contact, Omicron: waves",4,0
+S1/always_avoid_contact/Omicron/median_n,Table S1,"always_avoid_contact, Omicron: median n",24024,0
+S1/always_avoid_crowds/Pre-vaccine/n_waves,Table S1,"always_avoid_crowds, Pre-vaccine: waves",10,0
+S1/always_avoid_crowds/Pre-vaccine/median_n,Table S1,"always_avoid_crowds, Pre-vaccine: median n",19059,0
+S1/always_avoid_crowds/Rollout/n_waves,Table S1,"always_avoid_crowds, Rollout: waves",6,0
+S1/always_avoid_crowds/Rollout/median_n,Table S1,"always_avoid_crowds, Rollout: median n",23456,0
+S1/always_avoid_crowds/Omicron/n_waves,Table S1,"always_avoid_crowds, Omicron: waves",4,0
+S1/always_avoid_crowds/Omicron/median_n,Table S1,"always_avoid_crowds, Omicron: median n",23982,0
+S1/wash_hands_strict/Pre-vaccine/n_waves,Table S1,"wash_hands_strict, Pre-vaccine: waves",10,0
+S1/wash_hands_strict/Pre-vaccine/median_n,Table S1,"wash_hands_strict, Pre-vaccine: median n",19054,0
+S1/wash_hands_strict/Rollout/n_waves,Table S1,"wash_hands_strict, Rollout: waves",6,0
+S1/wash_hands_strict/Rollout/median_n,Table S1,"wash_hands_strict, Rollout: median n",23457,0
+S1/wash_hands_strict/Omicron/n_waves,Table S1,"wash_hands_strict, Omicron: waves",4,0
+S1/wash_hands_strict/Omicron/median_n,Table S1,"wash_hands_strict, Omicron: median n",23979,0
+LOBO/always_wear_mask/trust/dAIC,Results: sequential adjustment (LOBO),"Masking, all waves, drop trust: dAIC median",921,0
+LOBO/always_wear_mask/trust/dAIC_q25,Results: sequential adjustment (LOBO),"Masking, all waves, drop trust: dAIC q25",545,0
+LOBO/always_wear_mask/trust/dAIC_q75,Results: sequential adjustment (LOBO),"Masking, all waves, drop trust: dAIC q75",1181,0
+LOBO/always_wear_mask/trust/dBrier,Results: sequential adjustment (LOBO),"Masking, all waves, drop trust: dBrier median",0.0096,4
+LOBO/always_wear_mask/ideology_party/dAIC,Results: sequential adjustment (LOBO),"Masking, all waves, drop ideology_party: dAIC median",442,0
+LOBO/always_wear_mask/ideology_party/dAIC_q25,Results: sequential adjustment (LOBO),"Masking, all waves, drop ideology_party: dAIC q25",361,0
+LOBO/always_wear_mask/ideology_party/dAIC_q75,Results: sequential adjustment (LOBO),"Masking, all waves, drop ideology_party: dAIC q75",581,0
+LOBO/always_wear_mask/ideology_party/dBrier,Results: sequential adjustment (LOBO),"Masking, all waves, drop ideology_party: dBrier median",0.0041,4
+LOBO/always_wear_mask/demographics/dAIC,Results: sequential adjustment (LOBO),"Masking, all waves, drop demographics: dAIC median",368,0
+LOBO/always_wear_mask/geography/dAIC,Results: sequential adjustment (LOBO),"Masking, all waves, drop geography: dAIC median",180,0
+LOBO/always_wear_mask/ses/dAIC,Results: sequential adjustment (LOBO),"Masking, all waves, drop ses: dAIC median",33,0
+S18/n_estimates,Fig. S18 legend,outcome x wave estimates,110,0
+S18/pearson_r,Fig. S18 legend,Pearson r,0.99,2
+S18/median_abs_change_pp,Fig. S18 legend,median absolute change (pp),0.8,1
+S18/max_abs_change_pp,Fig. S18 legend,maximum absolute change (pp),3.6,1
+S18/median_rel_change_pct,Fig. S18 legend,median relative change (%),-2,0
+S18/rel_change_q25_pct,Fig. S18 legend,relative change q25 (%),-6.6,1
+S18/rel_change_q75_pct,Fig. S18 legend,relative change q75 (%),1.8,1
+TXT/gap_mask_trust_cdc,Results: unadjusted differences,"Mean masking gap, high vs no CDC trust (pp)",38.8,1
+TXT/gap_mask_party,Results: unadjusted differences,"Mean masking gap, Democratic vs Republican (pp)",25.9,1
+TXT/gap_trust_4beh_min,Results: unadjusted differences,Mean CDC-trust gap across the four behaviors: lowest (pp; 'roughly 21 to 39'),21,0
+TXT/gap_trust_4beh_max,Results: unadjusted differences,Mean CDC-trust gap across the four behaviors: highest (pp),39,0
+TXT/gap_mask_demog_min,Results: unadjusted differences,"Mean masking gap by age, education, income: lowest (pp; 'on average 6 to 10')",6,0
+TXT/gap_mask_demog_max,Results: unadjusted differences,"Mean masking gap by age, education, income: highest (pp)",10,0
+TXT/waves_trust_gap_gt_party,Results: unadjusted differences,Waves in which the masking trust gap exceeded the partisan gap ('in every wave'),20,0
+TXT/sig_trust_always_wear_mask,Results: behavioral specificity,"% of waves with significant CDC-trust differences, always_wear_mask",100,0
+TXT/sig_trust_always_avoid_contact,Results: behavioral specificity,"% of waves with significant CDC-trust differences, always_avoid_contact",100,0
+TXT/sig_trust_always_avoid_crowds,Results: behavioral specificity,"% of waves with significant CDC-trust differences, always_avoid_crowds",100,0
+TXT/sig_trust_wash_hands_strict,Results: behavioral specificity,"% of waves with significant CDC-trust differences, wash_hands_strict",100,0
+TXT/sig_trust_visit_store,Results: behavioral specificity,"% of waves with significant CDC-trust differences, store visits",50,0
+TXT/sig_trust_visit_work,Results: behavioral specificity,"% of waves with significant CDC-trust differences, going to work",75,0
+TXT/nsig_trust_visit_doctor,Results: behavioral specificity,"Waves with significant CDC-trust differences, doctor visits ('1 of 20')",1,0
+TXT/sig_income_visit_doctor,Results: behavioral specificity,"% of waves with significant income differences, doctor visits",87,0
+TXT/sig_education_visit_doctor,Results: behavioral specificity,"% of waves with significant education differences, doctor visits",91,0
+TXT/sig_race_visit_doctor,Results: behavioral specificity,"% of waves with significant race/ethnicity differences, doctor visits",74,0
+TXT/rd_mask_cdc_primary_w5,Results: adjusted differences,"Masking RD, CDC, primary, wave 5 (pp)",31.7,1
+TXT/rd_mask_cdc_primary_w5_lo,Results: adjusted differences,"Masking RD, CDC, primary, wave 5 (pp), lower 95% CI",27.9,1
+TXT/rd_mask_cdc_primary_w5_hi,Results: adjusted differences,"Masking RD, CDC, primary, wave 5 (pp), upper 95% CI",35.5,1
+TXT/rd_mask_cdc_primary_w16,Results: adjusted differences,"Masking RD, CDC, primary, wave 16 (pp)",37.2,1
+TXT/rd_mask_cdc_primary_w16_lo,Results: adjusted differences,"Masking RD, CDC, primary, wave 16 (pp), lower 95% CI",34.2,1
+TXT/rd_mask_cdc_primary_w16_hi,Results: adjusted differences,"Masking RD, CDC, primary, wave 16 (pp), upper 95% CI",40.2,1
+TXT/rd_mask_cdc_primary_w21,Results: adjusted differences,"Masking RD, CDC, primary, wave 21 (pp)",32.5,1
+TXT/rd_mask_cdc_primary_w21_lo,Results: adjusted differences,"Masking RD, CDC, primary, wave 21 (pp), lower 95% CI",30.1,1
+TXT/rd_mask_cdc_primary_w21_hi,Results: adjusted differences,"Masking RD, CDC, primary, wave 21 (pp), upper 95% CI",35.0,1
+TXT/rd_mask_cdc_nopartisan_w5,Results: adjusted differences,"Masking RD, CDC, party and ideology removed, wave 5 (pp)",36.3,1
+TXT/rd_mask_cdc_nopartisan_w16,Results: adjusted differences,"Masking RD, CDC, party and ideology removed, wave 16 (pp)",44.2,1
+TXT/rd_mask_cdc_nopartisan_w21,Results: adjusted differences,"Masking RD, CDC, party and ideology removed, wave 21 (pp)",40.7,1
+TXT/rd_mask_nopartisan_increase_min,Results: adjusted differences,"Increase in masking RD without party and ideology, waves 5/16/21: lowest (pp)",4.6,1
+TXT/rd_mask_nopartisan_increase_max,Results: adjusted differences,"Increase in masking RD without party and ideology, waves 5/16/21: highest (pp)",8.2,1
+TXT/rd_mask_cdc_gentrust_w5,Results: adjusted differences,"Masking RD, CDC, + generalized trust, wave 5 (pp)",31.2,1
+TXT/rd_mask_cdc_gentrust_w5_lo,Results: adjusted differences,"Masking RD, CDC, + generalized trust, wave 5 (pp), lower 95% CI",26.7,1
+TXT/rd_mask_cdc_gentrust_w5_hi,Results: adjusted differences,"Masking RD, CDC, + generalized trust, wave 5 (pp), upper 95% CI",35.7,1
+TXT/rd_mask_cdc_gentrust_w16,Results: adjusted differences,"Masking RD, CDC, + generalized trust, wave 16 (pp)",37.0,1
+TXT/rd_mask_cdc_gentrust_w16_lo,Results: adjusted differences,"Masking RD, CDC, + generalized trust, wave 16 (pp), lower 95% CI",33.4,1
+TXT/rd_mask_cdc_gentrust_w16_hi,Results: adjusted differences,"Masking RD, CDC, + generalized trust, wave 16 (pp), upper 95% CI",40.6,1
+TXT/rd_mask_cdc_gentrust_w21,Results: adjusted differences,"Masking RD, CDC, + generalized trust, wave 21 (pp)",31.2,1
+TXT/rd_mask_cdc_gentrust_w21_lo,Results: adjusted differences,"Masking RD, CDC, + generalized trust, wave 21 (pp), lower 95% CI",28.1,1
+TXT/rd_mask_cdc_gentrust_w21_hi,Results: adjusted differences,"Masking RD, CDC, + generalized trust, wave 21 (pp), upper 95% CI",34.4,1
+TXT/rd_other3_cdc_pooledA_min,Results: adjusted differences,"Era-pooled (Spec A) CDC RDs, contact/crowds/handwashing: lowest (pp; '13 to 27')",13,0
+TXT/rd_other3_cdc_pooledA_max,Results: adjusted differences,"Era-pooled (Spec A) CDC RDs, contact/crowds/handwashing: highest (pp)",27,0
+TXT/table1_mask_logOR_change_M3,Results: adjusted differences,"Reduction in trust log-odds from M0 to M3, masking (%, median)",16,0
+TXT/rd_mask_doc_w16,Results: institutional specificity,"Masking RD, trust in doctors and hospitals, wave 16 (pp)",34.7,1
+TXT/rd_mask_doc_w16_lo,Results: institutional specificity,"Masking RD, trust in doctors and hospitals, wave 16 (pp), lower 95% CI",29.2,1
+TXT/rd_mask_doc_w16_hi,Results: institutional specificity,"Masking RD, trust in doctors and hospitals, wave 16 (pp), upper 95% CI",40.3,1
+TXT/rd_mask_state_w16,Results: institutional specificity,"Masking RD, trust in state government, wave 16 (pp)",21.8,1
+TXT/rd_mask_state_w16_lo,Results: institutional specificity,"Masking RD, trust in state government, wave 16 (pp), lower 95% CI",19.4,1
+TXT/rd_mask_state_w16_hi,Results: institutional specificity,"Masking RD, trust in state government, wave 16 (pp), upper 95% CI",24.2,1
+TXT/rd_mask_banks_pooledA_prevax,Results: institutional specificity,"Masking RD, trust in banks, pre-vaccine era, Spec A (pp)",2.7,1
+TXT/rd_mask_banks_pooledA_prevax_lo,Results: institutional specificity,"Masking RD, trust in banks, pre-vaccine era, Spec A (pp), lower 95% CI",1.7,1
+TXT/rd_mask_banks_pooledA_prevax_hi,Results: institutional specificity,"Masking RD, trust in banks, pre-vaccine era, Spec A (pp), upper 95% CI",3.6,1
+TXT/rd_mask_banks_pooledA_rollout,Results: institutional specificity,"Masking RD, trust in banks, rollout era, Spec A (pp)",4.5,1
+TXT/rd_mask_banks_pooledA_rollout_lo,Results: institutional specificity,"Masking RD, trust in banks, rollout era, Spec A (pp), lower 95% CI",3.4,1
+TXT/rd_mask_banks_pooledA_rollout_hi,Results: institutional specificity,"Masking RD, trust in banks, rollout era, Spec A (pp), upper 95% CI",5.7,1
+TXT/rd_mask_banks_pooledA_omicron,Results: institutional specificity,"Masking RD, trust in banks, Omicron era, Spec A (pp)",6.2,1
+TXT/rd_mask_banks_pooledA_omicron_lo,Results: institutional specificity,"Masking RD, trust in banks, Omicron era, Spec A (pp), lower 95% CI",4.7,1
+TXT/rd_mask_banks_pooledA_omicron_hi,Results: institutional specificity,"Masking RD, trust in banks, Omicron era, Spec A (pp), upper 95% CI",7.7,1
+TXT/or_mask_cdc_jointbanks_pooledA_prevax,Results: institutional specificity,"Masking OR high vs no CDC trust in the joint bank model, prevax era, Spec A",4.2,1
+TXT/or_mask_cdc_jointbanks_pooledA_prevax_lo,Results: institutional specificity,"Masking OR high vs no CDC trust in the joint bank model, prevax era, lower 95% CI",3.9,1
+TXT/or_mask_cdc_jointbanks_pooledA_prevax_hi,Results: institutional specificity,"Masking OR high vs no CDC trust in the joint bank model, prevax era, upper 95% CI",4.4,1
+TXT/or_mask_cdc_jointbanks_pooledA_rollout,Results: institutional specificity,"Masking OR high vs no CDC trust in the joint bank model, rollout era, Spec A",5.2,1
+TXT/or_mask_cdc_jointbanks_pooledA_rollout_lo,Results: institutional specificity,"Masking OR high vs no CDC trust in the joint bank model, rollout era, lower 95% CI",4.9,1
+TXT/or_mask_cdc_jointbanks_pooledA_rollout_hi,Results: institutional specificity,"Masking OR high vs no CDC trust in the joint bank model, rollout era, upper 95% CI",5.5,1
+TXT/or_mask_cdc_jointbanks_pooledA_omicron,Results: institutional specificity,"Masking OR high vs no CDC trust in the joint bank model, omicron era, Spec A",3.2,1
+TXT/or_mask_cdc_jointbanks_pooledA_omicron_lo,Results: institutional specificity,"Masking OR high vs no CDC trust in the joint bank model, omicron era, lower 95% CI",3.0,1
+TXT/or_mask_cdc_jointbanks_pooledA_omicron_hi,Results: institutional specificity,"Masking OR high vs no CDC trust in the joint bank model, omicron era, upper 95% CI",3.5,1
+TXT/negctrl_vax_banks_median,Results: institutional specificity,Vaccination: median bank-trust RD across waves (pp),1.5,1
+TXT/negctrl_vax_cdc_median,Results: institutional specificity,Vaccination: median CDC-trust RD across waves (pp),36.6,1
+TXT/negctrl_vax_attenuation,Results: institutional specificity,Vaccination: bank RD smaller than CDC RD by (%),96,0
+TXT/negctrl_attenuation_min,Results: institutional specificity,Bank RD smaller than CDC RD across behaviors: lowest (%),56,0
+TXT/negctrl_attenuation_max,Results: institutional specificity,Bank RD smaller than CDC RD across behaviors: highest (%),96,0
+TXT/negctrl_attenuation_median,Results: institutional specificity,Bank RD smaller than CDC RD across behaviors: median (%),82,0
+TXT/rd_vax_cdc_w18,Results: behavioral specificity,"Vaccination RD, CDC, wave 18 (pp)",44.4,1
+TXT/rd_vax_cdc_w18_lo,Results: behavioral specificity,"Vaccination RD, CDC, wave 18 (pp), lower 95% CI",41.6,1
+TXT/rd_vax_cdc_w18_hi,Results: behavioral specificity,"Vaccination RD, CDC, wave 18 (pp), upper 95% CI",47.2,1
+TXT/rd_vax_cdc_w21,Results: behavioral specificity,"Vaccination RD, CDC, wave 21 (pp)",39.1,1
+TXT/rd_vax_cdc_w21_lo,Results: behavioral specificity,"Vaccination RD, CDC, wave 21 (pp), lower 95% CI",36.8,1
+TXT/rd_vax_cdc_w21_hi,Results: behavioral specificity,"Vaccination RD, CDC, wave 21 (pp), upper 95% CI",41.4,1
+TXT/rd_doctor_cdc_w5,Results: behavioral specificity,"Doctor/hospital visit RD, CDC, wave 5 (pp)",0.6,1
+TXT/rd_doctor_cdc_w5_lo,Results: behavioral specificity,"Doctor/hospital visit RD, CDC, wave 5 (pp), lower 95% CI",-1.9,1
+TXT/rd_doctor_cdc_w5_hi,Results: behavioral specificity,"Doctor/hospital visit RD, CDC, wave 5 (pp), upper 95% CI",3.1,1
+TXT/rd_doctor_cdc_w16,Results: behavioral specificity,"Doctor/hospital visit RD, CDC, wave 16 (pp)",0.0,1
+TXT/rd_doctor_cdc_w16_lo,Results: behavioral specificity,"Doctor/hospital visit RD, CDC, wave 16 (pp), lower 95% CI",-2.2,1
+TXT/rd_doctor_cdc_w16_hi,Results: behavioral specificity,"Doctor/hospital visit RD, CDC, wave 16 (pp), upper 95% CI",2.2,1
+TXT/rd_doctor_cdc_w21,Results: behavioral specificity,"Doctor/hospital visit RD, CDC, wave 21 (pp)",2.9,1
+TXT/rd_doctor_cdc_w21_lo,Results: behavioral specificity,"Doctor/hospital visit RD, CDC, wave 21 (pp), lower 95% CI",1.3,1
+TXT/rd_doctor_cdc_w21_hi,Results: behavioral specificity,"Doctor/hospital visit RD, CDC, wave 21 (pp), upper 95% CI",4.5,1

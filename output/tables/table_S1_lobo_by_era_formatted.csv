@@ -1,0 +1,61 @@
+group,block_removed,dAIC_penalty_median_IQR,dBrier_penalty_median_IQR,waves_block_q_lt_0_05
+"Mask wearing - Pre-vaccine era (waves = 10; median n = 19,030)",Trust in the CDC,"+883 [501, 1,097]","+0.0099 [0.0073, 0.0112]",10 / 10
+"Mask wearing - Pre-vaccine era (waves = 10; median n = 19,030)",Political identity (party & ideology),"+404 [270, 682]","+0.0046 [0.0036, 0.0059]",10 / 10
+"Mask wearing - Pre-vaccine era (waves = 10; median n = 19,030)","Demographics (age, race/ethnicity, gender)","+331 [294, 366]","+0.0033 [0.0028, 0.0042]",10 / 10
+"Mask wearing - Pre-vaccine era (waves = 10; median n = 19,030)",Geographic context (urbanicity & region),"+226 [127, 349]","+0.0025 [0.0014, 0.0047]",10 / 10
+"Mask wearing - Pre-vaccine era (waves = 10; median n = 19,030)","Socioeconomic status (education, income, employment)","+33 [19, 49]","+0.0006 [0.0004, 0.0009]",10 / 10
+"Mask wearing - Vaccine rollout era (waves = 6; median n = 23,444)",Trust in the CDC,"+1,233 [1,117, 1,456]","+0.0104 [0.0098, 0.0120]",6 / 6
+"Mask wearing - Vaccine rollout era (waves = 6; median n = 23,444)","Demographics (age, race/ethnicity, gender)","+494 [333, 625]","+0.0042 [0.0023, 0.0058]",6 / 6
+"Mask wearing - Vaccine rollout era (waves = 6; median n = 23,444)",Political identity (party & ideology),"+436 [382, 457]","+0.0040 [0.0033, 0.0042]",6 / 6
+"Mask wearing - Vaccine rollout era (waves = 6; median n = 23,444)",Geographic context (urbanicity & region),"+201 [172, 258]","+0.0020 [0.0014, 0.0023]",6 / 6
+"Mask wearing - Vaccine rollout era (waves = 6; median n = 23,444)","Socioeconomic status (education, income, employment)","+17 [2, 49]","+0.0003 [0.0002, 0.0006]",6 / 6
+"Mask wearing - Omicron era (waves = 4; median n = 23,986)","Demographics (age, race/ethnicity, gender)","+738 [626, 863]","+0.0076 [0.0066, 0.0087]",4 / 4
+"Mask wearing - Omicron era (waves = 4; median n = 23,986)",Political identity (party & ideology),"+494 [394, 578]","+0.0037 [0.0029, 0.0049]",4 / 4
+"Mask wearing - Omicron era (waves = 4; median n = 23,986)",Trust in the CDC,"+434 [243, 719]","+0.0040 [0.0026, 0.0059]",4 / 4
+"Mask wearing - Omicron era (waves = 4; median n = 23,986)",Geographic context (urbanicity & region),"+163 [134, 270]","+0.0014 [0.0012, 0.0024]",4 / 4
+"Mask wearing - Omicron era (waves = 4; median n = 23,986)","Socioeconomic status (education, income, employment)","+92 [62, 120]","+0.0010 [0.0007, 0.0013]",4 / 4
+"Avoiding contact - Pre-vaccine era (waves = 10; median n = 19,084)",Trust in the CDC,"+347 [300, 417]","+0.0044 [0.0036, 0.0050]",10 / 10
+"Avoiding contact - Pre-vaccine era (waves = 10; median n = 19,084)","Demographics (age, race/ethnicity, gender)","+216 [164, 284]","+0.0030 [0.0023, 0.0034]",10 / 10
+"Avoiding contact - Pre-vaccine era (waves = 10; median n = 19,084)",Political identity (party & ideology),"+178 [122, 289]","+0.0022 [0.0017, 0.0032]",10 / 10
+"Avoiding contact - Pre-vaccine era (waves = 10; median n = 19,084)","Socioeconomic status (education, income, employment)","+135 [111, 165]","+0.0019 [0.0017, 0.0020]",10 / 10
+"Avoiding contact - Pre-vaccine era (waves = 10; median n = 19,084)",Geographic context (urbanicity & region),"+63 [43, 76]","+0.0008 [0.0006, 0.0011]",8 / 10
+"Avoiding contact - Vaccine rollout era (waves = 6; median n = 23,498)",Trust in the CDC,"+440 [387, 493]","+0.0039 [0.0030, 0.0046]",6 / 6
+"Avoiding contact - Vaccine rollout era (waves = 6; median n = 23,498)",Political identity (party & ideology),"+283 [181, 364]","+0.0025 [0.0014, 0.0037]",6 / 6
+"Avoiding contact - Vaccine rollout era (waves = 6; median n = 23,498)","Demographics (age, race/ethnicity, gender)","+257 [204, 282]","+0.0024 [0.0021, 0.0027]",6 / 6
+"Avoiding contact - Vaccine rollout era (waves = 6; median n = 23,498)","Socioeconomic status (education, income, employment)","+146 [140, 164]","+0.0016 [0.0014, 0.0018]",6 / 6
+"Avoiding contact - Vaccine rollout era (waves = 6; median n = 23,498)",Geographic context (urbanicity & region),"+45 [40, 65]","+0.0005 [0.0004, 0.0007]",6 / 6
+"Avoiding contact - Omicron era (waves = 4; median n = 24,024)","Demographics (age, race/ethnicity, gender)","+259 [192, 331]","+0.0026 [0.0021, 0.0028]",4 / 4
+"Avoiding contact - Omicron era (waves = 4; median n = 24,024)","Socioeconomic status (education, income, employment)","+217 [187, 262]","+0.0020 [0.0017, 0.0022]",4 / 4
+"Avoiding contact - Omicron era (waves = 4; median n = 24,024)",Trust in the CDC,"+182 [133, 239]","+0.0014 [0.0012, 0.0016]",4 / 4
+"Avoiding contact - Omicron era (waves = 4; median n = 24,024)",Political identity (party & ideology),"+177 [120, 218]","+0.0009 [0.0007, 0.0013]",4 / 4
+"Avoiding contact - Omicron era (waves = 4; median n = 24,024)",Geographic context (urbanicity & region),"+32 [24, 49]","+0.0003 [0.0003, 0.0005]",4 / 4
+"Avoiding crowds - Pre-vaccine era (waves = 10; median n = 19,059)",Trust in the CDC,"+425 [354, 511]","+0.0052 [0.0048, 0.0060]",10 / 10
+"Avoiding crowds - Pre-vaccine era (waves = 10; median n = 19,059)",Political identity (party & ideology),"+236 [126, 347]","+0.0028 [0.0019, 0.0045]",10 / 10
+"Avoiding crowds - Pre-vaccine era (waves = 10; median n = 19,059)","Demographics (age, race/ethnicity, gender)","+225 [155, 290]","+0.0027 [0.0025, 0.0035]",10 / 10
+"Avoiding crowds - Pre-vaccine era (waves = 10; median n = 19,059)","Socioeconomic status (education, income, employment)","+102 [99, 112]","+0.0014 [0.0013, 0.0016]",10 / 10
+"Avoiding crowds - Pre-vaccine era (waves = 10; median n = 19,059)",Geographic context (urbanicity & region),"+35 [29, 47]","+0.0006 [0.0004, 0.0007]",10 / 10
+"Avoiding crowds - Vaccine rollout era (waves = 6; median n = 23,456)",Trust in the CDC,"+612 [567, 663]","+0.0056 [0.0052, 0.0067]",6 / 6
+"Avoiding crowds - Vaccine rollout era (waves = 6; median n = 23,456)","Demographics (age, race/ethnicity, gender)","+271 [231, 280]","+0.0027 [0.0023, 0.0030]",6 / 6
+"Avoiding crowds - Vaccine rollout era (waves = 6; median n = 23,456)",Political identity (party & ideology),"+228 [190, 287]","+0.0021 [0.0018, 0.0029]",6 / 6
+"Avoiding crowds - Vaccine rollout era (waves = 6; median n = 23,456)","Socioeconomic status (education, income, employment)","+131 [117, 142]","+0.0014 [0.0013, 0.0015]",6 / 6
+"Avoiding crowds - Vaccine rollout era (waves = 6; median n = 23,456)",Geographic context (urbanicity & region),"+55 [50, 56]","+0.0006 [0.0006, 0.0006]",6 / 6
+"Avoiding crowds - Omicron era (waves = 4; median n = 23,982)",Trust in the CDC,"+288 [204, 371]","+0.0025 [0.0021, 0.0028]",4 / 4
+"Avoiding crowds - Omicron era (waves = 4; median n = 23,982)","Socioeconomic status (education, income, employment)","+261 [206, 321]","+0.0028 [0.0021, 0.0033]",4 / 4
+"Avoiding crowds - Omicron era (waves = 4; median n = 23,982)","Demographics (age, race/ethnicity, gender)","+216 [145, 288]","+0.0024 [0.0020, 0.0027]",4 / 4
+"Avoiding crowds - Omicron era (waves = 4; median n = 23,982)",Political identity (party & ideology),"+191 [137, 235]","+0.0012 [0.0010, 0.0016]",4 / 4
+"Avoiding crowds - Omicron era (waves = 4; median n = 23,982)",Geographic context (urbanicity & region),"+24 [20, 49]","+0.0003 [0.0002, 0.0006]",4 / 4
+"Handwashing - Pre-vaccine era (waves = 10; median n = 19,054)","Demographics (age, race/ethnicity, gender)","+360 [333, 436]","+0.0039 [0.0034, 0.0041]",10 / 10
+"Handwashing - Pre-vaccine era (waves = 10; median n = 19,054)",Trust in the CDC,"+293 [222, 320]","+0.0030 [0.0029, 0.0031]",10 / 10
+"Handwashing - Pre-vaccine era (waves = 10; median n = 19,054)",Political identity (party & ideology),"+19 [6, 49]","+0.0003 [0.0001, 0.0005]",9 / 10
+"Handwashing - Pre-vaccine era (waves = 10; median n = 19,054)","Socioeconomic status (education, income, employment)","+15 [7, 21]","+0.0004 [0.0003, 0.0004]",9 / 10
+"Handwashing - Pre-vaccine era (waves = 10; median n = 19,054)",Geographic context (urbanicity & region),"+13 [11, 22]","+0.0003 [0.0002, 0.0004]",8 / 10
+"Handwashing - Vaccine rollout era (waves = 6; median n = 23,457)",Trust in the CDC,"+447 [390, 463]","+0.0042 [0.0040, 0.0044]",6 / 6
+"Handwashing - Vaccine rollout era (waves = 6; median n = 23,457)","Demographics (age, race/ethnicity, gender)","+432 [326, 504]","+0.0039 [0.0031, 0.0045]",6 / 6
+"Handwashing - Vaccine rollout era (waves = 6; median n = 23,457)",Political identity (party & ideology),"+44 [25, 60]","+0.0005 [0.0003, 0.0006]",6 / 6
+"Handwashing - Vaccine rollout era (waves = 6; median n = 23,457)",Geographic context (urbanicity & region),"+23 [18, 34]","+0.0003 [0.0003, 0.0004]",5 / 6
+"Handwashing - Vaccine rollout era (waves = 6; median n = 23,457)","Socioeconomic status (education, income, employment)","+17 [10, 27]","+0.0004 [0.0003, 0.0004]",5 / 6
+"Handwashing - Omicron era (waves = 4; median n = 23,979)","Demographics (age, race/ethnicity, gender)","+623 [527, 690]","+0.0067 [0.0063, 0.0068]",4 / 4
+"Handwashing - Omicron era (waves = 4; median n = 23,979)",Trust in the CDC,"+284 [231, 315]","+0.0026 [0.0025, 0.0030]",4 / 4
+"Handwashing - Omicron era (waves = 4; median n = 23,979)","Socioeconomic status (education, income, employment)","+37 [23, 52]","+0.0007 [0.0006, 0.0007]",4 / 4
+"Handwashing - Omicron era (waves = 4; median n = 23,979)",Geographic context (urbanicity & region),"+18 [15, 21]","+0.0003 [0.0003, 0.0003]",3 / 4
+"Handwashing - Omicron era (waves = 4; median n = 23,979)",Political identity (party & ideology),"+7 [4, 13]","+0.0002 [0.0001, 0.0002]",3 / 4

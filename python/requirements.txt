@@ -1,0 +1,4 @@
+# Python packages for python/fig_S20_dag_panel.py (Fig S20)
+# Tested with matplotlib 3.11 and Pillow 12.
+matplotlib
+Pillow

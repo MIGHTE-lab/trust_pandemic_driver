@@ -1,0 +1,7 @@
+outcome,outcome_label,n_waves,banks_median_pp,cdc_median_pp,banks_to_cdc_ratio_pct,banks_RD_median_IQR_pp,banks_RD_range_pp,banks_waves_sig_CI,banks_waves_sig_BH,cdc_RD_median_IQR_pp,cdc_waves_sig_CI
+always_wear_mask,Mask wearing,20,4.056912820829365,31.353337594441925,13,"4.1 [1.8, 6.8]",-0.2 to 13.3,12 / 20,12 / 20,"31.4 [26.4, 34.4]",20 / 20
+always_avoid_contact,Avoiding contact,20,9.452583636298456,21.6690660893817,44,"9.5 [8.3, 10.8]",5.6 to 12.6,20 / 20,20 / 20,"21.7 [17.2, 23.8]",20 / 20
+always_avoid_crowds,Avoiding crowds,20,4.4113134916125105,24.303596683348104,18,"4.4 [2.5, 6.5]",-0.3 to 9.1,14 / 20,14 / 20,"24.3 [20.4, 27.7]",20 / 20
+wash_hands_strict,Handwashing,20,6.306339289568264,19.611471666755882,32,"6.3 [5.9, 7.7]",3.1 to 9.1,20 / 20,20 / 20,"19.6 [17.2, 21.0]",20 / 20
+vaccine_1,Vaccination (1+ dose),10,1.52689811921088,36.609323762336516,4,"1.5 [0.2, 5.0]",-1.5 to 6.3,5 / 10,5 / 10,"36.6 [30.4, 40.9]",10 / 10
+visit_9,Doctor/hospital visit,20,0.8241011841318585,1.015304575335579,,"0.8 [0.6, 1.9]",-1.1 to 3.5,5 / 20,1 / 20,"1.0 [0.5, 1.5]",4 / 20

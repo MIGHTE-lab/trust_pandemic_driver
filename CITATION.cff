@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the article below."
+type: software
+title: "Code and data for: Trust as a hidden driver of epidemic-relevant behavior"
+repository-code: "https://github.com/MIGHTE-lab/trust_pandemic_driver"
+authors:
+  - family-names: Zapf
+    given-names: Alexander J.
+  - family-names: Dewey
+    given-names: George
+preferred-citation:
+  type: article
+  title: "Trust as a hidden driver of epidemic-relevant behavior: Institution- and behavior-specific associations across 20 national survey waves"
+  journal: "Proceedings of the National Academy of Sciences of the United States of America"
+  year: 2026
+  volume: 123
+  doi: "10.1073/pnas.2622260123"
+  authors:
+    - family-names: Zapf
+      given-names: Alexander J.
+    - family-names: Dewey
+      given-names: George
+    - family-names: Ognyanova
+      given-names: Katherine
+    - family-names: Baum
+      given-names: Matthew
+    - family-names: Hanage
+      given-names: William P.
+    - family-names: Lipsitch
+      given-names: Marc
+    - family-names: Uslu
+      given-names: Ata A.
+    - family-names: Druckman
+      given-names: James N.
+    - family-names: Perlis
+      given-names: Roy
+    - family-names: Lazer
+      given-names: David
+    - family-names: Santillana
+      given-names: Mauricio

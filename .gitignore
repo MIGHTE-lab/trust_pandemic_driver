@@ -1,0 +1,26 @@
+# Raw CHIP50 survey waves are never part of the repository (see data/README.md).
+# The analysis data set data/chip50_trust_analysis.rds is included.
+*_weighted.RDS
+*_weighted.rds
+CSP_W*.RDS
+
+# TIFF copies of the figures (journal production files; PDF and PNG are included)
+output/figures/*.tiff
+output/figures/*.tif
+output/figures/*.svg
+
+# Local comparison with the authors' original outputs (validation/README.md)
+output/validation/
+
+# Original, uncondensed scripts (kept locally for reference)
+_archive/
+
+# R, RStudio, Python and OS files
+.Rhistory
+.RData
+.Rproj.user/
+.Renviron
+__pycache__/
+.DS_Store
+Thumbs.db
+desktop.ini
