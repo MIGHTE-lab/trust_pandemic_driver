@@ -1,20 +1,19 @@
-## ============================================================================ #
-## 02_descriptive_prevalence.R
-## Unadjusted, survey-weighted prevalence of each behavior by wave within the
-## levels of each stratifier, the distribution of trust over time, and the
-## adherence gap (highest minus lowest group) used in the Results.
+## -----------------------------------------------------------------------------
+## Script name: 02_descriptive_prevalence.R
 ##
-## Input : data/chip50_trust_analysis.rds
-## Output: output/estimates/prevalence_by_stratum.csv  Figs 1, 2, 5, 6 and S1-S10
-##         output/estimates/trust_level_shares.csv     Fig S19; wave dates
-##         output/estimates/adherence_gap_by_wave.csv  max - min prevalence by wave
-##         output/tables/adherence_gap_summary.csv     mean gaps quoted in Results
-##                                                     (38.8 pp masking by CDC trust,
-##                                                     25.9 pp by party, 6-10 pp by
-##                                                     age, education, income)
-## Original scripts: mosaic_and_adherence_gap_plots.R, mosaic_trust_trajectories.R
-## ============================================================================ #
+## Purpose: Survey-weighted prevalence of each behavior by wave and group,
+##          trust-level shares over time, and adherence gaps (highest minus
+##          lowest group)
+##
+## Author: ᚨᛃᛉ
+## Date Created: 10.22.2026
+## Updated:
+##
+## Output: output/estimates/prevalence_by_stratum.csv, trust_level_shares.csv,
+##         adherence_gap_by_wave.csv; output/tables/adherence_gap_summary.csv
+## -----------------------------------------------------------------------------
 
+# Find the repository folder (Rscript, source() or RStudio)
 if (!exists("REPO_DIR")) {
     .f <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
     .f <- c(gsub("~+~", " ", .f, fixed = TRUE),  # Rscript writes spaces as ~+~
@@ -27,12 +26,14 @@ source(file.path(REPO_DIR, "R", "00_setup.R"))
 dat   <- load_analysis_data()           # 23 analysis waves, valid weights
 dates <- wave_dates(dat)
 
-# ---- 1. Prevalence by wave and stratum (mosaic figures) ------------------------
+# ============================================================================ #
+# SECTION 1: PREVALENCE BY WAVE AND GROUP ----
+# ============================================================================ #
 FIG_OUTCOMES <- c("always_wear_mask", "wash_hands_strict", "always_avoid_contact",
                   "always_avoid_crowds", "vaccine_1", "visit_doctor", "visit_store")
-FIG_STRATIFIERS <- c("trust_cdc", "trust_banks",                       # focal panels
-                     "age_cat", "gender", "income_cat_5_fct", "education_cat",   # core
-                     "party3", "race_fct", "employ_fct", "urban_type")         # secondary
+FIG_STRATIFIERS <- c("trust_cdc", "trust_banks",                       # Focal panels
+                     "age_cat", "gender", "income_cat_5_fct", "education_cat",   # Core
+                     "party3", "race_fct", "employ_fct", "urban_type")         # Secondary
 
 log_msg("Prevalence by stratum: ", length(FIG_OUTCOMES), " outcomes x ",
         length(FIG_STRATIFIERS), " stratifiers")
@@ -49,7 +50,9 @@ prev <- dplyr::bind_rows(lapply(FIG_OUTCOMES, function(o) {
     dplyr::relocate(wave_date, .after = wave)
 write_out(prev, OUT_EST, "prevalence_by_stratum.csv")
 
-# ---- 2. Share of respondents at each trust level (Fig S19) ----------------------
+# ============================================================================ #
+# SECTION 2: SHARE OF RESPONDENTS AT EACH TRUST LEVEL ----
+# ============================================================================ #
 TRUST_PANELS <- c(trust_cdc = "Trust in CDC", trust_doc = "Trust in Doctors & Hospitals",
                   trust_state = "Trust in State Government", trust_banks = "Trust in Banks")
 shares <- dplyr::bind_rows(lapply(names(TRUST_PANELS), function(tv) {
@@ -67,7 +70,9 @@ shares <- dplyr::bind_rows(lapply(names(TRUST_PANELS), function(tv) {
     dplyr::relocate(wave_date, .after = wave)
 write_out(shares, OUT_EST, "trust_level_shares.csv")
 
-# ---- 3. Adherence gap: highest minus lowest group prevalence --------------------
+# ============================================================================ #
+# SECTION 3: ADHERENCE GAPS ----
+# ============================================================================ #
 GAP_STRATIFIERS <- c("age_cat", "gender", "income_cat_5_fct", "education_cat",
                      "race_fct", "party3", "employ_fct", "urban_type",
                      "trust_cdc", "trust_banks")
@@ -80,7 +85,7 @@ gap <- prev %>%
     dplyr::ungroup() %>%
     dplyr::mutate(gap_pct = max_pct - min_pct,
                   predictor_label = unname(STRATIFIER_LABELS[predictor]))
-# The gap series end with the last wave that has trust data (wave 24).
+# Gaps end at the last wave with trust data (wave 24)
 last_trust <- gap %>% dplyr::filter(predictor == "trust_cdc") %>%
     dplyr::group_by(outcome) %>% dplyr::summarise(last_wave = max(wave))
 gap <- gap %>%

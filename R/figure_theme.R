@@ -1,18 +1,16 @@
-## ============================================================================ #
-## figure_theme.R   (original name: pnas_figure_theme.R)
+## -----------------------------------------------------------------------------
+## Script name: figure_theme.R
 ##
-## Shared settings for PNAS-ready figures that are rendered at their FINAL
-## printed size, so the point sizes set here are the point sizes on the page.
+## Purpose: Shared figure settings (page and type sizes, font, theme,
+##          milestone lines, save function); sourced by 07 and 08
 ##
-## PNAS digital-art guidance (2026 author instructions):
-##   * >= 300 dpi (we write 600 dpi), RGB colour, fonts embedded
-##   * final size: ~9 x 6 cm (small), ~11 x 11 cm (medium), ~18 x 22 cm (large)
-##     column widths: 8.7 cm (single), 11.4 cm (1.5 col), 17.8 cm (double)
-##   * lettering 6-12 pt after reduction, consistent within a figure
+## Author: ᚨᛃᛉ
+## Date Created: 10.22.2026
+## Updated:
 ##
-## Usage: sourced by R/07_figures.R and R/08_fig_S21_model_schematic.R.
-## Author: AJZ / revision support   Date: 2026-10-13
-## ============================================================================ #
+## Notes: Figures are drawn at their final printed size, so point sizes are
+##        the sizes on the page (PNAS: 600 dpi, fonts embedded).
+## -----------------------------------------------------------------------------
 
 suppressPackageStartupMessages({
     library(ggplot2)
@@ -35,12 +33,11 @@ PT_SMALL <- 6.5     # tick labels, legend text, milestone labels
 PT_BASE <- 7.0      # axis titles, strip text
 PT_TITLE <- 8.0     # panel titles
 
-# ggplot2 geom_text()/annotate() sizes are in mm; convert from points
+# Points to mm (geom_text() sizes are in mm)
 pt2mm <- function(pt) pt / ggplot2::.pt
 
 # ---- Font ---------------------------------------------------------------------
-# Arial where installed (Windows/macOS); otherwise Liberation Sans, which is
-# metrically identical to Arial, so line breaks and layout do not change.
+# Arial, or Liberation Sans (same metrics) where Arial is missing
 .pnas_pick_font <- function() {
     cand <- c("Arial", "Liberation Sans", "Helvetica", "TeX Gyre Heros")
     if (requireNamespace("systemfonts", quietly = TRUE)) {
@@ -52,8 +49,7 @@ pt2mm <- function(pt) pt / ggplot2::.pt
 }
 PNAS_FONT <- .pnas_pick_font()
 
-#' Text width in points for a given string at a given size (used to choose
-#' how many legend rows fit a panel).
+#' Text width in points (to fit legends into panels)
 text_width_pt <- function(x, size_pt = PT_SMALL, family = PNAS_FONT) {
     if (requireNamespace("systemfonts", quietly = TRUE)) {
         w <- tryCatch(
@@ -64,10 +60,8 @@ text_width_pt <- function(x, size_pt = PT_SMALL, family = PNAS_FONT) {
     nchar(x) * size_pt * 0.55
 }
 
-#' Width (pt) of a horizontal ggplot legend with these labels laid out in
-#' `nrow` rows, measured from the actual legend grob (so it honours the theme's
-#' key sizes, spacing and the exact font metrics).
 .legend_width_cache <- new.env()
+#' Width (pt) of a horizontal legend with these labels in `nrow` rows
 legend_width_pt <- function(labels, nrow, theme_fun = theme_pnas) {
     key <- paste(c(labels, nrow), collapse = "\r")
     if (!is.null(.legend_width_cache[[key]])) return(.legend_width_cache[[key]])
@@ -76,8 +70,7 @@ legend_width_pt <- function(labels, nrow, theme_fun = theme_pnas) {
         scale_colour_discrete(name = NULL) +
         guides(colour = guide_legend(nrow = nrow, byrow = TRUE)) +
         theme_fun() + theme(legend.position = "bottom")
-    # measure on a Cairo device so the real font metrics are used (the default
-    # pdf() device only knows the PostScript base fonts)
+    # Measure on a Cairo device for the real font metrics
     tmp <- tempfile(fileext = ".pdf")
     grDevices::cairo_pdf(tmp, width = 7, height = 7)
     on.exit({ grDevices::dev.off(); unlink(tmp) }, add = TRUE)
@@ -97,6 +90,7 @@ legend_rows_needed <- function(labels, avail_pt, ...) {
 }
 
 # ---- Theme ------------------------------------------------------------------
+#' ggplot theme for the PNAS figures
 theme_pnas <- function(base_size = PT_BASE, base_family = PNAS_FONT) {
     theme_minimal(base_size = base_size, base_family = base_family) +
         theme(
@@ -127,10 +121,8 @@ theme_pnas <- function(base_size = PT_BASE, base_family = PNAS_FONT) {
         )
 }
 
-# ---- Pandemic milestones (dates/colours from unified_palettes.R) ------------
-# Label placement for the publication panels: `side` puts the label to the
-# right (0) or left (1) of its dashed line; `tier` stacks labels that would
-# otherwise collide (1 = top row of the label band, 2 = second row).
+# ---- Pandemic milestones ---------------------------------------------------
+# side: label right (0) or left (1) of its line; tier: label row
 PNAS_MILESTONES <- data.frame(
     date = as.Date(c("2020-05-27", "2020-07-01", "2021-04-01",
                      "2021-08-02", "2022-01-01", "2022-01-15")),
@@ -143,14 +135,12 @@ PNAS_MILESTONES <- data.frame(
     stringsAsFactors = FALSE
 )
 
-#' Add milestone lines (and optionally labels) to a date-axis panel.
-#' Labels are drawn in a band above the data (y between `y_band[1]` and
-#' `y_band[2]` in data units); lines span the full panel.  `layout = "narrow"`
-#' (panels < ~3.3 in wide) uses three label rows instead of two.
+#' Label band above the data (y range) for wide or narrow panels
 milestone_band <- function(layout = c("wide", "narrow")) {
     layout <- match.arg(layout)
     if (layout == "wide") c(101, 119) else c(101, 125)
 }
+#' Add milestone lines (and labels) to a date-axis panel
 add_milestones_pnas <- function(p, x_range, labels = TRUE, layout = c("wide", "narrow"),
                                 label_pt = PT_MIN + 0.2, line_width = 0.25,
                                 line_alpha = 0.65, nudge_days = 6) {
@@ -175,12 +165,11 @@ add_milestones_pnas <- function(p, x_range, labels = TRUE, layout = c("wide", "n
 }
 
 # ---- Saving -----------------------------------------------------------------
-#' Write one figure at final size as vector PDF (cairo: fonts embedded),
-#' 600-dpi PNG and 600-dpi LZW-compressed TIFF (both RGB, white background).
+#' Save a figure at final size as PDF (fonts embedded), PNG and TIFF (600 dpi)
 save_pnas <- function(plot, stem, width, height, formats = c("pdf", "png", "tiff")) {
     dir.create(dirname(stem), recursive = TRUE, showWarnings = FALSE)
     if ("pdf" %in% formats) {
-        # Greek/maths glyphs (plotmath) from the same typeface as the text
+        # Plotmath symbols in the same typeface as the text
         pdf_dev <- function(filename, ...) grDevices::cairo_pdf(
             filename, ..., symbolfamily = grDevices::cairoSymbolFont(PNAS_FONT, usePUA = FALSE))
         ggsave(paste0(stem, ".pdf"), plot, width = width, height = height,

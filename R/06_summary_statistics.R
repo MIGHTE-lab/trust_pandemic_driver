@@ -1,22 +1,23 @@
-## ============================================================================ #
-## 06_summary_statistics.R
-## Summaries of the estimates from scripts 02-05 that are reported in the
-## paper, and a check of every reported number against the published value.
-## Reads CSV files only; fits nothing.
+## -----------------------------------------------------------------------------
+## Script name: 06_summary_statistics.R
 ##
-## Output (output/tables/):
-##   table_S1_lobo_by_era.csv               Table S1, numeric (median [IQR] of the
-##   table_S1_lobo_by_era_formatted.csv     wave-level LOBO penalties, by era)
-##   lobo_all_waves.csv                     LOBO medians over all 20 waves (Results:
-##                                          +921 trust vs +442 party & ideology, ...)
-##   sensitivity_general_trust_comparison.csv  primary vs + generalized trust RDs (Fig S18)
-##   fig_S18_concordance_stats.csv          r = 0.99; median change 0.8 pp; ...
-##   negative_control_summary.csv           banks vs CDC across waves ("56 to 96%")
-##   check_against_published.csv            every reproduced number vs the paper
-## Original scripts: 17_reproduce_TableS1_LOBO_and_S18_stats.R,
-##   12c_sensitivity_analysis_comparison.R, 12d_negative_control_assessment.R
-## ============================================================================ #
+## Purpose: Summaries reported in the paper (Table S1, LOBO medians, Fig S18
+##          statistics, negative control) and a check of every reported
+##          number against the published value
+##
+## Author: ᚨᛃᛉ
+## Date Created: 10.22.2026
+## Updated:
+##
+## Output: output/tables/table_S1_lobo_by_era.csv (and _formatted.csv),
+##         lobo_all_waves.csv, sensitivity_general_trust_comparison.csv,
+##         fig_S18_concordance_stats.csv, negative_control_summary.csv,
+##         check_against_published.csv
+##
+## Notes: Reads the CSV files of scripts 02-05; fits no models.
+## -----------------------------------------------------------------------------
 
+# Find the repository folder (Rscript, source() or RStudio)
 if (!exists("REPO_DIR")) {
     .f <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
     .f <- c(gsub("~+~", " ", .f, fixed = TRUE),  # Rscript writes spaces as ~+~
@@ -26,6 +27,7 @@ if (!exists("REPO_DIR")) {
 }
 source(file.path(REPO_DIR, "R", "00_setup.R"))
 
+#' Quantile (R default, type 7)
 q7 <- function(x, p) unname(stats::quantile(x, p, na.rm = TRUE, type = 7))
 BLOCK_NAMES <- c(trust          = "Trust in the CDC",
                  ideology_party = "Political identity (party & ideology)",
@@ -33,8 +35,11 @@ BLOCK_NAMES <- c(trust          = "Trust in the CDC",
                  geography      = "Geographic context (urbanicity & region)",
                  ses            = "Socioeconomic status (education, income, employment)")
 
-# ---- 1. Leave-one-block-out penalties (Table S1; Results) -------------------------
+# ============================================================================ #
+# SECTION 1: LEAVE-ONE-BLOCK-OUT PENALTIES (TABLE S1) ----
+# ============================================================================ #
 lobo_raw <- read_out(OUT_EST, "lobo_by_wave.csv")
+# Brier column that matches LOBO_BRIER
 brier_col <- if (LOBO_BRIER == "weighted") "delta_Brier_w_full_minus_reduced" else
     "delta_Brier_full_minus_reduced"
 if (!brier_col %in% names(lobo_raw))
@@ -46,6 +51,7 @@ lobo <- lobo_raw %>%
     dplyr::mutate(block = sub("^M4_drop_", "", reduced_model_id),
                   dAIC_penalty = -delta_AIC_full_minus_reduced,   # AIC(M4 - block) - AIC(M4)
                   dBrier_penalty = -.data[[brier_col]])
+#' Median [IQR] of the LOBO penalties
 penalties <- function(df) dplyr::summarise(df,
     n_waves = dplyr::n_distinct(wave),
     dAIC_median = stats::median(dAIC_penalty), dAIC_q25 = q7(dAIC_penalty, .25),
@@ -67,9 +73,11 @@ table_s1 <- lobo %>% dplyr::group_by(outcome, era, block) %>% penalties() %>%
                   waves_block_q_lt_0_05)
 write_out(table_s1, OUT_TAB, "table_S1_lobo_by_era.csv")
 
+#' Integer with a thousands separator
 fmt_int <- function(x) formatC(round(x), format = "d", big.mark = ",")
 ERA_HEAD <- c("Pre-vaccine" = "Pre-vaccine era", "Rollout" = "Vaccine rollout era",
               "Omicron" = "Omicron era")
+# Formatted as in Table S1
 write_out(table_s1 %>% dplyr::transmute(
     group = sprintf("%s - %s (waves = %d; median n = %s)", outcome_label,
                     ERA_HEAD[era], n_waves, fmt_int(median_n)),
@@ -82,6 +90,7 @@ write_out(table_s1 %>% dplyr::transmute(
     waves_block_q_lt_0_05 = sprintf("%d / %d", waves_block_q_lt_0_05, n_waves)),
     OUT_TAB, "table_S1_lobo_by_era_formatted.csv")
 
+# Over all 20 waves (Results)
 lobo_all <- lobo %>% dplyr::group_by(outcome, block) %>% penalties() %>%
     dplyr::ungroup() %>%
     dplyr::mutate(outcome_label = unname(OUTCOME_LABELS[outcome]),
@@ -89,8 +98,11 @@ lobo_all <- lobo %>% dplyr::group_by(outcome, block) %>% penalties() %>%
     dplyr::arrange(match(outcome, PRIMARY_OUTCOMES), dplyr::desc(dAIC_median))
 write_out(lobo_all, OUT_TAB, "lobo_all_waves.csv")
 
-# ---- 2. Generalized-trust sensitivity: primary vs + generalized trust (Fig S18) ----
+# ============================================================================ #
+# SECTION 2: GENERALIZED-TRUST SENSITIVITY (FIG S18) ----
+# ============================================================================ #
 rd_cdc <- read_out(OUT_EST, "adjusted_rd_by_wave_trust_cdc.csv")
+#' RDs (pp) of one specification
 rd_spec <- function(spec) rd_cdc %>% dplyr::filter(model_spec == spec) %>%
     dplyr::transmute(outcome, wave, era, pp = 100 * estimate, lo = 100 * conf_low,
                      hi = 100 * conf_high)
@@ -104,6 +116,7 @@ cmp <- dplyr::inner_join(rd_spec("primary"), rd_spec("sensitivity_general_trust"
     dplyr::arrange(match(outcome, names(OUTCOME_LABELS)), wave)
 write_out(cmp, OUT_TAB, "sensitivity_general_trust_comparison.csv")
 
+# Fig S18 legend statistics
 rel <- cmp$pct_change[is.finite(cmp$pct_change)]
 s18 <- tibble::tibble(
     n_estimates = nrow(cmp), n_outcomes = dplyr::n_distinct(cmp$outcome),
@@ -114,16 +127,21 @@ s18 <- tibble::tibble(
     rel_change_q25_pct = q7(rel, .25), rel_change_q75_pct = q7(rel, .75))
 write_out(s18, OUT_TAB, "fig_S18_concordance_stats.csv")
 
-# ---- 3. Negative control: trust in banks vs trust in the CDC across waves -------------
+# ============================================================================ #
+# SECTION 3: NEGATIVE CONTROL (BANKS VS. CDC) ----
+# ============================================================================ #
+#' Primary RDs (pp) of one exposure
 rd_primary <- function(focal) read_out(OUT_EST, sprintf("adjusted_rd_by_wave_%s.csv", focal)) %>%
     dplyr::filter(model_spec == "primary", !is.na(estimate)) %>%
     dplyr::transmute(outcome, wave, pp = 100 * estimate, lo = 100 * conf_low,
                      hi = 100 * conf_high, sig_ci = lo > 0 | hi < 0,
                      sig_q = !is.na(p_adj) & p_adj < 0.05)
+#' Across-wave summary of the RDs
 summ <- function(df) df %>% dplyr::group_by(outcome) %>% dplyr::summarise(
     n_waves = dplyr::n(), median_pp = stats::median(pp), q25_pp = q7(pp, .25),
     q75_pp = q7(pp, .75), min_pp = min(pp), max_pp = max(pp), n_sig_ci = sum(sig_ci),
     n_sig_q = sum(sig_q), n_pos = sum(pp > 0))
+# Ratio only if the CDC RD is significant in at least half of the waves
 negctrl <- dplyr::left_join(summ(rd_primary("trust_banks")), summ(rd_primary("trust_cdc")),
                             by = "outcome", suffix = c("_banks", "_cdc")) %>%
     dplyr::mutate(
@@ -147,8 +165,12 @@ negctrl <- dplyr::left_join(summ(rd_primary("trust_banks")), summ(rd_primary("tr
     dplyr::arrange(match(outcome, names(OUTCOME_LABELS)))
 write_out(negctrl, OUT_TAB, "negative_control_summary.csv")
 
-# ---- 4. Every reported number vs the published value -------------------------------
+# ============================================================================ #
+# SECTION 4: REPRODUCED VS. PUBLISHED NUMBERS ----
+# ============================================================================ #
+# Reproduced numbers, keyed as in reference/published_values.csv
 computed <- list()
+#' Store one reproduced number
 put <- function(item, value) computed[[item]] <<- as.numeric(value)[1]
 
 # Table 1
@@ -192,6 +214,7 @@ for (st in names(s18)) put(paste0("S18/", st), s18[[st]])
 
 # Unadjusted differences and significance shares
 gaps <- read_out(OUT_TAB, "adherence_gap_summary.csv")
+#' Mean gap (pp) for one outcome and stratifier
 gap <- function(o, p) gaps$mean_gap_pp[gaps$outcome == o & gaps$predictor == p]
 put("TXT/gap_mask_trust_cdc", gap("always_wear_mask", "trust_cdc"))
 put("TXT/gap_mask_party", gap("always_wear_mask", "party3"))
@@ -206,6 +229,7 @@ gw <- read_out(OUT_EST, "adherence_gap_by_wave.csv") %>%
     tidyr::pivot_wider(names_from = predictor, values_from = gap_pct)
 put("TXT/waves_trust_gap_gt_party", sum(gw$trust_cdc > gw$party3, na.rm = TRUE))
 share <- read_out(OUT_TAB, "significance_share.csv")
+#' Significance share for one outcome and stratifier
 sh <- function(o, s, col = "pct_sig_BH") share[[col]][share$outcome == o & share$stratifier == s]
 for (o in PRIMARY_OUTCOMES) put(paste0("TXT/sig_trust_", o), sh(o, "trust_cdc"))
 put("TXT/sig_trust_visit_store", sh("visit_store", "trust_cdc"))
@@ -216,13 +240,14 @@ put("TXT/sig_education_visit_doctor", sh("visit_doctor", "education_cat"))
 put("TXT/sig_race_visit_doctor", sh("visit_doctor", "race_fct"))
 
 # Adjusted risk differences (pp) at landmark waves
+#' RD (pp) and 95% CI at one wave
 rd_at <- function(item, focal, o, spec, w) {
     d <- read_out(OUT_EST, sprintf("adjusted_rd_by_wave_%s.csv", focal))
     r <- d[d$outcome == o & d$model_spec == spec & d$wave == w, ]
     put(item, 100 * r$estimate); put(paste0(item, "_lo"), 100 * r$conf_low)
     put(paste0(item, "_hi"), 100 * r$conf_high)
 }
-for (w in LANDMARK_WAVES) {                        # waves 5, 16 and 21
+for (w in LANDMARK_WAVES) {                        # Waves 5, 16 and 21
     rd_at(sprintf("TXT/rd_mask_cdc_primary_w%d", w), "trust_cdc", "always_wear_mask", "primary", w)
     rd_at(sprintf("TXT/rd_mask_cdc_nopartisan_w%d", w), "trust_cdc", "always_wear_mask",
           "sensitivity_no_partisan", w)
@@ -276,11 +301,12 @@ check <- published %>%
     dplyr::mutate(reproduced = vapply(item, function(i)
                       if (is.null(computed[[i]])) NA_real_ else computed[[i]], numeric(1)),
                   reproduced_rounded = round(reproduced, digits),
-                  # a value matches if it rounds to the printed value
+                  # Match: the value rounds to the printed value
                   match = !is.na(reproduced) &
                       abs(reproduced - published) <= 0.5 * 10^(-digits) + 1e-8)
 write_out(check, OUT_TAB, "check_against_published.csv")
 
+# Summary in the console
 cat("\n== Reproduced vs published values ==\n")
 smry <- check %>% dplyr::group_by(location) %>%
     dplyr::summarise(matched = sum(match), total = dplyr::n()) %>% dplyr::ungroup()

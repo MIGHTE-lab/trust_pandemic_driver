@@ -27,9 +27,9 @@ The scripts in `R/` are a condensed version of the authors' original analysis sc
 
 The comparison also brought out one detail that the paper does not describe and that the condensed code keeps by default: the risk differences of Table 1 average the predictions of the survey-weighted models with equal weight per respondent (see `TABLE1_RD_AVERAGE` in the main README).
 
-The whole pipeline (`run_all.R`) was also run end to end on the same synthetic waves, from a folder whose path contains spaces and with two parallel workers: all 33 CSV outputs were identical to those of the sequential run above, and all figures were drawn.
+All scripts (`run_all.R`) were also run end to end on the same synthetic waves, from a folder whose path contains spaces and with two parallel workers: all 33 CSV outputs were identical to those of the sequential run above, and all figures were drawn.
 
-To run the pipeline on synthetic data yourself (no survey data needed):
+To run all scripts on synthetic data yourself (no survey data needed):
 
 ```
 Rscript validation/run_synthetic_test.R

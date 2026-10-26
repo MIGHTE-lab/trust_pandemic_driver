@@ -1,12 +1,18 @@
-## ============================================================================ #
-## run_synthetic_test.R
-## Runs the whole pipeline on synthetic survey waves in a temporary folder, to
-## check that the code runs without access to the survey data. The results are
-## meaningless; the published values check will not match.
+## -----------------------------------------------------------------------------
+## Script name: run_synthetic_test.R
 ##
-## Usage (from the repository root):  Rscript validation/run_synthetic_test.R
-## ============================================================================ #
+## Purpose: Run all scripts on synthetic survey waves in a temporary folder,
+##          to test the code without the survey data
+##
+## Author: ᚨᛃᛉ
+## Date Created: 10.22.2026
+## Updated:
+##
+## Notes: Run from the repository root: Rscript validation/run_synthetic_test.R.
+##        The results are meaningless.
+## -----------------------------------------------------------------------------
 
+# Find the repository folder (Rscript, source() or RStudio)
 .f <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
 .f <- c(gsub("~+~", " ", .f, fixed = TRUE),  # Rscript writes spaces as ~+~
         unlist(lapply(sys.frames(), function(e) e$ofile)))

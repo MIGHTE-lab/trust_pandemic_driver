@@ -1,19 +1,22 @@
-## ============================================================================ #
-## 01_build_analysis_data.R
-## Builds the slim analysis file from the raw CHIP50 survey waves.
+## -----------------------------------------------------------------------------
+## Script name: 01_build_analysis_data.R
 ##
-## Input : CSP_W<wave>_weighted.RDS for waves 1-27 (minus 4, 6, 8, 15), in the
-##         folder given by the environment variable C50_WEIGHTED_RDS_DIR.
-## Output: data/chip50_trust_analysis.rds  one row per respondent, only the
-##                                         variables the paper uses
-##         data/codebook.csv              variable descriptions and coding
-##         data/sample_sizes_by_wave.csv  respondents per wave
+## Purpose: Build the analytic file (one row per respondent, 36 variables)
+##          from the raw CHIP50 waves
 ##
-## Every later script reads only the analysis file. The recodes below repeat
-## those of the original pipeline (01_data_ingest_fix_UPDATED.R and
-## 02_Var_recode_UPDATED.R), restricted to these variables.
-## ============================================================================ #
+## Author: ᚨᛃᛉ
+## Date Created: 11.25.2025 
+## Updated: 10.25.2026
+##
+## Output: data/chip50_trust_analysis.rds, data/codebook.csv,
+##         data/sample_sizes_by_wave.csv
+##
+## Notes: Requires access to the raw survey waves (CSP_W<wave>_weighted.RDS, waves 1-27 except 4,
+##        6, 8 and 15) in the folder given by C50_WEIGHTED_RDS_DIR.
+##        Otherwise, load the compacted analytic dataset provided in the repo under `data`
+## -----------------------------------------------------------------------------
 
+# Find the repository folder (Rscript, source() or RStudio)
 if (!exists("REPO_DIR")) {
     .f <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
     .f <- c(gsub("~+~", " ", .f, fixed = TRUE),  # Rscript writes spaces as ~+~
@@ -23,6 +26,7 @@ if (!exists("REPO_DIR")) {
 }
 source(file.path(REPO_DIR, "R", "00_setup.R"))
 
+# Check that the raw survey data are available
 if (is.na(RAW_DATA_DIR))
     stop("The environment variable C50_WEIGHTED_RDS_DIR, which tells R where the ",
          "raw waves (CSP_W<wave>_weighted.RDS) are, is not set in this R session.\n",
@@ -37,34 +41,38 @@ if (!dir.exists(RAW_DATA_DIR))
          "\nbut R cannot find that folder. Check the path (forward slashes, no typos).",
          call. = FALSE)
 
-# ---- 1. Raw variables -----------------------------------------------------------
+# ============================================================================ #
+# SECTION 1: READ THE RAW SURVEY WAVES ----
+# ============================================================================ #
 RAW_NUMERIC <- c(
-    "weight_state",                               # post-stratification weight
+    "weight_state",                               # Post-stratification weight based on US states
     "age", "income_cat_5", "ideology", "ruca_usda",
-    "cov_beh_1", "cov_beh_2", "cov_beh_3", "cov_beh_5",  # behaviors, 1-4
-    "visit_1", "visit_3", "visit_9",              # 24-h activities (work, store, doctor)
-    "vaccine_1",                                  # vaccinated (waves 14+)
+    "cov_beh_1", "cov_beh_2", "cov_beh_3", "cov_beh_5",  # protective Behaviors (1-4)
+    "visit_1", "visit_3", "visit_9",              # Activities in past 24 h (work, store, doctor)
+    "vaccine_1",                                  # Vaccinated (waves 14+)
     "cov_trust_cdc", "cov_trust_doctors", "cov_trust_state", "cov_trust_banks",
-    "trust")                                      # generalized trust (sensitivity)
+    "trust")                                      # Generalized trust item
 RAW_TEXT <- c("gender", "race", "education_cat", "employ", "party3",
               "urban_type", "state_code")
 MISSING_CODES <- c(-99, -98, -97, -88, -77, 999, 998)
 
+#' Read one raw wave and keep the variables specified above
 read_wave <- function(w) {
     f <- file.path(RAW_DATA_DIR, sprintf("CSP_W%d_weighted.RDS", w))
     if (!file.exists(f)) stop("Missing raw file: ", f, call. = FALSE)
     raw <- readRDS(f)
     miss <- setdiff(c(RAW_NUMERIC, RAW_TEXT, "StartDate"), names(raw))
-    # Items not fielded in a wave (e.g. vaccine_1 before wave 14) are missing.
+    # Items not fielded in a wave are missing
     for (v in miss) raw[[v]] <- NA
     out <- tibble::tibble(wave = as.integer(w),
                           survey_date = suppressWarnings(as.Date(raw$StartDate)))
     for (v in RAW_NUMERIC) {
         x <- as.numeric(haven::zap_labels(raw[[v]]))
-        x[x %in% MISSING_CODES] <- NA                # survey missing-value codes
+        x[x %in% MISSING_CODES] <- NA                # Missing-value codes
         out[[v]] <- x
     }
-    for (v in RAW_TEXT) out[[v]] <- haven::zap_labels(raw[[v]])   # keeps factor levels
+    # Text variables (zap_labels keeps factor levels)
+    for (v in RAW_TEXT) out[[v]] <- haven::zap_labels(raw[[v]])
     log_msg("  wave ", w, ": ", format(nrow(out), big.mark = ","), " respondents")
     out
 }
@@ -72,13 +80,18 @@ read_wave <- function(w) {
 log_msg("Reading ", length(ANALYSIS_WAVES), " waves from ", RAW_DATA_DIR)
 raw <- dplyr::bind_rows(lapply(ANALYSIS_WAVES, read_wave))
 
-# ---- 2. Recodes -------------------------------------------------------------------
-trust_factor <- function(x) {                    # 1 = not at all ... 4 = a lot
+# ============================================================================ #
+# SECTION 2: RECODES ----
+# ============================================================================ #
+#' Trust items (1 = not at all ... 4 = a lot) recoded as a factor
+trust_factor <- function(x) {
     factor(dplyr::case_when(x == 4 ~ "High trust", x == 3 ~ "Some trust",
                             x == 2 ~ "Not much trust", x == 1 ~ "No trust"),
            levels = TRUST_LEVELS)
 }
-visit_binary <- function(x) as.integer(dplyr::coalesce(x, 0) == 1)   # select-all item
+#' Select-all item as 0/1 (not selected or missing = 0)
+visit_binary <- function(x) as.integer(dplyr::coalesce(x, 0) == 1)
+# Education levels and Census regions
 EDU_LEVELS <- c("Some High School or Less", "High School Graduate",
                 "Some College", "College Degree", "Graduate Degree")
 CENSUS_REGION <- c(
@@ -101,26 +114,23 @@ dat <- raw %>%
     dplyr::mutate(
         era = factor(get_era(wave), levels = ERA_LEVELS),
 
-        # Outcomes: "very closely" followed the recommendation in the past week
-        # (top category, 4) vs any other answer.
+        # Protective behaviors: followed "very closely" (4) vs. any other answer
         always_wear_mask     = as.integer(cov_beh_5 == 4),
         always_avoid_contact = as.integer(cov_beh_1 == 4),
         always_avoid_crowds  = as.integer(cov_beh_2 == 4),
         wash_hands_strict    = as.integer(cov_beh_3 == 4),
-        # 24-h household activities. Descriptive analyses treat a missing
-        # (unselected or not asked) item as 0; the adjusted models use visit_9
-        # as recorded, which drops respondents who were not asked.
+        # 24-h activities: missing coded 0 (models use visit_9 as recorded)
         visit_work   = visit_binary(visit_1),
         visit_store  = visit_binary(visit_3),
         visit_doctor = visit_binary(visit_9),
 
-        # Institutional trust (exposures) and generalized trust
+        # Institutional trust (exposures)
         trust_cdc   = trust_factor(cov_trust_cdc),
         trust_doc   = trust_factor(cov_trust_doctors),
         trust_state = trust_factor(cov_trust_state),
         trust_banks = trust_factor(cov_trust_banks),
 
-        # Stratifiers used in the descriptive analyses (Figs 1-2, 5-6, S1-S10)
+        # Stratifiers for the descriptive analyses
         age_cat = cut(age, breaks = c(18, 34, 54, 64, Inf), right = TRUE,
                       include.lowest = TRUE,
                       labels = c("18 to 34", "35 to 54", "55 to 64", "65 and over")),
@@ -145,7 +155,7 @@ dat <- raw %>%
         region_fct = factor(unname(CENSUS_REGION[as.character(state_code)]),
                             levels = c("Northeast", "Midwest", "South", "West")),
 
-        # Covariates of the adjusted models (reference level listed first)
+        # SDH covariates used in the adjusted models
         age_cat4 = cut(age, breaks = c(18, 34, 54, 64, Inf), right = TRUE,
                        include.lowest = TRUE, labels = c("18-34", "35-54", "55-64", "65+")),
         gender_fct = relevel(factor(gender), ref = "Male"),
@@ -172,6 +182,7 @@ dat <- raw %>%
                               levels = c("Urban", "Suburban", "Rural"))
     )
 
+# Variables kept in the compacted (streamlined) analytic file
 KEEP <- c("wave", "era", "survey_date", WEIGHT_VAR,
           PRIMARY_OUTCOMES, "vaccine_1", "visit_9", "visit_doctor", "visit_store",
           "visit_work",
@@ -182,12 +193,15 @@ KEEP <- c("wave", "era", "survey_date", WEIGHT_VAR,
           "income_high_ref", "party_ind_ref", "party_dem_ref", "ruca_cat_fct")
 dat <- dat[, KEEP]
 
-# ---- 3. Write the analysis file, codebook and sample sizes ---------------------
+# ============================================================================ #
+# SECTION 3: ANALYTIC FILE, CODEBOOK AND SAMPLE SIZES ----
+# ============================================================================ #
 dir.create(dirname(DATA_FILE), recursive = TRUE, showWarnings = FALSE)
 saveRDS(dat, DATA_FILE, compress = "xz")
 log_msg("Wrote ", DATA_FILE, " (", format(nrow(dat), big.mark = ","), " rows, ",
         ncol(dat), " variables)")
 
+# Variable descriptions for the codebook
 describe <- c(
     wave = "CHIP50 survey wave (waves 4, 6, 8, 15 excluded)",
     era = "Pandemic era: Pre-vaccine (waves 1-13), Rollout (14-20), Omicron (21+)",
@@ -233,9 +247,7 @@ codebook <- tibble::tibble(
     n_missing = vapply(dat, function(x) sum(is.na(x)), integer(1)))
 readr::write_csv(codebook, file.path(dirname(DATA_FILE), "codebook.csv"))
 
-# Respondents per wave, item nonresponse for the four behaviors and CDC trust
-# (SI Text S2: < 1% per wave), and respondents without a recorded doctor/hospital
-# item (not asked in parts of waves 11-13; SI Text S2).
+# Sample size and item non-response per wave (SI Text S2)
 sizes <- dat %>%
     dplyr::group_by(wave, era) %>%
     dplyr::summarise(n_respondents = dplyr::n(),

@@ -1,30 +1,21 @@
-## ============================================================================ #
-## 07_figures.R
-## Draws every data figure of the paper and SI at its final printed size
-## (vector PDF with embedded fonts, 600-dpi PNG and TIFF), so lettering is
-## 6-9 pt on the page. Reads the CSV files of scripts 02, 04 and 06; fits nothing.
+## -----------------------------------------------------------------------------
+## Script name: 07_figures.R
 ##
-##   Main text (file names follow the published numbering)
-##     Fig1_masking, Fig2_handwashing          prevalence by trust and SDH strata
-##     Fig3_adjusted_RD_CDC, Fig4_adjusted_RD_banks   adjusted RDs by wave
-##     Fig5_store_visits, Fig6_doctor_visits   prevalence by trust and SDH strata
-##   SI Appendix
-##     FigS01-FigS10   prevalence by trust and SDH strata  <- prevalence_by_stratum.csv
-##     FigS11-FigS16   era-pooled adjusted ORs              <- pooled_era_or_<exposure>.csv
-##     FigS17          RDs under three specifications       <- adjusted_rd_by_wave_trust_cdc.csv
-##     FigS18          primary vs + generalized trust RDs   <- sensitivity_general_trust_comparison.csv
-##     FigS19          distribution of trust over time      <- trust_level_shares.csv
-##   FigS20 (DAGs) and FigS21 (model schematic) are drawn by
-##   python/fig_S20_dag_panel.py and R/08_fig_S21_model_schematic.R.
+## Purpose: Figures 1-6 and S1-S19 at their final printed size (PDF, PNG and
+##          TIFF), from the CSV files of scripts 02, 04 and 06
 ##
-## Setting: MOSAIC_MATCH_TRUST_WAVES (TRUE: SDH panels show the 20 trust waves,
-##          as in the final figures; FALSE: all 23 waves, as in the proof, with
-##          the time axis extended to the last wave).
-## Optional: set RUN_SECTIONS to any of "mosaic", "forest", "rd", "scatter",
-##          "trust" before sourcing this script to draw only those figures.
-## Original script: pnas_figures/pnas_publication_figures.R (drawing code unchanged)
-## ============================================================================ #
+## Author: ᚨᛃᛉ
+## Date Created: 10.22.2026
+## Updated:
+##
+## Output: output/figures/ (Fig1_masking ... FigS19_trust_over_time)
+##
+## Notes: MOSAIC_MATCH_TRUST_WAVES: SDH panels show the 20 trust waves (TRUE)
+##        or all 23 waves (FALSE). Set RUN_SECTIONS ("mosaic", "forest", "rd",
+##        "scatter", "trust") before sourcing to draw only some figures.
+## -----------------------------------------------------------------------------
 
+# Find the repository folder (Rscript, source() or RStudio)
 if (!exists("REPO_DIR")) {
     .f <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
     .f <- c(gsub("~+~", " ", .f, fixed = TRUE),  # Rscript writes spaces as ~+~
@@ -42,11 +33,7 @@ log_msg("Writing figures to ", OUT_DIR_FIG)
 # SECTION 1: SHARED LOOKUPS ----
 # ============================================================================ #
 
-# Colours follow unified_palettes.R.  The first (lightest) step of the three
-# sequential ramps (age, income, education) was nearly white (#FEE5D9,
-# #EFF3FF, #E5F5E0: contrast ~1.1:1 on white) and its series could not be
-# seen at print size, so those ramps are shifted one step darker along the
-# same ColorBrewer hue.  Set USE_ORIGINAL_SEQUENTIAL <- TRUE to revert.
+# Age, income and education palettes one step darker for print (TRUE: original)
 USE_ORIGINAL_SEQUENTIAL <- FALSE
 
 STRAT <- list(
@@ -133,13 +120,11 @@ mos <- read_out(OUT_EST, "prevalence_by_stratum.csv") %>%
     mutate(wave_date = as.Date(wave_date))
 
 MOSAIC_TRUST_WAVES <- sort(unique(mos$wave[mos$stratifier == "trust_cdc"]))
-# Right end of the time axis: Sep 2022 (last trust wave: Aug 2022), or the last
-# wave when the SDH panels show all 23 waves.
+# Axis ends Sep 2022, or after the last wave when all 23 waves are shown
 MOSAIC_X_END <- if (MOSAIC_MATCH_TRUST_WAVES) as.Date("2022-09-30") else
     max(as.Date("2022-09-30"), max(mos$wave_date, na.rm = TRUE) + 31)
 
-#' One trajectory panel (points + 95% CI bars + lines) on a fixed 0-100% axis.
-#' big = TRUE: the focal trust panel (milestone labels in a band above 100%).
+#' One trajectory panel (big = TRUE: focal trust panel with milestone labels)
 traj_panel <- function(outcome, stratifier, x_lim, panel_w_pt, big = FALSE,
                        y_title = NULL) {
     sp <- STRAT[[stratifier]]
@@ -194,9 +179,7 @@ traj_panel <- function(outcome, stratifier, x_lim, panel_w_pt, big = FALSE,
 build_mosaic <- function(outcome, focal, sdh, width, height) {
     x_lim <- c(if (outcome == "vaccine_1") as.Date("2020-12-01") else as.Date("2020-04-01"),
                MOSAIC_X_END)
-    # layout "AAABBCC/AAADDEE": focal panel 3/7 of the width, SDH panels 2/7
-    # legends sit under the panel area (patchwork), so subtract the y-axis
-    # labels/title and plot margins from each column's width
+    # Panel widths: focal 3/7, SDH 2/7, minus axes and margins
     w_big_pt <- width * 72 * 3 / 7 - 38
     w_small_pt <- width * 72 * 2 / 7 - 30
     pA <- traj_panel(outcome, focal, x_lim, w_big_pt, big = TRUE,
@@ -207,7 +190,7 @@ build_mosaic <- function(outcome, focal, sdh, width, height) {
 }
 
 MOSAIC_FIGS <- list(
-    # SI: same height as the image it replaces in the SI document
+    # SI figures
     list(id = "FigS01_masking_secondary_SDH", outcome = "always_wear_mask", focal = "trust_cdc", sdh = MOSAIC_SECONDARY, w = SI_TEXT_W, h = 4.3),
     list(id = "FigS02_handwashing_secondary_SDH", outcome = "wash_hands_strict", focal = "trust_cdc", sdh = MOSAIC_SECONDARY, w = SI_TEXT_W, h = 4.5),
     list(id = "FigS03_masking_banks_core_SDH", outcome = "always_wear_mask", focal = "trust_banks", sdh = MOSAIC_CORE, w = SI_TEXT_W, h = 4.5),
@@ -239,9 +222,7 @@ if ("mosaic" %in% RUN_SECTIONS) {
 # ============================================================================ #
 # SECTION 3: POOLED-ERA ADJUSTED-OR FOREST PLOTS (S11-S16) ----
 # ============================================================================ #
-# Same estimates, row ordering, palette and Spec A/B encoding as the original
-# 13_production_plots.R; redrawn at the full SI page width.  The SDH-group
-# colour legend is omitted because every group is named by its row strip.
+# No SDH-group legend; each group is named in its row strip
 
 FOCAL_LABELS <- c(trust_cdc = "Trust in CDC", trust_banks = "Trust in Banks")
 FOREST_OUTCOME_LABELS <- c(always_wear_mask = "Mask wearing",
@@ -276,7 +257,7 @@ SPEC_LABELS <- c(pooled_specA_base = "Specification A: pooled by era",
 FOREST_W <- SI_TEXT_W
 FOREST_H <- 5.9
 
-#' Hierarchical row sort (verbatim logic from 12_/13_production_plots.R).
+#' Sort rows by group, then by effect size
 sort_terms_hierarchically <- function(df, group_order_pref) {
     if (nrow(df) == 0) return(df)
     df <- df %>% mutate(importance_score = abs(log(pmax(estimate, 1e-3))))
@@ -295,6 +276,7 @@ sort_terms_hierarchically <- function(df, group_order_pref) {
                                                         levels = level_order)))
 }
 
+#' Forest plot of the era-pooled ORs for a set of outcomes
 build_forest <- function(pooled, outcomes, palette, group_order) {
     fp <- pooled %>%
         filter(outcome %in% outcomes, !is.na(estimate), sdh_group != "Other") %>%
@@ -381,10 +363,11 @@ RD_SPEC_COLOURS <- c(primary = "#2C7FB8", sensitivity_no_partisan = "#D95F02",
 RD_SPEC_LTY <- c(primary = "solid", sensitivity_no_partisan = "42",
                  sensitivity_general_trust = "12")
 
-# Wave -> field date (median survey date per wave, as in the mosaic figures)
+# Field date of each wave
 WAVE_DATES <- read_out(OUT_EST, "trust_level_shares.csv") %>%
     distinct(wave, wave_date) %>% mutate(wave_date = as.Date(wave_date))
 
+#' Wave-level RDs (pp) of one exposure, with wave dates
 read_rd <- function(focal, specs) {
     read_out(OUT_EST, sprintf("adjusted_rd_by_wave_%s.csv", focal)) %>%
         filter(model_spec %in% specs, grepl("High trust", contrast),
@@ -394,6 +377,7 @@ read_rd <- function(focal, specs) {
                model_spec = factor(model_spec, levels = specs))
 }
 
+#' RD trajectory panel for one outcome
 rd_panel <- function(rd, outcome, specs, x_breaks_by = "6 months", pt_size = 0.55,
                      lw = 0.4) {
     d <- rd %>% filter(.data$outcome == !!outcome)
@@ -425,6 +409,7 @@ rd_panel <- function(rd, outcome, specs, x_breaks_by = "6 months", pt_size = 0.5
               panel.grid.major.x = element_line(colour = "grey92", linewidth = 0.18))
 }
 
+#' RD figure with one panel per outcome
 build_rd_figure <- function(focal, specs, ncol, y_title, pt_size, lw, legend_rows = 1) {
     rd <- read_rd(focal, specs)
     panels <- lapply(RD_OUTCOMES, function(o) rd_panel(rd, o, specs, pt_size = pt_size, lw = lw))

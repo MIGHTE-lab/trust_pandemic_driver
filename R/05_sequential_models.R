@@ -1,30 +1,22 @@
-## ============================================================================ #
-## 05_sequential_models.R
-## Sequential block adjustment (Table 1) and leave-one-block-out (LOBO)
-## comparisons (Table S1) for the four primary behaviors, per wave.
+## -----------------------------------------------------------------------------
+## Script name: 05_sequential_models.R
 ##
-##   M0 trust in CDC -> M1 + demographics (age, race/ethnicity, gender)
-##   -> M2 + SES (education, income, employment) -> M3 + ideology and party
-##   -> M4 + geography (RUCA urbanicity, Census region)
+## Purpose: Sequential block adjustment (Table 1) and leave-one-block-out
+##          comparisons (Table S1) for the four primary behaviors, per wave
 ##
-## All models of an outcome x wave are fit on the same complete-case sample:
-##   * survey-weighted quasibinomial (svyglm): trust OR, standardized risk
-##     difference (g-computation; see TABLE1_RD_AVERAGE), weighted Brier score,
-##     design-based Wald tests;
-##   * unweighted binomial ML (glm): AIC, which is undefined for svyglm.
-## LOBO drops each block from M4 in turn (unweighted AIC and Brier; Wald test
-## of the block on the weighted M4).
+## Author: ᚨᛃᛉ
+## Date Created: 10.22.2026
+## Updated:
 ##
-## Input : data/chip50_trust_analysis.rds
-## Output: output/estimates/sequential_models_by_wave.csv  per wave and model
-##         output/estimates/lobo_by_wave.csv               per wave and block
-##         output/tables/table_1_sequential_adjustment.csv  Table 1 (median [IQR]
-##                                                          across waves)
-## Settings: LOBO_BRIER ("unweighted" as in published Table S1, or "weighted");
-##           TABLE1_RD_AVERAGE ("unweighted" as in published Table 1, or "weighted").
-## Original script: 14b_iterative_trust_model_comparison_v2.R
-## ============================================================================ #
+## Output: output/estimates/sequential_models_by_wave.csv, lobo_by_wave.csv;
+##         output/tables/table_1_sequential_adjustment.csv
+##
+## Notes: AIC and LOBO Brier scores from unweighted glm fits; trust OR, RD and
+##        Table 1 Brier scores from survey-weighted fits. Table 1 RDs average
+##        predictions with equal weight per respondent (TABLE1_RD_AVERAGE).
+## -----------------------------------------------------------------------------
 
+# Find the repository folder (Rscript, source() or RStudio)
 if (!exists("REPO_DIR")) {
     .f <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
     .f <- c(gsub("~+~", " ", .f, fixed = TRUE),  # Rscript writes spaces as ~+~
@@ -34,7 +26,9 @@ if (!exists("REPO_DIR")) {
 }
 source(file.path(REPO_DIR, "R", "00_setup.R"))
 
-# ---- 1. Blocks and models ---------------------------------------------------------
+# ============================================================================ #
+# SECTION 1: BLOCKS, MODELS AND HELPERS ----
+# ============================================================================ #
 BLOCKS <- list(trust          = "trust_cdc",
                demographics   = c("age_cat4", "race_cat4", "gender_fct"),
                ses            = c("education_hs_ref", "income_high_ref", "employ_fct"),
@@ -57,16 +51,20 @@ ADDED_BLOCK <- c(M0 = "Trust", M1 = "+ Demographics", M2 = "+ Socioeconomic",
                  M3 = "+ Ideology/party", M4 = "+ Urbanicity/region")
 ALL_COVS <- unlist(BLOCKS, use.names = FALSE)
 
+#' Model formula for an outcome and a set of blocks
 model_formula <- function(outcome, blocks) {
     vars <- unlist(BLOCKS[blocks], use.names = FALSE)
     stats::as.formula(paste(outcome, "~", if (length(vars)) paste(vars, collapse = " + ") else "1"))
 }
+#' (Weighted) Brier score
 brier <- function(y, p, w = rep(1, length(y))) sum(w * (y - p)^2) / sum(w)
+#' (Weighted) Tjur R2: mean prediction in events minus non-events
 tjur  <- function(y, p, w = rep(1, length(y)))
     sum(w * p * (y == 1)) / sum(w[y == 1]) - sum(w * p * (y == 0)) / sum(w[y == 0])
+#' Evaluate quietly; NULL on error
 quiet <- function(expr) suppressWarnings(tryCatch(expr, error = function(e) NULL))
 
-#' All models for one outcome x wave cell.
+#' Fit all models for one outcome and wave
 run_cell <- function(task) {
     o <- task$outcome
     vars <- c(o, ALL_COVS)
@@ -86,6 +84,7 @@ run_cell <- function(task) {
                                                          family = stats::binomial())))
     svys <- lapply(svy_sets, function(b) quiet(survey::svyglm(model_formula(o, b), design = des,
                                                              family = stats::quasibinomial())))
+    # Wald test of one block
     wald <- function(fit, block) {
         if (is.null(fit)) return(c(F = NA, df1 = NA, df2 = NA, p = NA))
         tt <- quiet(survey::regTermTest(fit, stats::as.formula(paste("~", paste(BLOCKS[[block]], collapse = " + "))),
@@ -95,7 +94,7 @@ run_cell <- function(task) {
           p = as.numeric(tt$p))
     }
 
-    # --- per model: trust OR (High vs No), standardized RD, fit statistics ------
+    # Trust OR, standardized RD and fit statistics per model
     model_rows <- lapply(names(svy_sets)[names(svy_sets) %in% names(MODELS)], function(m) {
         fit <- svys[[m]]; g <- glms[[m]]
         g_prior <- glms[[names(MODELS)[match(m, names(MODELS)) - 1]]]   # M0: intercept only
@@ -106,13 +105,13 @@ run_cell <- function(task) {
                                                    else stats::AIC(g) - stats::AIC(g_prior))
         if (is.null(fit)) return(out)
         p <- as.numeric(stats::fitted(fit))
-        out$Brier_w <- brier(y, p, w)                # survey-weighted Brier score
+        out$Brier_w <- brier(y, p, w)                # Survey-weighted Brier score
         out$Tjur_w <- tjur(y, p, w)
-        # Wald test of the block this model adds to the previous one (M0: trust)
+        # Wald test of the added block
         added <- setdiff(MODELS[[m]], MODELS[[match(m, names(MODELS)) - 1]])
         wt <- wald(fit, added)
         out$block_Wald_F <- wt[["F"]]; out$block_Wald_p <- wt[["p"]]
-        nm <- "trust_cdcNo trust"                    # reference level: High trust
+        nm <- "trust_cdcNo trust"                    # Reference level: High trust
         if (!nm %in% names(stats::coef(fit)) || is.na(stats::coef(fit)[[nm]])) return(out)
         beta <- stats::coef(fit)[[nm]]
         se <- sqrt(stats::vcov(fit)[nm, nm])
@@ -122,9 +121,7 @@ run_cell <- function(task) {
         out$trust_OR_lo <- 1 / exp(beta + 1.96 * se)
         out$trust_OR_hi <- 1 / exp(beta - 1.96 * se)
         out$trust_p <- 2 * stats::pnorm(-abs(beta / se))
-        # Standardized RD (g-computation): set everyone to High, then No trust,
-        # and compare the mean predicted probabilities. As in the published
-        # Table 1, the mean is unweighted by default (TABLE1_RD_AVERAGE).
+        # Standardized RD (g-computation); see TABLE1_RD_AVERAGE
         lv <- levels(cc$trust_cdc)
         w_avg <- if (TABLE1_RD_AVERAGE == "weighted") w else rep(1, length(w))
         pp <- vapply(c("High trust", "No trust"), function(l) {
@@ -136,7 +133,7 @@ run_cell <- function(task) {
         out
     })
 
-    # --- leave one block out of M4 ------------------------------------------------
+    # Leave one block out of M4
     full <- glms$M4
     lobo_rows <- lapply(names(BLOCKS), function(b) {
         red_id <- paste0("M4_drop_", b); red <- glms[[red_id]]
@@ -171,8 +168,11 @@ run_cell <- function(task) {
     list(models = dplyr::bind_rows(model_rows), lobo = dplyr::bind_rows(lobo_rows))
 }
 
-# ---- 2. Fit ---------------------------------------------------------------------------
+# ============================================================================ #
+# SECTION 2: FIT THE MODELS ----
+# ============================================================================ #
 dat <- load_analysis_data()
+# High trust as reference (ORs are inverted to high vs. no trust in run_cell)
 dat$trust_cdc <- stats::relevel(dat$trust_cdc, ref = "High trust")
 SEQ_DAT <- as.data.frame(dat[, c("wave", WEIGHT_VAR, PRIMARY_OUTCOMES, ALL_COVS)])
 tasks <- list()
@@ -186,7 +186,9 @@ res <- run_tasks(tasks, run_cell,
 res <- res[!vapply(res, is.null, logical(1))]
 log_msg(length(res), " cells fitted (cells without trust data are skipped)")
 
-# ---- 3. Per-wave results ----------------------------------------------------------------
+# ============================================================================ #
+# SECTION 3: PER-WAVE RESULTS ----
+# ============================================================================ #
 per_wave <- dplyr::bind_rows(lapply(res, `[[`, "models")) %>%
     dplyr::group_by(outcome, wave) %>%
     dplyr::mutate(
@@ -197,9 +199,9 @@ per_wave <- dplyr::bind_rows(lapply(res, `[[`, "models")) %>%
         delta_AIC_vs_M0   = AIC - AIC[model_id == "M0"][1],
         delta_Brier_vs_M0 = Brier_w - Brier_w[model_id == "M0"][1],
         delta_Tjur_vs_M0  = Tjur_w - Tjur_w[model_id == "M0"][1]) %>%
-    dplyr::group_by(outcome, model_id) %>%          # trust term: across waves
+    dplyr::group_by(outcome, model_id) %>%          # Trust term: across waves
     dplyr::mutate(trust_q = stats::p.adjust(trust_p, method = "BH")) %>%
-    dplyr::group_by(model_id) %>%                   # added block: across outcomes and waves
+    dplyr::group_by(model_id) %>%                   # Added block: across outcomes and waves
     dplyr::mutate(block_Wald_q = stats::p.adjust(block_Wald_p, method = "BH")) %>%
     dplyr::ungroup() %>%
     dplyr::mutate(outcome_label = unname(OUTCOME_LABELS[outcome])) %>%
@@ -207,7 +209,7 @@ per_wave <- dplyr::bind_rows(lapply(res, `[[`, "models")) %>%
     dplyr::arrange(match(outcome, PRIMARY_OUTCOMES), wave, model_id)
 write_out(per_wave, OUT_EST, "sequential_models_by_wave.csv")
 
-# BH adjustment across all outcomes and waves of each dropped block (as in 14b)
+# BH adjustment per dropped block
 lobo <- dplyr::bind_rows(lapply(res, `[[`, "lobo")) %>%
     dplyr::group_by(comparison_type, reduced_model_id, full_model_id) %>%
     dplyr::mutate(LR_p_adj = stats::p.adjust(LR_p, method = "BH"),
@@ -217,7 +219,10 @@ lobo <- dplyr::bind_rows(lapply(res, `[[`, "lobo")) %>%
                                                                  paste0("M4_drop_", names(BLOCKS))))
 write_out(lobo, OUT_EST, "lobo_by_wave.csv")
 
-# ---- 4. Table 1: median [IQR] across waves ----------------------------------------
+# ============================================================================ #
+# SECTION 4: TABLE 1 (MEDIAN [IQR] ACROSS WAVES) ----
+# ============================================================================ #
+#' "hit / total (%)" as text
 fmt_count <- function(hit, total) ifelse(total == 0, NA_character_,
                                          sprintf("%d / %d (%.0f%%)", hit, total, 100 * hit / total))
 table1 <- per_wave %>%

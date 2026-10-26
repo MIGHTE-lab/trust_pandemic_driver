@@ -1,29 +1,29 @@
-## ============================================================================ #
-## compare_with_original_outputs.R
-## Checks that this repository reproduces the outputs of the authors' original
-## analysis scripts. Run it after run_all.R, on the computer that holds both the
-## new outputs and the outputs of the original scripts (which are not
-## distributed with the repository).
+## -----------------------------------------------------------------------------
+## Script name: compare_with_original_outputs.R
 ##
-## Usage (from the repository root):
-##   Rscript validation/compare_with_original_outputs.R
-## Folders (defaults are relative to the repository root and assume that it sits
-## in the authors' "Analytic code/PNAS manuscript" folder):
-##   C50_OUTPUT_DIR            new outputs                 (default ./output)
-##   C50_ORIGINAL_OUTPUT_DIR   original "output" folder    (default ../output)
-##   C50_ORIGINAL_DISPARITY_DIR  outputs of disparity_inference_analysis.R
-##                             (default ../../output/disparity_inference)
-## Output: output/validation/comparison_summary.csv   one row per compared file
-##         output/validation/comparison_details.csv   values outside tolerance
-## ============================================================================ #
+## Purpose: Compare the outputs of this repository with those of the original
+##          analysis scripts (27 files)
+##
+## Author: ᚨᛃᛉ
+## Date Created: 10.22.2026
+## Updated:
+##
+## Output: output/validation/comparison_summary.csv, comparison_details.csv
+##
+## Notes: Needs the outputs of the original scripts (not distributed). Set
+##        C50_ORIGINAL_OUTPUT_DIR and C50_ORIGINAL_DISPARITY_DIR if they are
+##        not in ../output and ../../output/disparity_inference.
+## -----------------------------------------------------------------------------
 
 suppressPackageStartupMessages({ library(dplyr); library(readr); library(tidyr) })
 
+# Find the repository folder (Rscript, source() or RStudio)
 .f <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
 .f <- c(gsub("~+~", " ", .f, fixed = TRUE),  # Rscript writes spaces as ~+~
         unlist(lapply(sys.frames(), function(e) e$ofile)))
 REPO_DIR <- if (length(.f)) normalizePath(file.path(dirname(.f[length(.f)]), ".."),
                                           winslash = "/") else normalizePath(getwd(), winslash = "/")
+#' Folder from an environment variable, or the default
 env_dir <- function(var, default) {
     v <- Sys.getenv(var, unset = "")
     normalizePath(if (nzchar(v)) v else default, winslash = "/", mustWork = FALSE)
@@ -41,13 +41,14 @@ P3 <- file.path(ORIG, "trust_extensions_NHB", "phase3b_iterative_trust_model_com
 BT <- file.path(ORIG, "behavioral_trajectories", "data")
 OUTCOME_MAP <- c(visit_1 = "visit_work", visit_3 = "visit_store", visit_9 = "visit_doctor")
 
-#' Compare one new file with its original counterpart.
-#'   keys     columns identifying a row (after renaming)
-#'   values   numeric columns; they match if |new - original| <= tol * max(1, |original|)
-#'            (relative tolerance; absolute for values below 1), or <= tol when
-#'            absolute = TRUE
-#'   strings  text columns compared exactly
-#'   map_visits  rename visit_1/3/9 to visit_work/store/doctor in the original
+#' Compare one new output file with its original counterpart
+#'
+#' @param keys Columns that identify a row
+#' @param values Numeric columns, compared with tolerance `tol` (relative, or
+#'   absolute if `absolute = TRUE`)
+#' @param strings Text columns, compared exactly
+#' @param map_visits Map visit_1/3/9 (original) to visit_work/store/doctor
+#' @return List with a one-row summary and the values outside tolerance
 compare_file <- function(label, new_file, orig_file, keys, values = character(0),
                          strings = character(0), tol = 1e-6, absolute = FALSE,
                          map_visits = FALSE, restrict_to_new = TRUE) {
@@ -107,11 +108,10 @@ compare_file <- function(label, new_file, orig_file, keys, values = character(0)
     list(summary = row, details = details)
 }
 
+# Paths of the new output files
 est_file <- function(f) file.path(NEW, "estimates", f)
 tab_file <- function(f) file.path(NEW, "tables", f)
-# The published mosaic table was recovered from the vector PDFs of the
-# 2026-08-26 run (values rounded to 0.001 pp); a re-run of the original script
-# gives full precision. Allow 0.01 percentage points (absolute) either way.
+# Prevalence table was read from the figure PDFs (rounded); allow 0.01 pp
 checks <- list(
     compare_file("Prevalence by stratum (Figs 1-2, 5-6, S1-S10)", est_file("prevalence_by_stratum.csv"),
                  file.path(BT, "mosaic_panel_estimates.csv"),

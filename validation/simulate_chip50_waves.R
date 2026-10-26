@@ -1,15 +1,17 @@
-## ============================================================================ #
-## simulate_chip50_waves.R
-## Writes SYNTHETIC survey waves with the same file names, variable names and
-## codings as the raw CHIP50 files the pipeline reads. Use it to test the code
-## without access to the survey data. The numbers it produces are meaningless.
+## -----------------------------------------------------------------------------
+## Script name: simulate_chip50_waves.R
 ##
-## Usage (from the repository root):
-##   Rscript validation/simulate_chip50_waves.R [output folder] [respondents per wave]
-## then
-##   C50_WEIGHTED_RDS_DIR=<output folder> C50_ANALYSIS_FILE=<tmp>.rds \
-##   C50_OUTPUT_DIR=<tmp folder> Rscript run_all.R
-## ============================================================================ #
+## Purpose: Write synthetic survey waves with the file names, variable names and
+##          codings of the raw CHIP50 files, to test the code without the survey
+##          data
+##
+## Author: ᚨᛃᛉ
+## Date Created: 10.22.2026
+## Updated:
+##
+## Notes: Rscript validation/simulate_chip50_waves.R [folder] [n per wave].
+##        The numbers it produces are meaningless.
+## -----------------------------------------------------------------------------
 
 args <- commandArgs(trailingOnly = TRUE)
 out_dir <- if (length(args) >= 1) args[1] else file.path(tempdir(), "synthetic_chip50")
@@ -30,6 +32,7 @@ states <- c("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "H
             "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO",
             "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA",
             "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY")
+#' Set a random share p of values to a missing code
 with_missing <- function(x, p = 0.01, code = NA) {
     x[stats::runif(length(x)) < p] <- code
     x
@@ -42,7 +45,7 @@ for (w in waves) {
     ideology <- pmin(7, pmax(1, round(4 + 1.6 * (party == "Republican") -
                                         1.6 * (party == "Democrat") + stats::rnorm(n, 0, 1.2))))
     age <- round(stats::runif(n, 18, 88))
-    # latent disposition to trust; declines over the pandemic, partisan gradient
+    # Latent trust: declines over time, partisan gradient
     z <- stats::rnorm(n) + 0.6 * (party == "Democrat") - 0.6 * (party == "Republican") -
         0.025 * (w - 1)
     trust_item <- function(shift, slope = 1) as.numeric(cut(slope * z + shift + stats::rnorm(n, 0, 0.7),
@@ -74,7 +77,7 @@ for (w in waves) {
         urban_type = sample(c("Urban", "Suburban", "Rural"), n, TRUE, prob = c(0.3, 0.5, 0.2)),
         stringsAsFactors = FALSE)
     tl <- if (w <= 24) trust_item(0) else round(stats::runif(n, 1, 4))
-    if (w <= 24) {                                   # trust items fielded in waves 1-24
+    if (w <= 24) {                                   # Trust items: waves 1-24
         d$cov_trust_cdc     <- with_missing(tl, 0.01)
         d$cov_trust_doctors <- with_missing(trust_item(0.9), 0.01)
         d$cov_trust_state   <- with_missing(trust_item(-0.3, 0.8), 0.01)
@@ -89,10 +92,10 @@ for (w in waves) {
         always <- stats::runif(n) < stats::plogis(lin)
         with_missing(ifelse(always, 4, sample(1:3, n, TRUE)), 0.008)
     }
-    d$cov_beh_1 <- behavior(-0.6, 0.55)            # avoid contact
-    d$cov_beh_2 <- behavior(-0.2, 0.6)             # avoid crowds
-    d$cov_beh_3 <- behavior(0.6, 0.45)             # wash hands
-    d$cov_beh_5 <- haven::labelled(behavior(0.3, 0.8),   # mask (labelled, as in raw files)
+    d$cov_beh_1 <- behavior(-0.6, 0.55)            # Avoid contact
+    d$cov_beh_2 <- behavior(-0.2, 0.6)             # Avoid crowds
+    d$cov_beh_3 <- behavior(0.6, 0.45)             # Wash hands
+    d$cov_beh_5 <- haven::labelled(behavior(0.3, 0.8),   # Mask (labelled)
                                    c(`Not at all closely` = 1, `Very closely` = 4))
     d$cov_beh_5[stats::runif(n) < 0.002] <- -99
     not_asked <- if (w %in% 11:13) stats::runif(n) < 0.08 else rep(FALSE, n)

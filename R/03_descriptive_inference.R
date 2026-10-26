@@ -1,24 +1,22 @@
-## ============================================================================ #
-## 03_descriptive_inference.R
-## Unadjusted tests of whether behavior differs across the levels of each
-## stratifier: per wave, a survey-weighted logistic regression of the behavior
-## on the stratifier, an omnibus design-based Wald F test, and pairwise risk
-## differences between levels. P values are Benjamini-Hochberg adjusted across
-## waves within each outcome x stratifier; the share of waves with q < 0.05
-## is the "temporal consistency" reported in the Results.
+## -----------------------------------------------------------------------------
+## Script name: 03_descriptive_inference.R
 ##
-## Input : data/chip50_trust_analysis.rds
-## Output: output/estimates/omnibus_tests_by_wave.csv
-##         output/estimates/pairwise_rd_by_wave.csv   (if RUN_PAIRWISE_RD)
-##         output/tables/significance_share.csv       % of waves significant
-##                                                    (100% for CDC trust; store 50%,
-##                                                    work 75%; doctor visits by
-##                                                    income/education/race 87/91/74%)
-## Setting: SDH_TEST_WAVES ("published" = 23 waves for SDH stratifiers;
-##          "trust_waves" = the 20 waves of the Methods). See README.
-## Original script: disparity_inference_analysis.R (Approach A)
-## ============================================================================ #
+## Purpose: Per-wave tests of differences in behavior between the levels of
+##          each stratifier (design-based Wald F, BH-adjusted across waves) and
+##          the share of waves with significant differences
+##
+## Author: ᚨᛃᛉ
+## Date Created: 10.22.2026
+## Updated:
+##
+## Output: output/estimates/omnibus_tests_by_wave.csv, pairwise_rd_by_wave.csv;
+##         output/tables/significance_share.csv
+##
+## Notes: SDH_TEST_WAVES sets the waves of the SDH stratifiers ("published": 23;
+##        "trust_waves": 20). Trust always uses the 20 trust waves.
+## -----------------------------------------------------------------------------
 
+# Find the repository folder (Rscript, source() or RStudio)
 if (!exists("REPO_DIR")) {
     .f <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
     .f <- c(gsub("~+~", " ", .f, fixed = TRUE),  # Rscript writes spaces as ~+~
@@ -30,18 +28,22 @@ source(file.path(REPO_DIR, "R", "00_setup.R"))
 use_packages("marginaleffects")
 
 dat <- load_analysis_data()
+# Only the 20 trust waves, if requested
 if (SDH_TEST_WAVES == "trust_waves") dat <- dat[dat$wave %in% TRUST_WAVES, ]
 log_msg("Waves used for the stratifier tests: ", dplyr::n_distinct(dat$wave),
         " (SDH_TEST_WAVES = \"", SDH_TEST_WAVES, "\")")
 
+# ============================================================================ #
+# SECTION 1: OUTCOMES, STRATIFIERS AND TESTS ----
+# ============================================================================ #
 TEST_OUTCOMES <- c("always_wear_mask", "always_avoid_contact", "always_avoid_crowds",
                    "wash_hands_strict", "visit_work", "visit_store", "visit_doctor")
 TEST_STRATIFIERS <- c("age_cat", "gender", "income_cat_5_fct", "education_cat",
                       "race_fct", "party3", "ideology_fct", "employ_fct",
                       "urban_type", "region_fct", "trust_cdc")
-MIN_CELL_N <- 30    # strata with fewer respondents in a wave are dropped
+MIN_CELL_N <- 30    # Strata with fewer respondents in a wave are dropped
 
-#' Tests for one outcome x stratifier across all waves.
+#' Wald F tests and pairwise RDs for one outcome and stratifier, by wave
 test_stratifier <- function(task) {
     o <- task$outcome; s <- task$stratifier
     d <- task$data
@@ -70,8 +72,7 @@ test_stratifier <- function(task) {
             df2 = as.numeric(tt$ddf), F_stat = as.numeric(tt$Ftest),
             p_value = as.numeric(tt$p))
         if (isTRUE(RUN_PAIRWISE_RD)) {
-            # newdata = the model data, so the weight column is found with any
-            # marginaleffects version
+            # newdata needed for the weights in some marginaleffects versions
             ac <- tryCatch(as.data.frame(marginaleffects::avg_comparisons(
                 fit, variables = stats::setNames(list("pairwise"), s),
                 comparison = "difference", type = "response",
@@ -90,6 +91,9 @@ test_stratifier <- function(task) {
     list(omnibus = dplyr::bind_rows(omni), pairwise = dplyr::bind_rows(pairs))
 }
 
+# ============================================================================ #
+# SECTION 2: RUN THE TESTS ----
+# ============================================================================ #
 tasks <- list()
 for (o in TEST_OUTCOMES) for (s in TEST_STRATIFIERS) {
     tasks[[length(tasks) + 1]] <- list(outcome = o, stratifier = s,
@@ -98,8 +102,11 @@ for (o in TEST_OUTCOMES) for (s in TEST_STRATIFIERS) {
 log_msg("Fitting ", length(tasks), " outcome x stratifier series on ", N_CORES, " core(s)")
 res <- run_tasks(tasks, test_stratifier, export = "MIN_CELL_N")
 
+# ============================================================================ #
+# SECTION 3: WRITE THE RESULTS ----
+# ============================================================================ #
 dates <- wave_dates(dat)
-omnibus <-dplyr::bind_rows(lapply(res, `[[`, "omnibus")) %>%
+omnibus <- dplyr::bind_rows(lapply(res, `[[`, "omnibus")) %>%
     dplyr::group_by(outcome, stratifier) %>%
     dplyr::mutate(p_adj_BH = stats::p.adjust(p_value, method = "BH"),
                   significant = p_adj_BH < 0.05) %>%

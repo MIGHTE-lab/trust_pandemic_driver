@@ -1,13 +1,18 @@
-"""Fig. S20: four-panel conceptual DAG figure (uses no data).
+"""
+Script name: fig_S20_dag_panel.py
 
-The four panels contrast political identity as a candidate confounder,
-hypothetical mediator, conditioned collider, and a trust measurement-error
-structure. Drawn at its final size on the landscape SI page (8.6 x 6.2 in).
+Purpose: Fig S20, four conceptual DAGs for the role of political identity
+         (confounder, mediator, collider, trust measurement error); uses no
+         data
 
-Output: output/figures/FigS20_dag_panel.{svg,pdf,png,tiff}
-Run from the repository root:  python python/fig_S20_dag_panel.py
-Requires: matplotlib, Pillow.
-Original script: pnas_figures/build_DAG_4_scenarios_panel_PNAS.py (drawing code unchanged)
+Author: ᚨᛃᛉ
+Date Created: 10.22.2026
+Updated:
+
+Output: output/figures/FigS20_dag_panel (SVG, PDF, PNG and TIFF)
+
+Notes: Run from the repository root: python python/fig_S20_dag_panel.py
+       (needs matplotlib and Pillow).
 """
 
 import os

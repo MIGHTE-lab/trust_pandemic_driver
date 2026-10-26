@@ -1,27 +1,24 @@
-## ============================================================================ #
-## 04_adjusted_models.R
-## Multivariable survey-weighted logistic regressions of each behavior on
-## institutional trust plus sociodemographic and political covariates:
-##   * per wave (20 waves; vaccination 10), for four trust exposures and up to
-##     three specifications (primary; party and ideology removed; primary +
-##     generalized trust);
-##   * pooled by pandemic era (Spec A: era pooled; Spec B: + wave fixed effects).
-## Trust in banks, the negative-control exposure, is always modeled jointly
-## with trust in the CDC. The adjusted risk difference (RD) is the marginal
-## (standardized) difference in predicted probability between high and no
-## trust, averaged over the observed covariates with survey weights.
+## -----------------------------------------------------------------------------
+## Script name: 04_adjusted_models.R
 ##
-## Input : data/chip50_trust_analysis.rds
-## Output (one file per exposure: trust_cdc, trust_doc, trust_state, trust_banks)
-##   output/estimates/adjusted_rd_by_wave_<exposure>.csv   Figs 3-4, S17; RDs in text
-##   output/estimates/adjusted_or_by_wave_<exposure>.csv   all model terms (ORs)
-##   output/estimates/pooled_era_or_<exposure>.csv         Figs S11-S16; CDC ORs
-##                                                         of the joint bank models
-##   output/estimates/pooled_era_rd_<exposure>.csv         era RDs (bank RDs 2.7/4.5/
-##                                                         6.2 pp; "13 to 27 pp")
-## Original script: 12_AdjustedTimeVarying_with_trust.R
-## ============================================================================ #
+## Purpose: Survey-weighted logistic models of each behavior on institutional
+##          trust and all covariates, by wave and pooled by era: adjusted ORs
+##          and high- vs. no-trust risk differences
+##
+## Author: ᚨᛃᛉ
+## Date Created: 10.22.2026
+## Updated:
+##
+## Output: output/estimates/adjusted_rd_by_wave_<exposure>.csv,
+##         adjusted_or_by_wave_<exposure>.csv, pooled_era_or_<exposure>.csv,
+##         pooled_era_rd_<exposure>.csv
+##
+## Notes: Trust in banks (negative control) is modeled jointly with trust in
+##        the CDC. Era-pooled models: Spec A (pooled) and Spec B (+ wave fixed
+##        effects).
+## -----------------------------------------------------------------------------
 
+# Find the repository folder (Rscript, source() or RStudio)
 if (!exists("REPO_DIR")) {
     .f <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
     .f <- c(gsub("~+~", " ", .f, fixed = TRUE),  # Rscript writes spaces as ~+~
@@ -32,7 +29,9 @@ if (!exists("REPO_DIR")) {
 source(file.path(REPO_DIR, "R", "00_setup.R"))
 use_packages(c("broom", "marginaleffects"))
 
-# ---- 1. Model specifications ------------------------------------------------------
+# ============================================================================ #
+# SECTION 1: MODEL SPECIFICATIONS ----
+# ============================================================================ #
 ADJ_OUTCOMES <- c("always_wear_mask", "always_avoid_contact", "always_avoid_crowds",
                   "wash_hands_strict", "vaccine_1", "visit_9")
 COVARIATES <- c("age_cat4", "gender", "race_cat4", "education_hs_ref",
@@ -40,9 +39,7 @@ COVARIATES <- c("age_cat4", "gender", "race_cat4", "education_hs_ref",
                 "region_fct", "employ_fct")
 PARTISAN <- c("party_ind_ref", "ideology_fct")
 
-#' Right-hand side for one exposure x specification. The negative control
-#' (trust_banks) is entered jointly with trust_cdc (Lipsitch et al. 2010) and
-#' has no generalized-trust specification.
+#' Covariates for one exposure and specification (banks: + trust_cdc)
 model_covariates <- function(focal, spec) {
     rhs <- switch(spec,
                   primary                   = c(focal, COVARIATES),
@@ -56,7 +53,7 @@ SPECS <- list(trust_cdc   = c("primary", "sensitivity_no_partisan", "sensitivity
               trust_state = c("primary", "sensitivity_no_partisan", "sensitivity_general_trust"),
               trust_banks = c("primary", "sensitivity_no_partisan"))
 
-# Term name -> covariate group (used to label and color the forest plots)
+# Model terms -> covariate groups (forest plot labels and colors)
 TERM_GROUPS <- list(
     c("trust_cdc", "Focal Trust Variable", "trust"),
     c("trust_doc", "Focal Trust Variable", "trust"),
@@ -68,6 +65,7 @@ TERM_GROUPS <- list(
     c("region_fct", "Region", "region"), c("employ_fct", "Employment", "employment"),
     c("age_cat4", "Age", "age"), c("gender", "Gender", "gender"))
 
+#' Add covariate group and level labels to the model terms
 label_terms <- function(td, focal) {
     td$sdh_group <- NA_character_; td$level_label <- NA_character_
     td$palette_key <- NA_character_
@@ -76,25 +74,24 @@ label_terms <- function(td, focal) {
         td$sdh_group[hit] <- g[2]; td$palette_key[hit] <- g[3]
         td$level_label[hit] <- sub(paste0("^", g[1]), "", td$term[hit])
     }
-    # trust_cdc as the adjustment variable of the negative-control model
+    # trust_cdc as adjustment variable in the negative-control models
     for (tv in setdiff(names(TRUST_EXPOSURES), focal)) {
         hit <- startsWith(td$term, tv)
         td$sdh_group[hit] <- "Primary Exposure (Adjustment)"
         td$palette_key[hit] <- "primary_adjust"
         td$level_label[hit] <- sub(paste0("^", tv), "", td$term[hit])
     }
-    td$sdh_group[is.na(td$sdh_group)] <- "Other"          # generalized trust
+    td$sdh_group[is.na(td$sdh_group)] <- "Other"          # Generalized trust
     td$level_label <- ifelse(is.na(td$level_label), gsub("^[a-z_]+", "", td$term),
                              td$level_label)
     td
 }
 
-#' Fit one survey-weighted model and return its ORs and the high-vs-no-trust RD.
-#' A task is one exposure x specification x outcome x wave (or era).
+#' Fit one model (exposure x specification x outcome x wave or era)
 fit_adjusted <- function(task) {
     vars <- c(task$outcome, task$covariates)
     d <- ADJ_DAT[ADJ_DAT$wave %in% task$waves, c("wave", vars, WEIGHT_VAR)]
-    d <- d[stats::complete.cases(d[, vars]), , drop = FALSE]      # complete cases
+    d <- d[stats::complete.cases(d[, vars]), , drop = FALSE]      # Complete cases
     if (nrow(d) < 200 || length(unique(d[[task$outcome]])) < 2) return(NULL)
     rhs <- task$covariates
     if (isTRUE(task$wave_fe)) {                                   # Spec B
@@ -115,8 +112,7 @@ fit_adjusted <- function(task) {
                    error = function(e) NULL)
     if (is.null(td)) return(NULL)
     td <- td[td$term != "(Intercept)" & !startsWith(td$term, "wave_fe"), ]
-    # Marginal RD: Pr(behavior | High trust) - Pr(behavior | No trust), averaged
-    # over the model sample with survey weights; delta-method SE from vcov(fit).
+    # Adjusted RD: high vs. no trust, averaged with survey weights
     ac <- tryCatch(as.data.frame(marginaleffects::avg_comparisons(
         fit, variables = stats::setNames(list(c("No trust", "High trust")), task$focal),
         comparison = "difference", type = "response", vcov = stats::vcov(fit),
@@ -130,8 +126,11 @@ fit_adjusted <- function(task) {
          waves_in_model = sort(unique(d$wave)))
 }
 
-# ---- 2. Data and tasks -------------------------------------------------------------
+# ============================================================================ #
+# SECTION 2: DATA AND MODEL FITS ----
+# ============================================================================ #
 dat <- load_analysis_data()
+# Moderate as reference for ideology
 dat$ideology_fct <- stats::relevel(dat$ideology_fct, ref = "Moderate")
 ADJ_DAT <- dat[, unique(c("wave", WEIGHT_VAR, ADJ_OUTCOMES, names(TRUST_EXPOSURES),
                           "trust", COVARIATES))]
@@ -139,6 +138,7 @@ ADJ_DAT <- as.data.frame(ADJ_DAT)
 waves <- sort(unique(ADJ_DAT$wave))
 era_waves <- split(waves, get_era(waves))[ERA_LEVELS]
 
+# Wave-level models
 tasks <- list()
 for (focal in names(SPECS)) for (spec in SPECS[[focal]]) for (o in ADJ_OUTCOMES) {
     for (w in waves) tasks[[length(tasks) + 1]] <- list(
@@ -146,6 +146,7 @@ for (focal in names(SPECS)) for (spec in SPECS[[focal]]) for (o in ADJ_OUTCOMES)
         era = get_era(w), waves = w, wave_fe = FALSE,
         covariates = model_covariates(focal, spec))
 }
+# Era-pooled models (Spec A and B)
 for (focal in names(SPECS)) for (o in ADJ_OUTCOMES) for (era in ERA_LEVELS) {
     for (pooled in c("pooled_specA_base", "pooled_specB_waveFE"))
         tasks[[length(tasks) + 1]] <- list(
@@ -162,7 +163,10 @@ log_msg(sum(ok), " models fitted; ", sum(!ok),
         " cells skipped (no trust or vaccination item, or n < 200)")
 res <- res[ok]; is_wave <- vapply(tasks[ok], function(t) t$type == "wave", TRUE)
 
-# ---- 3. Assemble and write the tables ----------------------------------------------
+# ============================================================================ #
+# SECTION 3: OUTPUT TABLES ----
+# ============================================================================ #
+#' OR table rows for one model
 or_rows <- function(r, pooled) {
     td <- label_terms(r$tidy, r$task$focal)
     out <- tibble::tibble(term = td$term, estimate = td$estimate, std_error = td$std.error,
@@ -185,6 +189,7 @@ or_rows <- function(r, pooled) {
     out$palette_key <- td$palette_key
     out
 }
+#' RD table row for one model
 rd_rows <- function(r, pooled) {
     if (is.null(r$rd)) return(NULL)
     out <- tibble::tibble(contrast = r$rd$contrast, estimate = r$rd$estimate,
@@ -203,6 +208,7 @@ rd_rows <- function(r, pooled) {
 spec_order <- c("primary", "sensitivity_no_partisan", "sensitivity_general_trust",
                 "pooled_specA_base", "pooled_specB_waveFE")
 
+# One set of output files per exposure
 for (focal in names(SPECS)) {
     rf <- res[vapply(res, function(r) r$task$focal == focal, TRUE)]
     wv <- vapply(rf, function(r) !is.na(r$task$wave), TRUE)
