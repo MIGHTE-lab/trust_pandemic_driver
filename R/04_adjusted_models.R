@@ -6,19 +6,20 @@
 ##          and high- vs. no-trust risk differences
 ##
 ## Author: ᚨᛃᛉ
-## Date Created: 10.22.2026
-## Updated:
+## Date Created: 04.29.2026
+## Updated: 10.31.2026
 ##
 ## Output: output/estimates/adjusted_rd_by_wave_<exposure>.csv,
 ##         adjusted_or_by_wave_<exposure>.csv, pooled_era_or_<exposure>.csv,
 ##         pooled_era_rd_<exposure>.csv
 ##
-## Notes: Trust in banks (negative control) is modeled jointly with trust in
-##        the CDC. Era-pooled models: Spec A (pooled) and Spec B (+ wave fixed
+## Notes: Trust in banks (negative control exposure) is modeled jointly with trust in
+##        the CDC (cf. Lipsitch et al. 2009 and references therein). 
+##        Era-pooled models: Spec A (pooled) and Spec B (+ wave fixed
 ##        effects).
 ## -----------------------------------------------------------------------------
 
-# Find the repository folder (Rscript, source() or RStudio)
+# Find the repository that contains scripts (Rscript, source() or RStudio)
 if (!exists("REPO_DIR")) {
     .f <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
     .f <- c(gsub("~+~", " ", .f, fixed = TRUE),  # Rscript writes spaces as ~+~
@@ -39,7 +40,7 @@ COVARIATES <- c("age_cat4", "gender", "race_cat4", "education_hs_ref",
                 "region_fct", "employ_fct")
 PARTISAN <- c("party_ind_ref", "ideology_fct")
 
-#' Covariates for one exposure and specification (banks: + trust_cdc)
+#' Covariates for one exposure and specification (note: model for banks also contains trust_cdc)
 model_covariates <- function(focal, spec) {
     rhs <- switch(spec,
                   primary                   = c(focal, COVARIATES),
@@ -53,7 +54,7 @@ SPECS <- list(trust_cdc   = c("primary", "sensitivity_no_partisan", "sensitivity
               trust_state = c("primary", "sensitivity_no_partisan", "sensitivity_general_trust"),
               trust_banks = c("primary", "sensitivity_no_partisan"))
 
-# Model terms -> covariate groups (forest plot labels and colors)
+# Transform model terms into covariate groups (labels and colors for forest plot)
 TERM_GROUPS <- list(
     c("trust_cdc", "Focal Trust Variable", "trust"),
     c("trust_doc", "Focal Trust Variable", "trust"),
@@ -74,7 +75,7 @@ label_terms <- function(td, focal) {
         td$sdh_group[hit] <- g[2]; td$palette_key[hit] <- g[3]
         td$level_label[hit] <- sub(paste0("^", g[1]), "", td$term[hit])
     }
-    # trust_cdc as adjustment variable in the negative-control models
+    # include trust_cdc as adjustment variable in the negative-control models
     for (tv in setdiff(names(TRUST_EXPOSURES), focal)) {
         hit <- startsWith(td$term, tv)
         td$sdh_group[hit] <- "Primary Exposure (Adjustment)"
@@ -87,7 +88,7 @@ label_terms <- function(td, focal) {
     td
 }
 
-#' Fit one model (exposure x specification x outcome x wave or era)
+#' Fit a single model (exposure x specification x outcome x wave or era)
 fit_adjusted <- function(task) {
     vars <- c(task$outcome, task$covariates)
     d <- ADJ_DAT[ADJ_DAT$wave %in% task$waves, c("wave", vars, WEIGHT_VAR)]
@@ -127,10 +128,10 @@ fit_adjusted <- function(task) {
 }
 
 # ============================================================================ #
-# SECTION 2: DATA AND MODEL FITS ----
+# SECTION 2: LOAD DATA AND FIT MODELS ----
 # ============================================================================ #
 dat <- load_analysis_data()
-# Moderate as reference for ideology
+# "Moderate" as reference for ideology
 dat$ideology_fct <- stats::relevel(dat$ideology_fct, ref = "Moderate")
 ADJ_DAT <- dat[, unique(c("wave", WEIGHT_VAR, ADJ_OUTCOMES, names(TRUST_EXPOSURES),
                           "trust", COVARIATES))]
@@ -166,7 +167,7 @@ res <- res[ok]; is_wave <- vapply(tasks[ok], function(t) t$type == "wave", TRUE)
 # ============================================================================ #
 # SECTION 3: OUTPUT TABLES ----
 # ============================================================================ #
-#' OR table rows for one model
+#' Odds Ratio (OR) table rows for one model
 or_rows <- function(r, pooled) {
     td <- label_terms(r$tidy, r$task$focal)
     out <- tibble::tibble(term = td$term, estimate = td$estimate, std_error = td$std.error,
@@ -189,7 +190,7 @@ or_rows <- function(r, pooled) {
     out$palette_key <- td$palette_key
     out
 }
-#' RD table row for one model
+#' Risk difference (RD) table row for one model
 rd_rows <- function(r, pooled) {
     if (is.null(r$rd)) return(NULL)
     out <- tibble::tibble(contrast = r$rd$contrast, estimate = r$rd$estimate,
@@ -208,7 +209,7 @@ rd_rows <- function(r, pooled) {
 spec_order <- c("primary", "sensitivity_no_partisan", "sensitivity_general_trust",
                 "pooled_specA_base", "pooled_specB_waveFE")
 
-# One set of output files per exposure
+# Write one set of output files per exposure
 for (focal in names(SPECS)) {
     rf <- res[vapply(res, function(r) r$task$focal == focal, TRUE)]
     wv <- vapply(rf, function(r) !is.na(r$task$wave), TRUE)

@@ -1,12 +1,12 @@
 ## -----------------------------------------------------------------------------
 ## Script name: 08_fig_S21_model_schematic.R
 ##
-## Purpose: Fig S21, schematic of the proposed trust-stratified SEIR(+V) model
-##          (SI Text S1); uses no data
+## Purpose: Generate Fig S21, schematic of the proposed trust-stratified SEIR(+V) model
+##          (SI Text S1); conceptual model, uses no data
 ##
 ## Author: ᚨᛃᛉ
 ## Date Created: 10.22.2026
-## Updated:
+## Updated: 10.31.2026
 ##
 ## Output: output/figures/FigS21_model_schematic (PDF, PNG and TIFF)
 ##
@@ -14,7 +14,7 @@
 ##        or proposed. No empirical values are shown.
 ## -----------------------------------------------------------------------------
 
-# Find the repository folder (Rscript, source() or RStudio)
+# Find the repository that the scripts are in (Rscript, source() or RStudio)
 if (!exists("REPO_DIR")) {
     .f <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
     .f <- c(gsub("~+~", " ", .f, fixed = TRUE),  # Rscript writes spaces as ~+~
@@ -33,8 +33,8 @@ FF <- PNAS_FONT
 # Text sizes in mm (x 2.845 = pt)
 S_TXT   <- 2.85   # Plain box text (8.1 pt)
 S_STOCK <- 3.35   # Stock names (9.5 pt; subscripts 6.7 pt)
-S_FLOW  <- 3.05   # Lambda, sigma, gamma (8.7 pt; subscripts 6.1 pt)
-S_VFLOW <- 3.05   # Nu, omega, (1-eps)lambda (8.7 pt; subscripts 6.1 pt)
+S_FLOW  <- 3.05   # Parameters: Lambda, sigma, gamma (8.7 pt; subscripts 6.1 pt)
+S_VFLOW <- 3.05   # Parameters: Nu, omega, (1-eps)lambda (8.7 pt; subscripts 6.1 pt)
 S_NOTE  <- 2.65   # Side notes (7.5 pt)
 S_HEAD  <- 3.5    # Main header (10 pt)
 S_SUB   <- 3.15   # "Measured in this study" (9 pt)
@@ -49,7 +49,7 @@ TXT    <- "grey15"
 # ---- Geometry ---------------------------------------------------------------
 bands   <- c(High = 6.15, Moderate = 4.35, Low = 2.55)
 y_ell   <- 0.95            # Ellipsis row
-x_tr    <- 1.00            # Trust stratum boxes
+x_tr    <- 1.00            # Boxes for trust strata 
 x_S <- 3.00; x_E <- 4.50; x_I <- 6.00; x_R <- 7.50
 y_Voff  <- 0.85            # V below S
 bw <- 0.72; bh <- 0.50
@@ -67,7 +67,7 @@ rect_df <- function(x, y, lab, status, w = bw, h = bh, col = NULL, pl = FALSE) {
                stringsAsFactors = FALSE)
 }
 
-# ---- Stocks: S, E, I, R and V per stratum (proposed) -------------------------
+# ---- Stocks: S, E, I, R and V per stratum (proposed structure) ---------------
 stocks <- do.call(rbind, lapply(seq_along(bands), function(i) {
     y <- bands[i]; s <- substr(names(bands)[i], 1, 1)
     rbind(rect_df(x_S, y, paste0("S[", s, "]"), "prop", pl = TRUE),
@@ -99,7 +99,7 @@ rates <- rbind(
 boxes <- rbind(stocks, trust, aux, rates)
 
 # ---- SEIR flows --------------------------------------------------------------
-#' Arrow data for one flow
+#' Arrow data representing flow between variables 
 flow <- function(x1, x2, y, lab) data.frame(
     x = x1 + bw/2, xend = x2 - bw/2, y = y, yend = y,
     lab = lab, lx = (x1 + x2)/2, ly = y + 0.20, stringsAsFactors = FALSE)
@@ -112,7 +112,7 @@ flows <- do.call(rbind, lapply(seq_along(bands), function(i) {
 }))
 
 # ---- Vaccination and immunity flows ------------------------------------------
-# Vaccination (nu), waning (omega) and breakthrough infection
+# Vaccination (nu), waning (omega) and breakthrough infections
 vflows <- do.call(rbind, lapply(seq_along(bands), function(i) {
     y <- bands[i]; yv <- y - y_Voff; s <- substr(names(bands)[i], 1, 1)
     rbind(
@@ -131,7 +131,7 @@ vflows <- do.call(rbind, lapply(seq_along(bands), function(i) {
                    ly = yv - 0.22, stringsAsFactors = FALSE))
 }))
 
-# ---- Assortative mixing (across S, E, I and R) ------------------------------
+# ---- Assortative mixing (across groups: S, E, I and R) -----------------------
 mixing <- do.call(rbind, lapply(xs, function(xx)
     data.frame(x = xx, xend = xx,
                y    = c(bands[1] - bh/2 - 0.02, bands[2] - bh/2 - 0.02),
@@ -144,7 +144,7 @@ transit <- data.frame(
     y    = c(bands[1] - 0.32, bands[2] - 0.32),
     yend = c(bands[2] + 0.32, bands[3] + 0.32))
 
-# ---- Ellipsis row -----------------------------------------------------------
+# ---- Ellipsis  ---------------------------------------------------------------
 ell <- data.frame(x = c(x_tr, xs), y = y_ell)
 
 # ---- Plot --------------------------------------------------------------------
@@ -163,7 +163,7 @@ p <- ggplot() +
     geom_text(data = boxes[!boxes$parse_lab, ],
               aes(x = x, y = y, label = lab), size = S_TXT,
               lineheight = 0.95, colour = TXT, family = FF) +
-    # Rate labels as plotmath (Greek symbols)
+    # Rate labels as plotmath (for Greek symbols)
     annotate("text", x = 4.00, y = 7.35, size = S_TXT, colour = TXT, parse = TRUE, family = FF,
              label = "atop(\"Contact reduction  C(t, \"*tau*\")\", \"modulates transmission rate  \"*beta*\"(t, \"*tau*\")\")") +
     annotate("text", x = 6.95, y = 7.35, size = S_TXT, colour = TXT, parse = TRUE, family = FF,
@@ -188,7 +188,7 @@ p <- ggplot() +
     geom_text(data = vflows, aes(x = lx, y = ly, label = lab), size = S_VFLOW,
               colour = C_PROP, parse = TRUE, family = FF) +
 
-    # Trust stratum -> SEIR row
+    # Map Trust stratum -> SEIR row
     geom_segment(data = data.frame(x = x_tr + 0.75, xend = x_S - bw/2 - 0.24,
                                    y = bands, yend = bands),
                  aes(x = x, y = y, xend = xend, yend = yend),

@@ -1,12 +1,12 @@
 ## -----------------------------------------------------------------------------
 ## Script name: figure_theme.R
 ##
-## Purpose: Shared figure settings (page and type sizes, font, theme,
-##          milestone lines, save function); sourced by 07 and 08
+## Purpose: Shared settings across figures (page and type sizes, font, theme,
+##          milestone lines, save function); sourced by scripts 07 and 08
 ##
 ## Author: ᚨᛃᛉ
 ## Date Created: 10.22.2026
-## Updated:
+## Updated: 10.31.2026
 ##
 ## Notes: Figures are drawn at their final printed size, so point sizes are
 ##        the sizes on the page (PNAS: 600 dpi, fonts embedded).
@@ -17,12 +17,12 @@ suppressPackageStartupMessages({
     library(scales)
 })
 
-# ---- Page geometry (inches) -------------------------------------------------
+# ---- Page geometry (in inches) -------------------------------------------------
 CM <- 1 / 2.54
 PNAS_W_SINGLE <- 8.7 * CM     # 3.425 in
 PNAS_W_ONEHALF <- 11.4 * CM   # 4.488 in
 PNAS_W_DOUBLE <- 17.8 * CM    # 7.008 in
-SI_TEXT_W <- 9.0              # SI figure pages: landscape US Letter, 1-in margins
+SI_TEXT_W <- 9.0              # SI figure pages: landscape US Letter format, 1-in margins
 SI_TEXT_H <- 6.5
 
 PNAS_DPI <- 600
@@ -89,7 +89,7 @@ legend_rows_needed <- function(labels, avail_pt, ...) {
     length(labels)
 }
 
-# ---- Theme ------------------------------------------------------------------
+# ---- Theme -------------------------------------------------------------------
 #' ggplot theme for the PNAS figures
 theme_pnas <- function(base_size = PT_BASE, base_family = PNAS_FONT) {
     theme_minimal(base_size = base_size, base_family = base_family) +
@@ -121,7 +121,7 @@ theme_pnas <- function(base_size = PT_BASE, base_family = PNAS_FONT) {
         )
 }
 
-# ---- Pandemic milestones ---------------------------------------------------
+# ---- Pandemic milestone markers ----------------------------------------------
 # side: label right (0) or left (1) of its line; tier: label row
 PNAS_MILESTONES <- data.frame(
     date = as.Date(c("2020-05-27", "2020-07-01", "2021-04-01",
@@ -135,7 +135,7 @@ PNAS_MILESTONES <- data.frame(
     stringsAsFactors = FALSE
 )
 
-#' Label band above the data (y range) for wide or narrow panels
+#' Place label band above the data (y range) for wide or narrow panels
 milestone_band <- function(layout = c("wide", "narrow")) {
     layout <- match.arg(layout)
     if (layout == "wide") c(101, 119) else c(101, 125)

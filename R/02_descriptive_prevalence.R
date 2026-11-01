@@ -1,13 +1,13 @@
 ## -----------------------------------------------------------------------------
 ## Script name: 02_descriptive_prevalence.R
 ##
-## Purpose: Survey-weighted prevalence of each behavior by wave and group,
-##          trust-level shares over time, and adherence gaps (highest minus
-##          lowest group)
+## Purpose: Estimate survey-weighted prevalence of each protective behavior by wave and group,
+##          trust-level shares over time, and adherence gaps (difference in behaviors 
+##          for highest minus lowest group)
 ##
 ## Author: ᚨᛃᛉ
-## Date Created: 10.22.2026
-## Updated:
+## Date Created: 08.27.2025
+## Updated: 10.26.2026
 ##
 ## Output: output/estimates/prevalence_by_stratum.csv, trust_level_shares.csv,
 ##         adherence_gap_by_wave.csv; output/tables/adherence_gap_summary.csv
@@ -23,17 +23,17 @@ if (!exists("REPO_DIR")) {
 }
 source(file.path(REPO_DIR, "R", "00_setup.R"))
 
-dat   <- load_analysis_data()           # 23 analysis waves, valid weights
+dat   <- load_analysis_data()           # 23 analyzed waves, valid weights
 dates <- wave_dates(dat)
 
 # ============================================================================ #
-# SECTION 1: PREVALENCE BY WAVE AND GROUP ----
+# SECTION 1: PREVALENCE BY WAVE AND GROUP (TRUST & SDH) ----
 # ============================================================================ #
 FIG_OUTCOMES <- c("always_wear_mask", "wash_hands_strict", "always_avoid_contact",
                   "always_avoid_crowds", "vaccine_1", "visit_doctor", "visit_store")
 FIG_STRATIFIERS <- c("trust_cdc", "trust_banks",                       # Focal panels
-                     "age_cat", "gender", "income_cat_5_fct", "education_cat",   # Core
-                     "party3", "race_fct", "employ_fct", "urban_type")         # Secondary
+                     "age_cat", "gender", "income_cat_5_fct", "education_cat",   # Core SDH
+                     "party3", "race_fct", "employ_fct", "urban_type")         # Secondary SDH
 
 log_msg("Prevalence by stratum: ", length(FIG_OUTCOMES), " outcomes x ",
         length(FIG_STRATIFIERS), " stratifiers")
@@ -71,7 +71,7 @@ shares <- dplyr::bind_rows(lapply(names(TRUST_PANELS), function(tv) {
 write_out(shares, OUT_EST, "trust_level_shares.csv")
 
 # ============================================================================ #
-# SECTION 3: ADHERENCE GAPS ----
+# SECTION 3: ADHERENCE GAPS (BY SDH & KEY TRUST VARIABLES ----
 # ============================================================================ #
 GAP_STRATIFIERS <- c("age_cat", "gender", "income_cat_5_fct", "education_cat",
                      "race_fct", "party3", "employ_fct", "urban_type",
@@ -85,7 +85,7 @@ gap <- prev %>%
     dplyr::ungroup() %>%
     dplyr::mutate(gap_pct = max_pct - min_pct,
                   predictor_label = unname(STRATIFIER_LABELS[predictor]))
-# Gaps end at the last wave with trust data (wave 24)
+# Gaps end at the last wave with available trust data (wave 24)
 last_trust <- gap %>% dplyr::filter(predictor == "trust_cdc") %>%
     dplyr::group_by(outcome) %>% dplyr::summarise(last_wave = max(wave))
 gap <- gap %>%

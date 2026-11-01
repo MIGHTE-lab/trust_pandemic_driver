@@ -5,17 +5,17 @@
 ##          TIFF), from the CSV files of scripts 02, 04 and 06
 ##
 ## Author: ᚨᛃᛉ
-## Date Created: 10.22.2026
-## Updated:
+## Date Created: 04.22.2026
+## Updated: 10.31.2026
 ##
 ## Output: output/figures/ (Fig1_masking ... FigS19_trust_over_time)
 ##
 ## Notes: MOSAIC_MATCH_TRUST_WAVES: SDH panels show the 20 trust waves (TRUE)
 ##        or all 23 waves (FALSE). Set RUN_SECTIONS ("mosaic", "forest", "rd",
-##        "scatter", "trust") before sourcing to draw only some figures.
+##        "scatter", "trust") before sourcing to draw only a subset of the specified figures.
 ## -----------------------------------------------------------------------------
 
-# Find the repository folder (Rscript, source() or RStudio)
+# Find the repository that contains the scripts (Rscript, source() or RStudio)
 if (!exists("REPO_DIR")) {
     .f <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
     .f <- c(gsub("~+~", " ", .f, fixed = TRUE),  # Rscript writes spaces as ~+~
@@ -30,10 +30,10 @@ OUT_DIR_FIG <- OUT_FIG
 log_msg("Writing figures to ", OUT_DIR_FIG)
 
 # ============================================================================ #
-# SECTION 1: SHARED LOOKUPS ----
+# SECTION 1: SHARED LABELS AND COLORS ----
 # ============================================================================ #
 
-# Age, income and education palettes one step darker for print (TRUE: original)
+# Age, income and education palettes are set one step darker for print
 USE_ORIGINAL_SEQUENTIAL <- FALSE
 
 STRAT <- list(
@@ -124,7 +124,7 @@ MOSAIC_TRUST_WAVES <- sort(unique(mos$wave[mos$stratifier == "trust_cdc"]))
 MOSAIC_X_END <- if (MOSAIC_MATCH_TRUST_WAVES) as.Date("2022-09-30") else
     max(as.Date("2022-09-30"), max(mos$wave_date, na.rm = TRUE) + 31)
 
-#' One trajectory panel (big = TRUE: focal trust panel with milestone labels)
+#' One trajectory panel (big = TRUE: single trust panel with superimposed milestone labels)
 traj_panel <- function(outcome, stratifier, x_lim, panel_w_pt, big = FALSE,
                        y_title = NULL) {
     sp <- STRAT[[stratifier]]
@@ -175,7 +175,7 @@ traj_panel <- function(outcome, stratifier, x_lim, panel_w_pt, big = FALSE,
     p
 }
 
-#' Assemble one mosaic: focal trust panel (left half) + 2x2 SDH panels.
+#' Assemble one mosaic: focal trust panel (large panel on the left) + 2x2 SDH panels.
 build_mosaic <- function(outcome, focal, sdh, width, height) {
     x_lim <- c(if (outcome == "vaccine_1") as.Date("2020-12-01") else as.Date("2020-04-01"),
                MOSAIC_X_END)
@@ -220,9 +220,8 @@ if ("mosaic" %in% RUN_SECTIONS) {
 }
 
 # ============================================================================ #
-# SECTION 3: POOLED-ERA ADJUSTED-OR FOREST PLOTS (S11-S16) ----
+# SECTION 3: FOREST PLOTS FOR ADJUSTED OR POOLED ACROSS ERAS  (S11-S16) ----
 # ============================================================================ #
-# No SDH-group legend; each group is named in its row strip
 
 FOCAL_LABELS <- c(trust_cdc = "Trust in CDC", trust_banks = "Trust in Banks")
 FOREST_OUTCOME_LABELS <- c(always_wear_mask = "Mask wearing",
@@ -257,7 +256,7 @@ SPEC_LABELS <- c(pooled_specA_base = "Specification A: pooled by era",
 FOREST_W <- SI_TEXT_W
 FOREST_H <- 5.9
 
-#' Sort rows by group, then by effect size
+#' Sort rows by covariate group, then by effect size
 sort_terms_hierarchically <- function(df, group_order_pref) {
     if (nrow(df) == 0) return(df)
     df <- df %>% mutate(importance_score = abs(log(pmax(estimate, 1e-3))))
@@ -276,7 +275,7 @@ sort_terms_hierarchically <- function(df, group_order_pref) {
                                                         levels = level_order)))
 }
 
-#' Forest plot of the era-pooled ORs for a set of outcomes
+#' Forest plot of the era-pooled ORs for each set of outcomes
 build_forest <- function(pooled, outcomes, palette, group_order) {
     fp <- pooled %>%
         filter(outcome %in% outcomes, !is.na(estimate), sdh_group != "Other") %>%
@@ -350,7 +349,7 @@ if ("forest" %in% RUN_SECTIONS) {
 }
 
 # ============================================================================ #
-# SECTION 4: ADJUSTED RISK-DIFFERENCE TRAJECTORIES (Figs 3-4, S17) ----
+# SECTION 4: ADJUSTED RISK-DIFFERENCE (RD) TRAJECTORIES (Figs 3-4, S17) ----
 # ============================================================================ #
 
 RD_OUTCOMES <- c("always_wear_mask", "always_avoid_contact", "always_avoid_crowds",
@@ -422,7 +421,7 @@ build_rd_figure <- function(focal, specs, ncol, y_title, pt_size, lw, legend_row
         labs(y = NULL)
 }
 
-#' Add a shared y-axis title to the left of an assembled patchwork.
+#' Add a shared y-axis title to the left of an assembled patchwork figure.
 with_y_title <- function(p, title, size = PT_BASE) {
     lab <- ggplot() +
         annotate("text", x = 0, y = 0, label = title, angle = 90, size = pt2mm(size),
@@ -452,9 +451,9 @@ if ("rd" %in% RUN_SECTIONS) {
     }
 }
 
-# ============================================================================ #
-# SECTION 5: PRIMARY vs GENERALIZED-TRUST CONCORDANCE (S18) ----
-# ============================================================================ #
+# ==================================================================================== #
+# SECTION 5: CONCORDANCE BETWEEN PRIMARY SPECIFICATION vs GENERALIZED-TRUST  (S18) ----
+# ==================================================================================== #
 
 SCATTER_COLOURS <- c("Mask wearing" = "#1B9E77", "Avoiding contact" = "#D95F02",
                      "Avoiding crowds" = "#7570B3", "Handwashing" = "#E7298A",

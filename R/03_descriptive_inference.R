@@ -1,22 +1,22 @@
 ## -----------------------------------------------------------------------------
 ## Script name: 03_descriptive_inference.R
 ##
-## Purpose: Per-wave tests of differences in behavior between the levels of
+## Purpose: Per-wave tests of differences in protective behaviors between levels of
 ##          each stratifier (design-based Wald F, BH-adjusted across waves) and
 ##          the share of waves with significant differences
 ##
 ## Author: ᚨᛃᛉ
-## Date Created: 10.22.2026
-## Updated:
+## Date Created: 08.27.2025
+## Updated: 10.31.2026
 ##
 ## Output: output/estimates/omnibus_tests_by_wave.csv, pairwise_rd_by_wave.csv;
 ##         output/tables/significance_share.csv
 ##
 ## Notes: SDH_TEST_WAVES sets the waves of the SDH stratifiers ("published": 23;
-##        "trust_waves": 20). Trust always uses the 20 trust waves.
+##        "trust_waves": 20). Trust items always use the 20 waves for which trust data is available. 
 ## -----------------------------------------------------------------------------
 
-# Find the repository folder (Rscript, source() or RStudio)
+# Find the repository that contains scripts (Rscript, source() or RStudio)
 if (!exists("REPO_DIR")) {
     .f <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
     .f <- c(gsub("~+~", " ", .f, fixed = TRUE),  # Rscript writes spaces as ~+~
@@ -28,7 +28,7 @@ source(file.path(REPO_DIR, "R", "00_setup.R"))
 use_packages("marginaleffects")
 
 dat <- load_analysis_data()
-# Only the 20 trust waves, if requested
+# Restrict to the 20 waves with trust data, if requested
 if (SDH_TEST_WAVES == "trust_waves") dat <- dat[dat$wave %in% TRUST_WAVES, ]
 log_msg("Waves used for the stratifier tests: ", dplyr::n_distinct(dat$wave),
         " (SDH_TEST_WAVES = \"", SDH_TEST_WAVES, "\")")
@@ -41,9 +41,9 @@ TEST_OUTCOMES <- c("always_wear_mask", "always_avoid_contact", "always_avoid_cro
 TEST_STRATIFIERS <- c("age_cat", "gender", "income_cat_5_fct", "education_cat",
                       "race_fct", "party3", "ideology_fct", "employ_fct",
                       "urban_type", "region_fct", "trust_cdc")
-MIN_CELL_N <- 30    # Strata with fewer respondents in a wave are dropped
+MIN_CELL_N <- 30    # Strata with fewer than 30 respondents per wave are dropped
 
-#' Wald F tests and pairwise RDs for one outcome and stratifier, by wave
+#' Wald F tests and pairwise risk differences (RDs) for one outcome and stratifier, by wave
 test_stratifier <- function(task) {
     o <- task$outcome; s <- task$stratifier
     d <- task$data
@@ -72,7 +72,7 @@ test_stratifier <- function(task) {
             df2 = as.numeric(tt$ddf), F_stat = as.numeric(tt$Ftest),
             p_value = as.numeric(tt$p))
         if (isTRUE(RUN_PAIRWISE_RD)) {
-            # newdata needed for the weights in some marginaleffects versions
+            # newdata may be needed for the weights in some marginaleffects versions
             ac <- tryCatch(as.data.frame(marginaleffects::avg_comparisons(
                 fit, variables = stats::setNames(list("pairwise"), s),
                 comparison = "difference", type = "response",
@@ -103,7 +103,7 @@ log_msg("Fitting ", length(tasks), " outcome x stratifier series on ", N_CORES, 
 res <- run_tasks(tasks, test_stratifier, export = "MIN_CELL_N")
 
 # ============================================================================ #
-# SECTION 3: WRITE THE RESULTS ----
+# SECTION 3: WRITE THE RESULTS AND STORE ----
 # ============================================================================ #
 dates <- wave_dates(dat)
 omnibus <- dplyr::bind_rows(lapply(res, `[[`, "omnibus")) %>%
@@ -128,7 +128,7 @@ if (isTRUE(RUN_PAIRWISE_RD) && nrow(pairwise) > 0) {
         dplyr::mutate(era = get_era(wave))
     write_out(pairwise, OUT_EST, "pairwise_rd_by_wave.csv")
 }
-
+# Share of significant results 
 share <- omnibus %>%
     dplyr::group_by(outcome, stratifier) %>%
     dplyr::summarise(n_waves = dplyr::n(), n_sig_BH = sum(significant, na.rm = TRUE),
